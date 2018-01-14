@@ -1,0 +1,8 @@
+{
+    "name": "CLI",
+    "core": "1.x",
+    "author": "Iurii Makukh <gplcart.software@gmail.com>",
+    "license": "GPL-3.0+",
+    "version": "1.0.0-dev",
+    "description": "A collection of useful CLI commands"
+}

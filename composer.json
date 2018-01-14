@@ -1,0 +1,12 @@
+{
+    "name": "gplcart/cli",
+    "type": "gplcart-module",
+    "description": "A collection of useful CLI commands",
+    "keywords": ["gplcart", "ecommerce", "shopping cart", "gplcart module", "php", "cli"],
+    "license": "GPL-3.0+",
+    "require": {
+        "gplcart/composer-module-installer": "*"
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
