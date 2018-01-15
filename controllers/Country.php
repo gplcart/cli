@@ -203,87 +203,15 @@ class Country extends Base
      */
     protected function wizardAddCountry()
     {
-        $this->validateCodeCountry();
-        $this->validateNameCountry();
-        $this->validateNativeNameCountry();
-        $this->validateZoneCountry();
-        $this->validateStatusCountry();
-        $this->validateWeightCountry();
+        $this->validateInput('code', $this->text('Code'), 'country');
+        $this->validateInput('name', $this->text('Name'), 'country', '');
+        $this->validateInput('native_name', $this->text('Native name'), 'country', '');
+        $this->validateInput('zone_id', $this->text('Zone'), 'country', 0);
+        $this->validateInput('status', $this->text('Status'), 'country', 0);
+        $this->validateInput('weight', $this->text('Weight'), 'country', 0);
 
         $this->validateComponent('country');
         $this->addCountry();
-    }
-
-    /**
-     * Validates "code" field
-     */
-    protected function validateCodeCountry()
-    {
-        $input = $this->prompt($this->text('Code'));
-        if (!$this->isValidInput($input, 'code', 'country')) {
-            $this->errors();
-            $this->validateCodeCountry();
-        }
-    }
-
-    /**
-     * Validates "name" field
-     */
-    protected function validateNameCountry()
-    {
-        $input = $this->prompt($this->text('Name'));
-        if (!$this->isValidInput($input, 'name', 'country')) {
-            $this->errors();
-            $this->validateNameCountry();
-        }
-    }
-
-    /**
-     * Validates "native_name" field
-     */
-    protected function validateNativeNameCountry()
-    {
-        $input = $this->prompt($this->text('Native name'));
-        if (!$this->isValidInput($input, 'native_name', 'country')) {
-            $this->errors();
-            $this->validateNativeNameCountry();
-        }
-    }
-
-    /**
-     * Validates "zone_id" field
-     */
-    protected function validateZoneCountry()
-    {
-        $input = $this->prompt($this->text('Zone'), '0');
-        if (!$this->isValidInput($input, 'zone_id', 'country')) {
-            $this->errors();
-            $this->validateZoneCountry();
-        }
-    }
-
-    /**
-     * Validates "status" field
-     */
-    protected function validateStatusCountry()
-    {
-        $input = $this->prompt($this->text('Status'), '0');
-        if (!$this->isValidInput($input, 'status', 'country')) {
-            $this->errors();
-            $this->validateStatusCountry();
-        }
-    }
-
-    /**
-     * Validates "weight" field
-     */
-    protected function validateWeightCountry()
-    {
-        $input = $this->prompt($this->text('Weight'), '0');
-        if (!$this->isValidInput($input, 'weight', 'country')) {
-            $this->errors();
-            $this->validateWeightCountry();
-        }
     }
 
 }

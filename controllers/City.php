@@ -233,74 +233,14 @@ class City extends Base
      */
     protected function wizardAddCity()
     {
-        $this->validateNameCity();
-        $this->validateStateCity();
-        $this->validateCountryCity();
-        $this->validateZoneCity();
-        $this->validateStatusCity();
+        $this->validateInput('name', $this->text('Name'), 'city');
+        $this->validateInput('state_id', $this->text('State'), 'city');
+        $this->validateInput('country', $this->text('Country'), 'city');
+        $this->validateInput('zone_id', $this->text('Zone'), 'city', 0);
+        $this->validateInput('status', $this->text('Status'), 'city', 0);
 
         $this->validateComponent('city');
         $this->addCity();
-    }
-
-    /**
-     * Validates "name" field
-     */
-    protected function validateNameCity()
-    {
-        $input = $this->prompt($this->text('Name'));
-        if (!$this->isValidInput($input, 'name', 'city')) {
-            $this->errors();
-            $this->validateNameCity();
-        }
-    }
-
-    /**
-     * Validates "state_id" field
-     */
-    protected function validateStateCity()
-    {
-        $input = $this->prompt($this->text('Country state'));
-        if (!$this->isValidInput($input, 'state_id', 'city')) {
-            $this->errors();
-            $this->validateStateCity();
-        }
-    }
-
-    /**
-     * Validates "country" field
-     */
-    protected function validateCountryCity()
-    {
-        $input = $this->prompt($this->text('Country'));
-        if (!$this->isValidInput($input, 'country', 'city')) {
-            $this->errors();
-            $this->validateCountryCity();
-        }
-    }
-
-    /**
-     * Validates "zone_id" field
-     */
-    protected function validateZoneCity()
-    {
-        $input = $this->prompt($this->text('Zone'), '0');
-        if (!$this->isValidInput($input, 'zone_id', 'city')) {
-            $this->errors();
-            $this->validateZoneCity();
-        }
-    }
-
-    /**
-     * Validates "status" field
-     */
-    protected function validateStatusCity()
-    {
-        $input = $this->prompt($this->text('Status'), '0');
-        if (!$this->isValidInput($input, 'status', 'city')) {
-            $this->errors();
-            $this->validateStatusCity();
-        }
     }
 
 }

@@ -198,7 +198,7 @@ class ImageStyle extends Base
     protected function submitAddImageStyle()
     {
         $this->setSubmitted(null, $this->getParam());
-        $this->setSubmitted('actions', $this->explodeByPipe($this->getSubmitted('actions', '')));
+        $this->setSubmittedActionsImageStyle();
         $this->validateComponent('image_style');
         $this->addImageStyle();
     }
@@ -214,13 +214,8 @@ class ImageStyle extends Base
         }
 
         $this->setSubmitted(null, $params);
+        $this->setSubmittedActionsImageStyle();
         $this->setSubmitted('update', $params[0]);
-
-        $actions = $this->getSubmitted('actions');
-
-        if (isset($actions)) {
-            $this->setSubmitted('actions', $this->explodeByPipe($actions));
-        }
 
         $this->validateComponent('image_style');
         $this->updateImageStyle($params[0]);
@@ -231,47 +226,42 @@ class ImageStyle extends Base
      */
     protected function wizardAddImageStyle()
     {
-        $this->validateNameImageStyle();
-        $this->validateStatusImageStyle();
-        $this->validateActionsImageStyle();
+        $this->validateInput('name', $this->text('Name'), 'image_style');
+        $input = $this->validateInputActionsImageStyle();
+        $this->validateInput('status', $this->text('Status'), 'image_style', 0);
+
+        // Restore original actions input
+        // After validation it gets modified
+        $this->setSubmitted('actions', $input);
+        $this->setSubmittedActionsImageStyle();
+
+        $this->validateComponent('image_style');
         $this->addImageStyle();
     }
 
     /**
-     * Validates "name" field
+     * Validate actions
+     * @return string
      */
-    protected function validateNameImageStyle()
+    protected function validateInputActionsImageStyle()
     {
-        $input = $this->prompt($this->text('Name'), '');
-
-        if (!$this->isValidInput($input, 'name', 'image_style')) {
-            $this->errors();
-            $this->validateNameImageStyle();
-        }
-    }
-
-    /**
-     * Validates "status" field
-     */
-    protected function validateStatusImageStyle()
-    {
-        $input = $this->prompt($this->text('Status'), '0');
-        if (!$this->isValidInput($input, 'status', 'image_style')) {
-            $this->errors();
-            $this->validateStatusImageStyle();
-        }
-    }
-
-    /**
-     * Validates "actions" field
-     */
-    protected function validateActionsImageStyle()
-    {
-        $input = $this->prompt($this->text('Actions'), '');
-
+        $input = $this->prompt($this->text('Actions'));
         if (!$this->isValidInput($this->explodeByPipe($input), 'actions', 'image_style')) {
             $this->errors();
-            $this->validateActionsImageStyle();
+            $this->validateInputActionsImageStyle();
+        }
+
+        return $input;
+    }
+
+    /**
+     * Sets image style actions
+     */
+    protected function setSubmittedActionsImageStyle()
+    {
+        $actions = $this->getSubmitted('actions');
+        if (isset($actions)) {
+            $this->setSubmitted('actions', $this->explodeByPipe($actions));
         }
     }
 

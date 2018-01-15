@@ -214,74 +214,14 @@ class State extends Base
      */
     protected function wizardAddState()
     {
-        $this->validateCodeState();
-        $this->validateNameState();
-        $this->validateCountryState();
-        $this->validateZoneState();
-        $this->validateStatusState();
+        $this->validateInput('code', $this->text('Code'), 'state');
+        $this->validateInput('name', $this->text('Name'), 'state');
+        $this->validateInput('country', $this->text('Country'), 'state');
+        $this->validateInput('zone_id', $this->text('Zone'), 'state', 0);
+        $this->validateInput('status', $this->text('Status'), 'state', 0);
 
         $this->validateComponent('state');
         $this->addState();
-    }
-
-    /**
-     * Validates "code" field
-     */
-    protected function validateCodeState()
-    {
-        $input = $this->prompt($this->text('Code'));
-        if (!$this->isValidInput($input, 'code', 'state')) {
-            $this->errors();
-            $this->validateCodeState();
-        }
-    }
-
-    /**
-     * Validates "name" field
-     */
-    protected function validateNameState()
-    {
-        $input = $this->prompt($this->text('Name'));
-        if (!$this->isValidInput($input, 'name', 'state')) {
-            $this->errors();
-            $this->validateNameState();
-        }
-    }
-
-    /**
-     * Validates "country" field
-     */
-    protected function validateCountryState()
-    {
-        $input = $this->prompt($this->text('Country'));
-        if (!$this->isValidInput($input, 'country', 'state')) {
-            $this->errors();
-            $this->validateCountryState();
-        }
-    }
-
-    /**
-     * Validates "zone_id" field
-     */
-    protected function validateZoneState()
-    {
-        $input = $this->prompt($this->text('Zone'), '0');
-        if (!$this->isValidInput($input, 'zone_id', 'state')) {
-            $this->errors();
-            $this->validateZoneState();
-        }
-    }
-
-    /**
-     * Validates "status" field
-     */
-    protected function validateStatusState()
-    {
-        $input = $this->prompt($this->text('Status'), '0');
-        if (!$this->isValidInput($input, 'status', 'state')) {
-            $this->errors();
-            $this->validateStatusState();
-        }
     }
 
 }

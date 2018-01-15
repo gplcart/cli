@@ -16,6 +16,6 @@ return array(
     ),
     'options' => array(
         '-h' => /* @text */'Show command help',
-        '-country' => /* @text */'Specifies that a country code used instead of country state id. All states will be deleted for the country'
+        '--country' => /* @text */'Specifies that a country code used instead of country state id. All states will be deleted for the country'
     )
 );

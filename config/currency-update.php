@@ -18,19 +18,19 @@ return array(
         . ' | --decimal_separator=<string> | --thousands_separator=<string> | --template=<string>)'
     ),
     'options' => array(
-        'name' => /* @text */'Currency name',
-        'symbol' => /* @text */'Currency sign',
-        'status' => /* @text */'Enable / disable for customers',
-        'default' => /* @text */'Set default',
-        'decimals' => /* @text */'Number of decimal points',
-        'major_unit' => /* @text */'Name of the highest valued currency unit',
-        'minor_unit' => /* @text */'Name of the lowest valued currency unit',
-        'numeric_code' => /* @text */'ISO 4217 currency numeric code',
-        'rounding_step' => /* @text */'Rounding step',
-        'conversion_rate' => /* @text */'Exchange rate against base currency',
-        'decimal_separator' => /* @text */'Character to separate decimals',
-        'thousands_separator' => /* @text */'Character to separate thousands',
-        'template' => /* @text */'Template to format prices',
+        '--name' => /* @text */'Currency name',
+        '--symbol' => /* @text */'Currency sign',
+        '--status' => /* @text */'Enable / disable for customers',
+        '--default' => /* @text */'Set default',
+        '--decimals' => /* @text */'Number of decimal points',
+        '--major_unit' => /* @text */'Name of the highest valued currency unit',
+        '--minor_unit' => /* @text */'Name of the lowest valued currency unit',
+        '--numeric_code' => /* @text */'ISO 4217 currency numeric code',
+        '--rounding_step' => /* @text */'Rounding step',
+        '--conversion_rate' => /* @text */'Exchange rate against base currency',
+        '--decimal_separator' => /* @text */'Character to separate decimals',
+        '--thousands_separator' => /* @text */'Character to separate thousands',
+        '--template' => /* @text */'Template to format prices',
         '-h' => /* @text */'Show command help'
     )
 );

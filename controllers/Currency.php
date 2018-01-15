@@ -204,6 +204,7 @@ class Currency extends Base
      */
     protected function wizardAddCurrency()
     {
+        // Required
         $this->validateInput('code', $this->text('Code'), 'currency');
         $this->validateInput('name', $this->text('Name'), 'currency');
         $this->validateInput('symbol', $this->text('Symbol'), 'currency');
@@ -211,6 +212,7 @@ class Currency extends Base
         $this->validateInput('minor_unit', $this->text('Minor unit'), 'currency');
         $this->validateInput('numeric_code', $this->text('Numeric code'), 'currency');
 
+        // Optional
         $this->validateInput('status', $this->text('Status'), 'currency', 0);
         $this->validateInput('default', $this->text('Default'), 'currency', 0);
         $this->validateInput('decimals', $this->text('Decimals'), 'currency', 2);
