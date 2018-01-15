@@ -7,11 +7,10 @@
  * @license https://www.gnu.org/licenses/gpl.html GNU/GPLv3
  */
 return array(
-    'alias' => 's',
     'description' => /* @text */'Show system status',
     'usage' => array(
-        'gplcart (status | s) -h',
-        'gplcart (status | s)'
+        'gplcart status -h',
+        'gplcart status'
     ),
     'options' => array(
         '-h' => /* @text */'Show command help'
