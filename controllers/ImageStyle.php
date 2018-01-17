@@ -172,7 +172,7 @@ class ImageStyle extends Base
     {
         if (!$this->isError()) {
             $id = $this->image_style->add($this->getSubmitted());
-            if (empty($id) || !is_int($id)) {
+            if (empty($id)) {
                 $this->errorExit($this->text('Image style has not been added'));
             }
             $this->line($id);
@@ -185,10 +185,8 @@ class ImageStyle extends Base
      */
     protected function updateImageStyle($imagestyle_id)
     {
-        if (!$this->isError()) {
-            if (!$this->image_style->update($imagestyle_id, $this->getSubmitted())) {
-                $this->errorExit($this->text('Image style has not been updated'));
-            }
+        if (!$this->isError() && !$this->image_style->update($imagestyle_id, $this->getSubmitted())) {
+            $this->errorExit($this->text('Image style has not been updated'));
         }
     }
 
@@ -209,6 +207,7 @@ class ImageStyle extends Base
     protected function submitUpdateImageStyle()
     {
         $params = $this->getParam();
+
         if (empty($params[0]) || count($params) < 2) {
             $this->errorExit($this->text('Invalid command'));
         }
@@ -227,12 +226,8 @@ class ImageStyle extends Base
     protected function wizardAddImageStyle()
     {
         $this->validateInput('name', $this->text('Name'), 'image_style');
-        $input = $this->validateInputActionsImageStyle();
+        $this->validateInputActionsImageStyle();
         $this->validateInput('status', $this->text('Status'), 'image_style', 0);
-
-        // Restore original actions input
-        // After validation it gets modified
-        $this->setSubmitted('actions', $input);
         $this->setSubmittedActionsImageStyle();
 
         $this->validateComponent('image_style');
@@ -241,17 +236,16 @@ class ImageStyle extends Base
 
     /**
      * Validate actions
-     * @return string
      */
     protected function validateInputActionsImageStyle()
     {
         $input = $this->prompt($this->text('Actions'));
-        if (!$this->isValidInput($this->explodeByPipe($input), 'actions', 'image_style')) {
+        if ($this->isValidInput($this->explodeByPipe($input), 'actions', 'image_style')) {
+            $this->setSubmitted('actions', $input);
+        } else {
             $this->errors();
             $this->validateInputActionsImageStyle();
         }
-
-        return $input;
     }
 
     /**
@@ -260,6 +254,7 @@ class ImageStyle extends Base
     protected function setSubmittedActionsImageStyle()
     {
         $actions = $this->getSubmitted('actions');
+
         if (isset($actions)) {
             $this->setSubmitted('actions', $this->explodeByPipe($actions));
         }
