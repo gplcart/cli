@@ -101,11 +101,9 @@ class Base extends CliController
     protected function limitItems(&$array, $limit = null)
     {
         if (is_array($array)) {
-
             if (!isset($limit)) {
                 $limit = $this->config->get('module_cli_limit', 100);
             }
-
             $this->limitList($array, array(0, $this->getParam(array('l'), $limit)));
         }
     }
@@ -121,7 +119,7 @@ class Base extends CliController
             return $value;
         }
 
-        if ($value === '') {
+        if ($value === '' || !is_string($value)) {
             return array();
         }
 
