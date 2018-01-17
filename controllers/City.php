@@ -220,11 +220,11 @@ class City extends Base
     protected function addCity()
     {
         if (!$this->isError()) {
-            $state_id = $this->city->add($this->getSubmitted());
-            if (empty($state_id)) {
+            $id = $this->city->add($this->getSubmitted());
+            if (empty($id)) {
                 $this->errorExit($this->text('City has not been added'));
             }
-            $this->line($state_id);
+            $this->line($id);
         }
     }
 
