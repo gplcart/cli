@@ -17,7 +17,7 @@ return array(
     'options' => array(
         '--name' => /* @text */'Trigger name',
         '--store_id' => /* @text */'Store ID',
-        '--conditions' => /* @text */'One or several conditions separated by comma. Condition format: [condition ID][space][operator][space][parameter(s)]',
+        '--conditions' => /* @text */'One or several conditions separated by delimiter. Condition format: [condition ID][space][operator][space][parameter(s)]',
         '--status' => /* @text */'Enable / disable [default: 0]',
         '--weight' => /* @text */'Position in lists [default: 0]',
         '-h' => /* @text */'Show command help'

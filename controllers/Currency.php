@@ -117,7 +117,7 @@ class Currency extends Base
         }
 
         $list = $this->currency->getList();
-        $this->limitItems($list);
+        $this->limitArray($list);
         return $list;
     }
 
@@ -205,22 +205,22 @@ class Currency extends Base
     protected function wizardAddCurrency()
     {
         // Required
-        $this->validateInput('code', $this->text('Code'), 'currency');
-        $this->validateInput('name', $this->text('Name'), 'currency');
-        $this->validateInput('symbol', $this->text('Symbol'), 'currency');
-        $this->validateInput('major_unit', $this->text('Major unit'), 'currency');
-        $this->validateInput('minor_unit', $this->text('Minor unit'), 'currency');
-        $this->validateInput('numeric_code', $this->text('Numeric code'), 'currency');
+        $this->validatePrompt('code', $this->text('Code'), 'currency');
+        $this->validatePrompt('name', $this->text('Name'), 'currency');
+        $this->validatePrompt('symbol', $this->text('Symbol'), 'currency');
+        $this->validatePrompt('major_unit', $this->text('Major unit'), 'currency');
+        $this->validatePrompt('minor_unit', $this->text('Minor unit'), 'currency');
+        $this->validatePrompt('numeric_code', $this->text('Numeric code'), 'currency');
 
         // Optional
-        $this->validateInput('status', $this->text('Status'), 'currency', 0);
-        $this->validateInput('default', $this->text('Default'), 'currency', 0);
-        $this->validateInput('decimals', $this->text('Decimals'), 'currency', 2);
-        $this->validateInput('rounding_step', $this->text('Rounding step'), 'currency', 0);
-        $this->validateInput('conversion_rate', $this->text('Conversion rate'), 'currency', 1);
-        $this->validateInput('decimal_separator', $this->text('Decimal separator'), 'currency', '.');
-        $this->validateInput('thousands_separator', $this->text('Thousands separator'), 'currency', ',');
-        $this->validateInput('template', $this->text('Template'), 'currency', '%symbol%price');
+        $this->validatePrompt('status', $this->text('Status'), 'currency', 0);
+        $this->validatePrompt('default', $this->text('Default'), 'currency', 0);
+        $this->validatePrompt('decimals', $this->text('Decimals'), 'currency', 2);
+        $this->validatePrompt('rounding_step', $this->text('Rounding step'), 'currency', 0);
+        $this->validatePrompt('conversion_rate', $this->text('Conversion rate'), 'currency', 1);
+        $this->validatePrompt('decimal_separator', $this->text('Decimal separator'), 'currency', '.');
+        $this->validatePrompt('thousands_separator', $this->text('Thousands separator'), 'currency', ',');
+        $this->validatePrompt('template', $this->text('Template'), 'currency', '%symbol%price');
 
         $this->validateComponent('currency');
         $this->addCurrency();

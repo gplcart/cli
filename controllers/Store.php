@@ -128,9 +128,9 @@ class Store extends Base
 
         } else if (!empty($all)) {
             $updated = $count = 0;
-            foreach ((array)$this->store->getList() as $store) {
+            foreach ((array) $this->store->getList() as $store) {
                 $count++;
-                $updated += (int)$this->store->update($store['store_id'], array('status' => $status));
+                $updated += (int) $this->store->update($store['store_id'], array('status' => $status));
             }
 
             $result = ($count == $updated);
@@ -158,7 +158,7 @@ class Store extends Base
         }
 
         $list = $this->store->getList();
-        $this->limitItems($list);
+        $this->limitArray($list);
         return $list;
     }
 
@@ -203,7 +203,7 @@ class Store extends Base
 
         $this->setSubmitted(null, $this->getParam());
         $this->setSubmitted('update', $params[0]);
-        $this->setSubmittedDataStore();
+        $this->setSubmittedJson('data');
 
         $this->validateComponent('store');
         $this->updateStore($params[0]);
@@ -226,7 +226,7 @@ class Store extends Base
     protected function submitAddStore()
     {
         $this->setSubmitted(null, $this->getParam());
-        $this->setSubmittedDataStore();
+        $this->setSubmittedJson('data');
 
         $this->validateComponent('store');
         $this->addStore();
@@ -251,35 +251,13 @@ class Store extends Base
      */
     protected function wizardAddStore()
     {
-        $this->validateInput('name', $this->text('Name'), 'store');
-        $this->validateInput('domain', $this->text('Domain or IP'), 'store');
-        $this->validateInput('basepath', $this->text('Path'), 'store', '');
-        $this->validateInput('status', $this->text('Status'), 'store', 0);
+        $this->validatePrompt('name', $this->text('Name'), 'store');
+        $this->validatePrompt('domain', $this->text('Domain or IP'), 'store');
+        $this->validatePrompt('basepath', $this->text('Path'), 'store', '');
+        $this->validatePrompt('status', $this->text('Status'), 'store', 0);
 
-        $this->setSubmittedDataStore();
-
+        $this->setSubmittedJson('data');
         $this->validateComponent('store');
         $this->addStore();
-    }
-
-    /**
-     * Sets decoded JSON for "data" field
-     */
-    protected function setSubmittedDataStore()
-    {
-        $json = $this->getSubmitted('data');
-
-        if (isset($json)) {
-
-            $decoded = json_decode($json, true);
-
-            if (!is_array($decoded)) {
-                // json_decode() returns null on invalid JSON
-                // So we pass false to trigger validation error
-                $decoded = false;
-            }
-
-            $this->setSubmitted('data', $decoded);
-        }
     }
 }

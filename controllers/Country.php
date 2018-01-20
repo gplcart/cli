@@ -107,7 +107,7 @@ class Country extends Base
         }
 
         $list = $this->country->getList();
-        $this->limitItems($list);
+        $this->limitArray($list);
         return $list;
     }
 
@@ -145,17 +145,14 @@ class Country extends Base
     protected function submitUpdateCountry()
     {
         $params = $this->getParam();
+
         if (empty($params[0]) || count($params) < 2) {
             $this->errorExit($this->text('Invalid command'));
         }
 
         $this->setSubmitted(null, $this->getParam());
         $this->setSubmitted('update', $params[0]);
-
-        $format = $this->getSubmitted('format');
-        if (isset($format)) {
-            $this->setSubmitted('format', (array) json_decode($format, true));
-        }
+        $this->setSubmittedJson('format');
 
         $this->validateComponent('country');
         $this->updateCountry($params[0]);
@@ -178,11 +175,7 @@ class Country extends Base
     protected function submitAddCountry()
     {
         $this->setSubmitted(null, $this->getParam());
-
-        $format = $this->getSubmitted('format');
-        if (isset($format)) {
-            $this->setSubmitted('format', (array) json_decode($format, true));
-        }
+        $this->setSubmittedJson('format');
 
         $this->validateComponent('country');
         $this->addCountry();
@@ -203,12 +196,12 @@ class Country extends Base
      */
     protected function wizardAddCountry()
     {
-        $this->validateInput('code', $this->text('Code'), 'country');
-        $this->validateInput('name', $this->text('Name'), 'country', '');
-        $this->validateInput('native_name', $this->text('Native name'), 'country', '');
-        $this->validateInput('zone_id', $this->text('Zone'), 'country', 0);
-        $this->validateInput('status', $this->text('Status'), 'country', 0);
-        $this->validateInput('weight', $this->text('Weight'), 'country', 0);
+        $this->validatePrompt('code', $this->text('Code'), 'country');
+        $this->validatePrompt('name', $this->text('Name'), 'country', '');
+        $this->validatePrompt('native_name', $this->text('Native name'), 'country', '');
+        $this->validatePrompt('zone_id', $this->text('Zone'), 'country', 0);
+        $this->validatePrompt('status', $this->text('Status'), 'country', 0);
+        $this->validatePrompt('weight', $this->text('Weight'), 'country', 0);
 
         $this->validateComponent('country');
         $this->addCountry();

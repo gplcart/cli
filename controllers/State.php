@@ -113,7 +113,7 @@ class State extends Base
 
             if ($this->getParam('country')) {
                 $list = $this->state->getList(array('country' => $id));
-                $this->limitItems($list);
+                $this->limitArray($list);
                 return $list;
             }
 
@@ -125,7 +125,7 @@ class State extends Base
         }
 
         $list = $this->state->getList();
-        $this->limitItems($list);
+        $this->limitArray($list);
         return $list;
     }
 
@@ -163,6 +163,7 @@ class State extends Base
     protected function submitUpdateState()
     {
         $params = $this->getParam();
+
         if (empty($params[0]) || count($params) < 2) {
             $this->errorExit($this->text('Invalid command'));
         }
@@ -214,11 +215,11 @@ class State extends Base
      */
     protected function wizardAddState()
     {
-        $this->validateInput('code', $this->text('Code'), 'state');
-        $this->validateInput('name', $this->text('Name'), 'state');
-        $this->validateInput('country', $this->text('Country'), 'state');
-        $this->validateInput('zone_id', $this->text('Zone'), 'state', 0);
-        $this->validateInput('status', $this->text('Status'), 'state', 0);
+        $this->validatePrompt('code', $this->text('Code'), 'state');
+        $this->validatePrompt('name', $this->text('Name'), 'state');
+        $this->validatePrompt('country', $this->text('Country'), 'state');
+        $this->validatePrompt('zone_id', $this->text('Zone'), 'state', 0);
+        $this->validatePrompt('status', $this->text('Status'), 'state', 0);
 
         $this->validateComponent('state');
         $this->addState();

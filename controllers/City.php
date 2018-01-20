@@ -25,13 +25,13 @@ class City extends Base
     protected $city;
 
     /**
-     * @param CityModel $city
+     * @param CityModel $role
      */
-    public function __construct(CityModel $city)
+    public function __construct(CityModel $role)
     {
         parent::__construct();
 
-        $this->city = $city;
+        $this->city = $role;
     }
 
     /**
@@ -58,17 +58,15 @@ class City extends Base
             $this->errorExit($this->text('Invalid ID'));
         }
 
-        $delete_by_state = $this->getParam('state');
-        $delete_by_country = $this->getParam('country');
+        $options = null;
 
-        if ($delete_by_country || $delete_by_state) {
+        if ($this->getParam('state')) {
+            $options = array('state_id' => $id);
+        } else if ($this->getParam('country')) {
+            $options = array('country' => $id);
+        }
 
-            if ($delete_by_country) {
-                $options = array('country' => $id);
-            } else {
-                $options = array('state_id' => $id);
-            }
-
+        if (isset($options)) {
             $deleted = $count = 0;
             foreach ($this->city->getList($options) as $item) {
                 $count++;
@@ -80,7 +78,7 @@ class City extends Base
             $result = $this->city->delete($id);
         }
 
-        if (!$result) {
+        if (empty($result)) {
             $this->errorExit($this->text('An error occurred'));
         }
 
@@ -124,25 +122,21 @@ class City extends Base
 
             if ($this->getParam('state')) {
                 $list = $this->city->getList(array('state_id' => $id));
-                $this->limitItems($list);
-                return $list;
-            }
-
-            if ($this->getParam('country')) {
+            } else if ($this->getParam('country')) {
                 $list = $this->city->getList(array('country' => $id));
-                $this->limitItems($list);
-                return $list;
+            } else {
+                $result = $this->city->get($id);
+                if (empty($result)) {
+                    $this->errorExit($this->text('Invalid ID'));
+                }
+                $list = array($result);
             }
 
-            $result = $this->city->get($id);
-            if (empty($result)) {
-                $this->errorExit($this->text('Invalid ID'));
-            }
-            return array($result);
+        } else {
+            $list = $this->city->getList();
         }
 
-        $list = $this->city->getList();
-        $this->limitItems($list);
+        $this->limitArray($list);
         return $list;
     }
 
@@ -182,6 +176,7 @@ class City extends Base
     protected function submitUpdateCity()
     {
         $params = $this->getParam();
+
         if (empty($params[0]) || count($params) < 2) {
             $this->errorExit($this->text('Invalid command'));
         }
@@ -233,11 +228,11 @@ class City extends Base
      */
     protected function wizardAddCity()
     {
-        $this->validateInput('name', $this->text('Name'), 'city');
-        $this->validateInput('state_id', $this->text('State'), 'city');
-        $this->validateInput('country', $this->text('Country'), 'city');
-        $this->validateInput('zone_id', $this->text('Zone'), 'city', 0);
-        $this->validateInput('status', $this->text('Status'), 'city', 0);
+        $this->validatePrompt('name', $this->text('Name'), 'city');
+        $this->validatePrompt('state_id', $this->text('State'), 'city');
+        $this->validatePrompt('country', $this->text('Country'), 'city');
+        $this->validatePrompt('zone_id', $this->text('Zone'), 'city', 0);
+        $this->validatePrompt('status', $this->text('Status'), 'city', 0);
 
         $this->validateComponent('city');
         $this->addCity();

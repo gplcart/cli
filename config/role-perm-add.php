@@ -7,11 +7,11 @@
  * @license https://www.gnu.org/licenses/gpl.html GNU/GPLv3
  */
 return array(
-    'alias' => 'sdel',
-    'description' => /* @text */'Delete store',
+    'alias' => 'rpa',
+    'description' => /* @text */'Add one or several permissions to a user role',
     'usage' => array(
-        'gplcart (store-delete | sdel) -h',
-        'gplcart (store-delete | sdel) <store id>'
+        'gplcart (role-perm-add | rpa) -h',
+        'gplcart (role-perm-add | rpa) <role id> <permission1> <permission2> ...'
     ),
     'options' => array(
         '-h' => /* @text */'Show command help'

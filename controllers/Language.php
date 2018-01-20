@@ -108,7 +108,7 @@ class Language extends Base
         }
 
         $list = $this->language->getList();
-        $this->limitItems($list);
+        $this->limitArray($list);
         return $list;
     }
 
@@ -198,13 +198,13 @@ class Language extends Base
      */
     protected function wizardAddLanguage()
     {
-        $this->validateInput('code', $this->text('Code'), 'language');
-        $this->validateInput('name', $this->text('Name'), 'language', '');
-        $this->validateInput('native_name', $this->text('Native name'), 'language', '');
-        $this->validateInput('status', $this->text('Status'), 'language', 0);
-        $this->validateInput('default', $this->text('Default') . '?', 'language', 0);
-        $this->validateInput('weight', $this->text('Weight'), 'language', 0);
-        $this->validateInput('rtl', $this->text('Right-to-left') . '?', 'language', 0);
+        $this->validatePrompt('code', $this->text('Code'), 'language');
+        $this->validatePrompt('name', $this->text('Name'), 'language', '');
+        $this->validatePrompt('native_name', $this->text('Native name'), 'language', '');
+        $this->validatePrompt('status', $this->text('Status'), 'language', 0);
+        $this->validatePrompt('default', $this->text('Default') . '?', 'language', 0);
+        $this->validatePrompt('weight', $this->text('Weight'), 'language', 0);
+        $this->validatePrompt('rtl', $this->text('Right-to-left') . '?', 'language', 0);
 
         $this->validateComponent('language');
         $this->addLanguage();

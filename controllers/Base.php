@@ -31,6 +31,7 @@ class Base extends CliController
     /**
      * Output formatted data
      * @param mixed $data
+     * @return null
      */
     protected function outputFormat($data)
     {
@@ -94,26 +95,50 @@ class Base extends CliController
     }
 
     /**
+     * Returns an array of limits form the limit option or a default value
+     * @param array $default_limit
+     * @return array
+     */
+    protected function getLimit(array $default_limit = array())
+    {
+        if (empty($default_limit)) {
+            $default_limit = $this->config->get('module_cli_limit', array(0, 100));
+        }
+
+        $limit = $this->getParam('l');
+
+        if (!isset($limit) || !is_numeric($limit)) {
+            return $default_limit;
+        }
+
+        $exploded = explode(',', $limit, 2);
+
+        if (count($exploded) == 1) {
+            array_unshift($exploded, 0);
+        }
+
+        return $exploded;
+    }
+
+    /**
      * Limits an array of items
      * @param array $array
-     * @param int|null $limit
+     * @param array $default_limit
      */
-    protected function limitItems(&$array, $limit = null)
+    protected function limitArray(&$array, array $default_limit = array())
     {
         if (is_array($array)) {
-            if (!isset($limit)) {
-                $limit = $this->config->get('module_cli_limit', 100);
-            }
-            $this->limitList($array, array(0, $this->getParam(array('l'), $limit)));
+            $this->limitList($array, $this->getLimit($default_limit));
         }
     }
 
     /**
-     * Returns an array of values separated by pipe
+     * Explode a string using a separator character
      * @param string $value
+     * @param string|null $separator
      * @return array
      */
-    protected function explodeByPipe($value)
+    protected function explodeList($value, $separator = null)
     {
         if (is_array($value)) {
             return $value;
@@ -123,7 +148,65 @@ class Base extends CliController
             return array();
         }
 
-        return array_map('trim', explode('|', $value));
+        if (!isset($separator)) {
+            $separator = $this->config->get('module_cli_list_separator', '|');
+        }
+
+        return array_map('trim', explode($separator, $value));
+    }
+
+    /**
+     * Convert a submitted JSON string into an array or FALSE on error
+     * @param string $field
+     */
+    protected function setSubmittedJson($field)
+    {
+        $format = $this->getSubmitted($field);
+
+        if (isset($format)) {
+
+            $decoded = json_decode($format, true);
+
+            if (!is_array($decoded)) {
+                // json_decode() returns null on error
+                // So we pass FALSE to trigger a validation error
+                $decoded = false;
+            }
+
+            $this->setSubmitted($field, $decoded);
+        }
+    }
+
+    /**
+     * Converts a submitted string into an array using a character as an separator
+     * @param $field
+     */
+    protected function setSubmittedList($field)
+    {
+        $value = $this->getSubmitted($field);
+
+        if (isset($value)) {
+            $this->setSubmitted($field, $this->explodeList($value));
+        }
+    }
+
+    /**
+     * Validate prompt input when dealing with multiple values separated by a list character
+     * @param string $field
+     * @param string $label
+     * @param string $validator
+     * @param null|string $default
+     */
+    protected function validatePromptList($field, $label, $validator, $default = null)
+    {
+        $input = $this->prompt($label, $default);
+
+        if ($this->isValidInput($this->explodeList($input), $field, $validator)) {
+            $this->setSubmitted($field, $input);
+        } else {
+            $this->errors();
+            $this->validatePromptList($field, $label, $validator, $default);
+        }
     }
 
 }

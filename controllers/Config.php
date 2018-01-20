@@ -53,7 +53,7 @@ class Config extends Base
             $list = array($name => $result);
         } else {
             $list = $this->config->get();
-            $this->limitItems($list);
+            $this->limitArray($list);
         }
 
         $saved = $this->config->select();

@@ -63,7 +63,7 @@ class Shipping extends Base
         }
 
         $list = $this->shipping->getList();
-        $this->limitItems($list);
+        $this->limitArray($list);
         return $list;
     }
 

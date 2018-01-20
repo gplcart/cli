@@ -7,16 +7,16 @@
  * @license https://www.gnu.org/licenses/gpl.html GNU/GPLv3
  */
 return array(
-    'alias' => 'dbs',
-    'description' => /* @text */'Perform SQL query',
+    'alias' => 'uget',
+    'description' => /* @text */'Display one or several users',
     'usage' => array(
-        'gplcart (database-sql | dbs) -h',
-        'gplcart (database-sql | dbs) <sql> [--fetch]'
+        'gplcart (user-get | uget) -h',
+        'gplcart (user-get | uget) [-f=<format> -l=<number>]',
+        'gplcart (user-get | uget) <user id> [-f=<format>]'
     ),
     'options' => array(
         '-h' => /* @text */'Show command help',
-        '-l' => /* @text */'Max number of displayed items [default: 100]',
         '-f' => /* @text */'Format of displayed data. Allowed values: print-r, var-export, var-dump, json, table [default: table]',
-        '--fetch' => /* @text */'Fetch results'
+        '-l' => /* @text */'Max number of displayed items [default: 100]'
     )
 );

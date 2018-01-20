@@ -73,7 +73,7 @@ class Library extends Base
         }
 
         $list = $this->library->getList();
-        $this->limitItems($list);
+        $this->limitArray($list);
         return $list;
     }
 

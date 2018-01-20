@@ -63,7 +63,7 @@ class Payment extends Base
         }
 
         $list = $this->payment->getList();
-        $this->limitItems($list);
+        $this->limitArray($list);
         return $list;
     }
 

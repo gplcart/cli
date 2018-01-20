@@ -118,7 +118,7 @@ class Zone extends Base
         }
 
         $list = $this->zone->getList();
-        $this->limitItems($list);
+        $this->limitArray($list);
         return $list;
     }
 
@@ -152,6 +152,7 @@ class Zone extends Base
     protected function submitUpdateZone()
     {
         $params = $this->getParam();
+
         if (empty($params[0]) || count($params) < 2) {
             $this->errorExit($this->text('Invalid command'));
         }
@@ -203,8 +204,8 @@ class Zone extends Base
      */
     protected function wizardAddZone()
     {
-        $this->validateInput('title', $this->text('Title'), 'zone');
-        $this->validateInput('status', $this->text('Status'), 'zone', 0);
+        $this->validatePrompt('title', $this->text('Title'), 'zone');
+        $this->validatePrompt('status', $this->text('Status'), 'zone', 0);
         $this->validateComponent('zone');
         $this->addZone();
     }

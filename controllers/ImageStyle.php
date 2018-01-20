@@ -133,7 +133,7 @@ class ImageStyle extends Base
         }
 
         $list = $this->image_style->getList();
-        $this->limitItems($list);
+        $this->limitArray($list);
         return $list;
     }
 
@@ -196,7 +196,7 @@ class ImageStyle extends Base
     protected function submitAddImageStyle()
     {
         $this->setSubmitted(null, $this->getParam());
-        $this->setSubmittedActionsImageStyle();
+        $this->setSubmittedList('actions');
         $this->validateComponent('image_style');
         $this->addImageStyle();
     }
@@ -213,7 +213,7 @@ class ImageStyle extends Base
         }
 
         $this->setSubmitted(null, $params);
-        $this->setSubmittedActionsImageStyle();
+        $this->setSubmittedList('actions');
         $this->setSubmitted('update', $params[0]);
 
         $this->validateComponent('image_style');
@@ -225,39 +225,13 @@ class ImageStyle extends Base
      */
     protected function wizardAddImageStyle()
     {
-        $this->validateInput('name', $this->text('Name'), 'image_style');
-        $this->validateInputActionsImageStyle();
-        $this->validateInput('status', $this->text('Status'), 'image_style', 0);
-        $this->setSubmittedActionsImageStyle();
+        $this->validatePrompt('name', $this->text('Name'), 'image_style');
+        $this->validatePromptList('actions', $this->text('Actions'), 'image_style');
+        $this->validatePrompt('status', $this->text('Status'), 'image_style', 0);
+        $this->setSubmittedList('actions');
 
         $this->validateComponent('image_style');
         $this->addImageStyle();
-    }
-
-    /**
-     * Validate actions
-     */
-    protected function validateInputActionsImageStyle()
-    {
-        $input = $this->prompt($this->text('Actions'));
-        if ($this->isValidInput($this->explodeByPipe($input), 'actions', 'image_style')) {
-            $this->setSubmitted('actions', $input);
-        } else {
-            $this->errors();
-            $this->validateInputActionsImageStyle();
-        }
-    }
-
-    /**
-     * Sets image style actions
-     */
-    protected function setSubmittedActionsImageStyle()
-    {
-        $actions = $this->getSubmitted('actions');
-
-        if (isset($actions)) {
-            $this->setSubmitted('actions', $this->explodeByPipe($actions));
-        }
     }
 
 }

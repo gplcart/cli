@@ -100,14 +100,17 @@ class Trigger extends Base
             $this->errorExit($this->text('Invalid command'));
         }
 
+        if (!is_numeric($params[0])) {
+            $this->errorExit($this->text('Invalid ID'));
+        }
+
         $this->setSubmitted(null, $this->getParam());
         $this->setSubmitted('data.conditions', $this->getSubmitted('conditions'));
-        $this->setSubmittedConditionsTrigger();
+        $this->setSubmittedList('data.conditions');
         $this->setSubmitted('update', $params[0]);
 
         $this->validateComponent('trigger');
         $this->updateTrigger($params[0]);
-
         $this->output();
     }
 
@@ -118,27 +121,26 @@ class Trigger extends Base
     protected function getListTrigger()
     {
         $id = $this->getParam(0);
+        $options = array('limit' => $this->getLimit());
 
-        if (isset($id)) {
+        if (!isset($id)) {
+            return $this->trigger->getList($options);
+        }
 
-            if ($this->getParam('store')) {
-                $list = $this->trigger->getList(array('store_id' => $id));
-                $this->limitItems($list);
-                return $list;
-            }
+        if (!is_numeric($id)) {
+            $this->errorExit($this->text('Invalid ID'));
+        }
 
+        if (!$this->getParam('store')) {
             $result = $this->trigger->get($id);
-
             if (empty($result)) {
                 $this->errorExit($this->text('Invalid ID'));
             }
-
             return array($result);
         }
 
-        $list = $this->trigger->getList();
-        $this->limitItems($list);
-        return $list;
+        $options['store_id'] = $id;
+        return $this->trigger->getList($options);
     }
 
     /**
@@ -187,7 +189,8 @@ class Trigger extends Base
     {
         $this->setSubmitted(null, $this->getParam());
         $this->setSubmitted('data.conditions', $this->getSubmitted('conditions'));
-        $this->setSubmittedConditionsTrigger();
+        $this->setSubmittedList('data.conditions');
+
         $this->validateComponent('trigger');
         $this->addTrigger();
     }
@@ -211,42 +214,15 @@ class Trigger extends Base
      */
     protected function wizardAddTrigger()
     {
-        $this->validateInput('name', $this->text('Name'), 'trigger');
-        $this->validateInput('store_id', $this->text('Store'), 'trigger');
-        $this->validateInputConditionsTrigger();
-        $this->validateInput('status', $this->text('Status'), 'trigger', 0);
-        $this->validateInput('weight', $this->text('Weight'), 'trigger', 0);
-        $this->setSubmittedConditionsTrigger();
+        $this->validatePrompt('name', $this->text('Name'), 'trigger');
+        $this->validatePrompt('store_id', $this->text('Store'), 'trigger');
+        $this->validatePromptList('data.conditions', $this->text('Conditions'), 'trigger');
+        $this->validatePrompt('status', $this->text('Status'), 'trigger', 0);
+        $this->validatePrompt('weight', $this->text('Weight'), 'trigger', 0);
+        $this->setSubmittedList('data.conditions');
 
         $this->validateComponent('trigger');
         $this->addTrigger();
-    }
-
-    /**
-     * Validate conditions
-     */
-    protected function validateInputConditionsTrigger()
-    {
-        $input = $this->prompt($this->text('Conditions'));
-
-        if ($this->isValidInput($this->explodeByPipe($input), 'data.conditions', 'trigger')) {
-            $this->setSubmitted('data.conditions', $input);
-        } else {
-            $this->errors();
-            $this->validateInputConditionsTrigger();
-        }
-    }
-
-    /**
-     * Sets trigger conditions
-     */
-    protected function setSubmittedConditionsTrigger()
-    {
-        $actions = $this->getSubmitted('data.conditions');
-
-        if (isset($actions)) {
-            $this->setSubmitted('data.conditions', $this->explodeByPipe($actions));
-        }
     }
 
 }

@@ -140,10 +140,14 @@ class Database extends Base
             $this->errorExit($this->text('Invalid command'));
         }
 
-        $result = $this->db->query($sql)->fetchAll(\PDO::FETCH_ASSOC);
+        $result = $this->db->query($sql);
 
-        $this->outputFormat($result);
-        $this->outputFormatTableDatabase($result);
+        if ($this->getParam('fetch')) {
+            $result = $result->fetchAll(\PDO::FETCH_ASSOC);
+            $this->outputFormat($result);
+            $this->outputFormatTableDatabase($result);
+        }
+
         $this->output();
     }
 

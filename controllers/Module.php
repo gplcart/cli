@@ -154,7 +154,7 @@ class Module extends Base
         }
 
         $list = $this->module->getList();
-        $this->limitItems($list);
+        $this->limitArray($list);
         return $list;
     }
 
