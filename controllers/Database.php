@@ -9,8 +9,6 @@
 
 namespace gplcart\modules\cli\controllers;
 
-use gplcart\modules\cli\controllers\Base;
-
 /**
  * Handles commands related to database operations
  */
@@ -98,7 +96,6 @@ class Database extends Base
      */
     public function cmdAddDatabase()
     {
-
         $table = $this->getParam(0);
         $data = $this->getOptions();
 

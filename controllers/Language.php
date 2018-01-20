@@ -9,8 +9,6 @@
 
 namespace gplcart\modules\cli\controllers;
 
-use gplcart\modules\cli\controllers\Base;
-
 /**
  * Handles commands related to languages
  */
@@ -30,7 +28,16 @@ class Language extends Base
      */
     public function cmdUpdateLanguage()
     {
-        $this->submitUpdateLanguage();
+        $params = $this->getParam();
+
+        if (empty($params[0]) || count($params) < 2) {
+            $this->errorExit($this->text('Invalid command'));
+        }
+
+        $this->setSubmitted(null, $params);
+        $this->setSubmitted('update', $params[0]);
+        $this->validateComponent('language');
+        $this->updateLanguage($params[0]);
         $this->output();
     }
 
@@ -67,13 +74,13 @@ class Language extends Base
         $id = $this->getParam(0);
         $all = $this->getParam('all');
 
-        if (empty($id) && empty($all)) {
+        if (!isset($id) && empty($all)) {
             $this->errorExit($this->text('Invalid command'));
         }
 
         $result = false;
 
-        if (!empty($id)) {
+        if (isset($id)) {
             $result = $this->language->delete($id);
         } else if (!empty($all)) {
             $deleted = $count = 0;
@@ -99,17 +106,19 @@ class Language extends Base
     {
         $id = $this->getParam(0);
 
-        if (isset($id)) {
-            $result = $this->language->get($id);
-            if (empty($result)) {
-                $this->errorExit($this->text('Invalid ID'));
-            }
-            return array($result);
+        if (!isset($id)) {
+            $list = $this->language->getList();
+            $this->limitArray($list);
+            return $list;
         }
 
-        $list = $this->language->getList();
-        $this->limitArray($list);
-        return $list;
+        $result = $this->language->get($id);
+
+        if (empty($result)) {
+            $this->errorExit($this->text('Invalid ID'));
+        }
+
+        return array($result);
     }
 
     /**
@@ -129,6 +138,7 @@ class Language extends Base
         );
 
         $rows = array();
+
         foreach ($items as $item) {
             $rows[] = array(
                 $item['code'],
@@ -176,24 +186,6 @@ class Language extends Base
     }
 
     /**
-     * Updates a language
-     */
-    protected function submitUpdateLanguage()
-    {
-        $params = $this->getParam();
-
-        if (empty($params[0]) || count($params) < 2) {
-            $this->errorExit($this->text('Invalid command'));
-        }
-
-        $this->setSubmitted(null, $params);
-        $this->setSubmitted('update', $params[0]);
-
-        $this->validateComponent('language');
-        $this->updateLanguage($params[0]);
-    }
-
-    /**
      * Adds a language step by step
      */
     protected function wizardAddLanguage()
@@ -205,7 +197,6 @@ class Language extends Base
         $this->validatePrompt('default', $this->text('Default') . '?', 'language', 0);
         $this->validatePrompt('weight', $this->text('Weight'), 'language', 0);
         $this->validatePrompt('rtl', $this->text('Right-to-left') . '?', 'language', 0);
-
         $this->validateComponent('language');
         $this->addLanguage();
     }

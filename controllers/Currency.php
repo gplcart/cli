@@ -10,7 +10,6 @@
 namespace gplcart\modules\cli\controllers;
 
 use gplcart\core\models\Currency as CurrencyModel;
-use gplcart\modules\cli\controllers\Base;
 
 /**
  * Handles commands related to currencies
@@ -39,7 +38,16 @@ class Currency extends Base
      */
     public function cmdUpdateCurrency()
     {
-        $this->submitUpdateCurrency();
+        $params = $this->getParam();
+
+        if (empty($params[0]) || count($params) < 2) {
+            $this->errorExit($this->text('Invalid command'));
+        }
+
+        $this->setSubmitted(null, $params);
+        $this->setSubmitted('update', $params[0]);
+        $this->validateComponent('currency');
+        $this->updateCurrency($params[0]);
         $this->output();
     }
 
@@ -108,17 +116,19 @@ class Currency extends Base
     {
         $id = $this->getParam(0);
 
-        if (isset($id)) {
-            $result = $this->currency->get($id);
-            if (empty($result)) {
-                $this->errorExit($this->text('Invalid ID'));
-            }
-            return array($result);
+        if (!isset($id)) {
+            $list = $this->currency->getList();
+            $this->limitArray($list);
+            return $list;
         }
 
-        $list = $this->currency->getList();
-        $this->limitArray($list);
-        return $list;
+        $result = $this->currency->get($id);
+
+        if (empty($result)) {
+            $this->errorExit($this->text('Invalid ID'));
+        }
+
+        return array($result);
     }
 
     /**
@@ -137,6 +147,7 @@ class Currency extends Base
         );
 
         $rows = array();
+
         foreach ($items as $item) {
             $rows[] = array(
                 $item['code'],
@@ -180,23 +191,6 @@ class Currency extends Base
         $this->setSubmitted(null, $this->getParam());
         $this->validateComponent('currency');
         $this->addCurrency();
-    }
-
-    /**
-     * Updates a currency
-     */
-    protected function submitUpdateCurrency()
-    {
-        $params = $this->getParam();
-        if (empty($params[0]) || count($params) < 2) {
-            $this->errorExit($this->text('Invalid command'));
-        }
-
-        $this->setSubmitted(null, $params);
-        $this->setSubmitted('update', $params[0]);
-
-        $this->validateComponent('currency');
-        $this->updateCurrency($params[0]);
     }
 
     /**

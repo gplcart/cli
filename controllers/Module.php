@@ -9,9 +9,8 @@
 
 namespace gplcart\modules\cli\controllers;
 
-use gplcart\core\Module as CoreModule;
 use gplcart\core\models\Module as ModuleModel;
-use gplcart\modules\cli\controllers\Base;
+use gplcart\core\Module as CoreModule;
 
 /**
  * Handles commands related to modules
@@ -45,7 +44,6 @@ class Module extends Base
 
     /**
      * Callback for "module-uninstall" command
-     * Uninstall a module
      */
     public function cmdUninstallModule()
     {
@@ -60,7 +58,6 @@ class Module extends Base
 
     /**
      * Callback for "module-install" command
-     * Install a module
      */
     public function cmdInstallModule()
     {
@@ -75,7 +72,6 @@ class Module extends Base
 
     /**
      * Callback for "module-off" command
-     * Disables a module
      */
     public function cmdOffModule()
     {
@@ -96,7 +92,6 @@ class Module extends Base
 
     /**
      * Callback for "module-on" command
-     * Enables a module
      */
     public function cmdOnModule()
     {
@@ -117,7 +112,6 @@ class Module extends Base
 
     /**
      * Callback for "module-cache-clear" command
-     * Clear module cache
      */
     public function cmdCacheClearModule()
     {
@@ -127,7 +121,6 @@ class Module extends Base
 
     /**
      * Callback for "module-get" command
-     * Displays one or all modules
      */
     public function cmdGetModule()
     {
@@ -143,19 +136,22 @@ class Module extends Base
      */
     protected function getListModule()
     {
-        $module_id = $this->getParam(0);
+        $id = $this->getParam(0);
 
-        if (isset($module_id)) {
-            $module = $this->module->get($module_id);
-            if (empty($module)) {
-                $this->errorExit($this->text('Invalid ID'));
-            }
-            return array($module);
+        if (!isset($id)) {
+            $list = $this->module->getList();
+            $this->limitArray($list);
+            return $list;
         }
 
-        $list = $this->module->getList();
-        $this->limitArray($list);
-        return $list;
+        $module = $this->module->get($id);
+
+        if (empty($module)) {
+            $this->errorExit($this->text('Invalid ID'));
+        }
+
+        return array($module);
+
     }
 
     /**
@@ -174,6 +170,7 @@ class Module extends Base
         );
 
         $rows = array();
+
         foreach ($items as $item) {
             $rows[] = array(
                 $item['module_id'],

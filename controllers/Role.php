@@ -10,7 +10,6 @@
 namespace gplcart\modules\cli\controllers;
 
 use gplcart\core\models\UserRole as UserRoleModel;
-use gplcart\modules\cli\controllers\Base;
 
 /**
  * Handles commands related to user roles
@@ -87,13 +86,13 @@ class Role extends Base
         $id = $this->getParam(0);
         $all = $this->getParam('all');
 
-        if (empty($id) && empty($all)) {
+        if (!isset($id) && empty($all)) {
             $this->errorExit($this->text('Invalid command'));
         }
 
         $result = false;
 
-        if (!empty($id)) {
+        if (isset($id)) {
 
             if (!is_numeric($id)) {
                 $this->errorExit($this->text('Invalid ID'));
@@ -195,6 +194,7 @@ class Role extends Base
         );
 
         $rows = array();
+
         foreach ($items as $item) {
             $rows[] = array(
                 $item['role_id'],

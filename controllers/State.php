@@ -10,7 +10,6 @@
 namespace gplcart\modules\cli\controllers;
 
 use gplcart\core\models\State as StateModel;
-use gplcart\modules\cli\controllers\Base;
 
 /**
  * Handles commands related to country states
@@ -36,7 +35,6 @@ class State extends Base
 
     /**
      * Callback for "state-get" command
-     * Displays one or several country states
      */
     public function cmdGetState()
     {
@@ -48,7 +46,6 @@ class State extends Base
 
     /**
      * Callback for "state-delete" command
-     * Delete a country state or all states for a country
      */
     public function cmdDeleteState()
     {
@@ -66,6 +63,11 @@ class State extends Base
             }
             $result = ($count == $deleted);
         } else {
+
+            if (!is_numeric($id)) {
+                $this->errorExit($this->text('Invalid ID'));
+            }
+
             $result = $this->state->delete($id);
         }
 
@@ -78,7 +80,6 @@ class State extends Base
 
     /**
      * Callback for "state-add" command
-     * Add a new country state
      */
     public function cmdAddState()
     {
@@ -93,11 +94,23 @@ class State extends Base
 
     /**
      * Callback for "state-update" command
-     * Update a country state
      */
     public function cmdUpdateState()
     {
-        $this->submitUpdateState();
+        $params = $this->getParam();
+
+        if (empty($params[0]) || count($params) < 2) {
+            $this->errorExit($this->text('Invalid command'));
+        }
+
+        if (!is_numeric($params[0])) {
+            $this->errorExit($this->text('Invalid ID'));
+        }
+
+        $this->setSubmitted(null, $this->getParam());
+        $this->setSubmitted('update', $params[0]);
+        $this->validateComponent('state');
+        $this->updateState($params[0]);
         $this->output();
     }
 
@@ -109,24 +122,29 @@ class State extends Base
     {
         $id = $this->getParam(0);
 
-        if (isset($id)) {
-
-            if ($this->getParam('country')) {
-                $list = $this->state->getList(array('country' => $id));
-                $this->limitArray($list);
-                return $list;
-            }
-
-            $result = $this->state->get($id);
-            if (empty($result)) {
-                $this->errorExit($this->text('Invalid ID'));
-            }
-            return array($result);
+        if (!isset($id)) {
+            $list = $this->state->getList();
+            $this->limitArray($list);
+            return $list;
         }
 
-        $list = $this->state->getList();
-        $this->limitArray($list);
-        return $list;
+        if ($this->getParam('country')) {
+            $list = $this->state->getList(array('country' => $id));
+            $this->limitArray($list);
+            return $list;
+        }
+
+        if (!is_numeric($id)) {
+            $this->errorExit($this->text('Invalid ID'));
+        }
+
+        $result = $this->state->get($id);
+
+        if (empty($result)) {
+            $this->errorExit($this->text('Invalid ID'));
+        }
+
+        return array($result);
     }
 
     /**
@@ -144,6 +162,7 @@ class State extends Base
         );
 
         $rows = array();
+
         foreach ($items as $item) {
             $rows[] = array(
                 $item['state_id'],
@@ -155,24 +174,6 @@ class State extends Base
         }
 
         $this->outputFormatTable($rows, $header);
-    }
-
-    /**
-     * Updates a country state
-     */
-    protected function submitUpdateState()
-    {
-        $params = $this->getParam();
-
-        if (empty($params[0]) || count($params) < 2) {
-            $this->errorExit($this->text('Invalid command'));
-        }
-
-        $this->setSubmitted(null, $this->getParam());
-        $this->setSubmitted('update', $params[0]);
-
-        $this->validateComponent('state');
-        $this->updateState($params[0]);
     }
 
     /**
@@ -220,7 +221,6 @@ class State extends Base
         $this->validatePrompt('country', $this->text('Country'), 'state');
         $this->validatePrompt('zone_id', $this->text('Zone'), 'state', 0);
         $this->validatePrompt('status', $this->text('Status'), 'state', 0);
-
         $this->validateComponent('state');
         $this->addState();
     }

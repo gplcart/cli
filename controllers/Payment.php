@@ -10,7 +10,6 @@
 namespace gplcart\modules\cli\controllers;
 
 use gplcart\core\models\Payment as PaymentModel;
-use gplcart\modules\cli\controllers\Base;
 
 /**
  * Handles commands related to payment methods
@@ -36,7 +35,6 @@ class Payment extends Base
 
     /**
      * Callback for "payment-get" command
-     * Displays one or all payment methods
      */
     public function cmdGetPayment()
     {
@@ -54,17 +52,19 @@ class Payment extends Base
     {
         $id = $this->getParam(0);
 
-        if (isset($id)) {
-            $method = $this->payment->get($id);
-            if (empty($method)) {
-                $this->errorExit($this->text('Invalid ID'));
-            }
-            return array($method);
+        if (!isset($id)) {
+            $list = $this->payment->getList();
+            $this->limitArray($list);
+            return $list;
         }
 
-        $list = $this->payment->getList();
-        $this->limitArray($list);
-        return $list;
+        $method = $this->payment->get($id);
+
+        if (empty($method)) {
+            $this->errorExit($this->text('Invalid ID'));
+        }
+
+        return array($method);
     }
 
     /**
@@ -81,6 +81,7 @@ class Payment extends Base
         );
 
         $rows = array();
+
         foreach ($items as $item) {
             $rows[] = array(
                 $item['id'],

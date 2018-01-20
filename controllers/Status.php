@@ -10,7 +10,6 @@
 namespace gplcart\modules\cli\controllers;
 
 use gplcart\core\models\Report as ReportModel;
-use gplcart\modules\cli\controllers\Base;
 
 /**
  * Handles commands related to system status reporting
@@ -36,7 +35,6 @@ class Status extends Base
 
     /**
      * Callback for "status" command
-     * Show system status
      */
     public function cmdStatusStatus()
     {
@@ -58,6 +56,7 @@ class Status extends Base
         );
 
         $rows = array();
+
         foreach ($items as $item) {
             $rows[] = array(
                 $item['title'],

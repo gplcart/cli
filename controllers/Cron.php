@@ -10,7 +10,6 @@
 namespace gplcart\modules\cli\controllers;
 
 use gplcart\core\models\Cron as CronModel;
-use gplcart\modules\cli\controllers\Base;
 
 /**
  * Handles commands related to CRON

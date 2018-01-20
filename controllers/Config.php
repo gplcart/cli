@@ -9,8 +9,6 @@
 
 namespace gplcart\modules\cli\controllers;
 
-use gplcart\modules\cli\controllers\Base;
-
 /**
  * Handles commands related to system configuration
  */
@@ -27,7 +25,6 @@ class Config extends Base
 
     /**
      * Callback for "config-get" command
-     * Displays one or a list of configuration options
      */
     public function cmdGetConfig()
     {
@@ -72,7 +69,6 @@ class Config extends Base
 
     /**
      * Callback for "config-delete" command
-     * Delete a configuration option from the database
      */
     public function cmdDeleteConfig()
     {
@@ -91,7 +87,6 @@ class Config extends Base
 
     /**
      * Callback for "config-set" command
-     * Saves a configuration option in the database
      */
     public function cmdSetConfig()
     {

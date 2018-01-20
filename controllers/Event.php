@@ -10,7 +10,6 @@
 namespace gplcart\modules\cli\controllers;
 
 use gplcart\core\models\Report as ReportModel;
-use gplcart\modules\cli\controllers\Base;
 
 /**
  * Handles commands related to system events (logs)
@@ -36,7 +35,6 @@ class Event extends Base
 
     /**
      * Callback for "event-get" command
-     * Display a list of events
      */
     public function cmdGetEvent()
     {
@@ -48,7 +46,6 @@ class Event extends Base
 
     /**
      * Callback for "event-delete" command
-     * Deletes either all or only expired events
      */
     public function cmdDeleteEvent()
     {
@@ -70,8 +67,8 @@ class Event extends Base
         $options = array(
             'order' => 'desc',
             'sort' => 'created',
-            'severity' => $this->getParam('severity'),
-            'limit' => array(0, $this->getParam('l', 100))
+            'limit' => $this->getLimit(),
+            'severity' => $this->getParam('severity')
         );
 
         return (array) $this->report->getList($options);
@@ -91,10 +88,9 @@ class Event extends Base
         );
 
         $rows = array();
+
         foreach ($events as $item) {
-
             $text = empty($item['translatable']) ? $item['text'] : $this->text($item['text']);
-
             $rows[] = array(
                 $this->truncate($text, 50),
                 $this->text($item['type']),

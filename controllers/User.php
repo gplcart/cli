@@ -10,7 +10,6 @@
 namespace gplcart\modules\cli\controllers;
 
 use gplcart\core\models\User as UserModel;
-use gplcart\modules\cli\controllers\Base;
 
 /**
  * Handles commands related to users
@@ -70,7 +69,7 @@ class User extends Base
     {
         $id = $this->getParam(0);
 
-        if (empty($id) || !is_numeric($id)) {
+        if (!isset($id) || !is_numeric($id)) {
             $this->errorExit($this->text('Invalid ID'));
         }
 
@@ -119,7 +118,21 @@ class User extends Base
      */
     public function cmdUpdateUser()
     {
-        $this->submitUpdateUser();
+        $params = $this->getParam();
+
+        if (empty($params[0]) || count($params) < 2) {
+            $this->errorExit($this->text('Invalid command'));
+        }
+
+        if (!is_numeric($params[0])) {
+            $this->errorExit($this->text('Invalid ID'));
+        }
+
+        $this->setSubmitted(null, $this->getParam());
+        $this->setSubmitted('update', $params[0]);
+        $this->setSubmittedJson('data');
+        $this->validateComponent('user', array('admin' => true));
+        $this->updateUser($params[0]);
         $this->output();
     }
 
@@ -131,24 +144,21 @@ class User extends Base
     {
         $id = $this->getParam(0);
 
-        if (isset($id)) {
-
-            if (!is_numeric($id)) {
-                $this->errorExit($this->text('Invalid ID'));
-            }
-
-            $result = $this->user->get($id);
-
-            if (empty($result)) {
-                $this->errorExit($this->text('Invalid ID'));
-            }
-
-            return array($result);
+        if (!isset($id)) {
+            return $this->user->getList(array('limit' => $this->getLimit()));
         }
 
-        $list = $this->user->getList();
-        $this->limitArray($list);
-        return $list;
+        if (!is_numeric($id)) {
+            $this->errorExit($this->text('Invalid ID'));
+        }
+
+        $result = $this->user->get($id);
+
+        if (empty($result)) {
+            $this->errorExit($this->text('Invalid ID'));
+        }
+
+        return array($result);
     }
 
     /**
@@ -168,6 +178,7 @@ class User extends Base
         );
 
         $rows = array();
+
         foreach ($items as $item) {
             $rows[] = array(
                 $item['user_id'],
@@ -181,29 +192,6 @@ class User extends Base
         }
 
         $this->outputFormatTable($rows, $header);
-    }
-
-    /**
-     * Updates a user
-     */
-    protected function submitUpdateUser()
-    {
-        $params = $this->getParam();
-
-        if (empty($params[0]) || count($params) < 2) {
-            $this->errorExit($this->text('Invalid command'));
-        }
-
-        if (!is_numeric($params[0])) {
-            $this->errorExit($this->text('Invalid ID'));
-        }
-
-        $this->setSubmitted(null, $this->getParam());
-        $this->setSubmitted('update', $params[0]);
-        $this->setSubmittedJson('data');
-
-        $this->validateComponent('user', array('admin' => true));
-        $this->updateUser($params[0]);
     }
 
     /**

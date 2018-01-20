@@ -10,7 +10,6 @@
 namespace gplcart\modules\cli\controllers;
 
 use gplcart\core\models\Shipping as ShippingModel;
-use gplcart\modules\cli\controllers\Base;
 
 /**
  * Handles commands related to shipping methods
@@ -36,7 +35,6 @@ class Shipping extends Base
 
     /**
      * Callback for "shipping-get" command
-     * Displays one or all shipping methods
      */
     public function cmdGetShipping()
     {
@@ -54,17 +52,19 @@ class Shipping extends Base
     {
         $id = $this->getParam(0);
 
-        if (isset($id)) {
-            $method = $this->shipping->get($id);
-            if (empty($method)) {
-                $this->errorExit($this->text('Invalid ID'));
-            }
-            return array($method);
+        if (!isset($id)) {
+            $list = $this->shipping->getList();
+            $this->limitArray($list);
+            return $list;
         }
 
-        $list = $this->shipping->getList();
-        $this->limitArray($list);
-        return $list;
+        $method = $this->shipping->get($id);
+
+        if (empty($method)) {
+            $this->errorExit($this->text('Invalid ID'));
+        }
+
+        return array($method);
     }
 
     /**
@@ -81,6 +81,7 @@ class Shipping extends Base
         );
 
         $rows = array();
+
         foreach ($items as $item) {
             $rows[] = array(
                 $item['id'],

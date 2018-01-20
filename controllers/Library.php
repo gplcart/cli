@@ -10,7 +10,6 @@
 namespace gplcart\modules\cli\controllers;
 
 use gplcart\core\Library as CoreLibrary;
-use gplcart\modules\cli\controllers\Base;
 
 /**
  * Handles commands related to 3-d party libraries
@@ -36,7 +35,6 @@ class Library extends Base
 
     /**
      * Callback for "library-cache-clear" command
-     * Clear library cache
      */
     public function cmdCacheClearLibrary()
     {
@@ -46,7 +44,6 @@ class Library extends Base
 
     /**
      * Callback for "library-get" command
-     * List one or a list of libraries
      */
     public function cmdGetLibrary()
     {
@@ -62,19 +59,23 @@ class Library extends Base
      */
     protected function getListLibrary()
     {
-        $library_id = $this->getParam(0);
+        $id = $this->getParam(0);
 
-        if (isset($library_id)) {
-            $library = $this->library->get($library_id);
-            if (empty($library)) {
-                $this->errorExit($this->text('Invalid ID'));
-            }
-            return array($library);
+        if (!isset($id)) {
+            $list = $this->library->getList();
+            $this->limitArray($list);
+            return $list;
         }
 
-        $list = $this->library->getList();
-        $this->limitArray($list);
-        return $list;
+
+        $library = $this->library->get($id);
+
+        if (empty($library)) {
+            $this->errorExit($this->text('Invalid ID'));
+        }
+
+        return array($library);
+
     }
 
     /**
@@ -91,6 +92,7 @@ class Library extends Base
         );
 
         $rows = array();
+
         foreach ($items as $item) {
             $rows[] = array(
                 $item['id'],

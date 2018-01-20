@@ -10,7 +10,6 @@
 namespace gplcart\modules\cli\controllers;
 
 use gplcart\core\models\Trigger as TriggerModel;
-use gplcart\modules\cli\controllers\Base;
 
 /**
  * Handles commands related to triggers
@@ -108,7 +107,6 @@ class Trigger extends Base
         $this->setSubmitted('data.conditions', $this->getSubmitted('conditions'));
         $this->setSubmittedList('data.conditions');
         $this->setSubmitted('update', $params[0]);
-
         $this->validateComponent('trigger');
         $this->updateTrigger($params[0]);
         $this->output();
@@ -121,26 +119,26 @@ class Trigger extends Base
     protected function getListTrigger()
     {
         $id = $this->getParam(0);
-        $options = array('limit' => $this->getLimit());
 
         if (!isset($id)) {
-            return $this->trigger->getList($options);
+            return $this->trigger->getList(array('limit' => $this->getLimit()));
         }
 
         if (!is_numeric($id)) {
             $this->errorExit($this->text('Invalid ID'));
         }
 
-        if (!$this->getParam('store')) {
-            $result = $this->trigger->get($id);
-            if (empty($result)) {
-                $this->errorExit($this->text('Invalid ID'));
-            }
-            return array($result);
+        if ($this->getParam('store')) {
+            return $this->trigger->getList(array('store_id' => $id, 'limit' => $this->getLimit()));
         }
 
-        $options['store_id'] = $id;
-        return $this->trigger->getList($options);
+        $result = $this->trigger->get($id);
+
+        if (empty($result)) {
+            $this->errorExit($this->text('Invalid ID'));
+        }
+
+        return array($result);
     }
 
     /**
@@ -158,6 +156,7 @@ class Trigger extends Base
         );
 
         $rows = array();
+
         foreach ($items as $item) {
             $rows[] = array(
                 $item['trigger_id'],
@@ -169,6 +168,20 @@ class Trigger extends Base
         }
 
         $this->outputFormatTable($rows, $header);
+    }
+
+    /**
+     * Add a new trigger
+     */
+    protected function addTrigger()
+    {
+        if (!$this->isError()) {
+            $state_id = $this->trigger->add($this->getSubmitted());
+            if (empty($state_id)) {
+                $this->errorExit($this->text('Trigger has not been added'));
+            }
+            $this->line($state_id);
+        }
     }
 
     /**
@@ -190,23 +203,8 @@ class Trigger extends Base
         $this->setSubmitted(null, $this->getParam());
         $this->setSubmitted('data.conditions', $this->getSubmitted('conditions'));
         $this->setSubmittedList('data.conditions');
-
         $this->validateComponent('trigger');
         $this->addTrigger();
-    }
-
-    /**
-     * Add a new trigger
-     */
-    protected function addTrigger()
-    {
-        if (!$this->isError()) {
-            $state_id = $this->trigger->add($this->getSubmitted());
-            if (empty($state_id)) {
-                $this->errorExit($this->text('Trigger has not been added'));
-            }
-            $this->line($state_id);
-        }
     }
 
     /**
@@ -220,7 +218,6 @@ class Trigger extends Base
         $this->validatePrompt('status', $this->text('Status'), 'trigger', 0);
         $this->validatePrompt('weight', $this->text('Weight'), 'trigger', 0);
         $this->setSubmittedList('data.conditions');
-
         $this->validateComponent('trigger');
         $this->addTrigger();
     }

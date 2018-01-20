@@ -10,7 +10,6 @@
 namespace gplcart\modules\cli\controllers;
 
 use gplcart\core\models\City as CityModel;
-use gplcart\modules\cli\controllers\Base;
 
 /**
  * Handles commands related to cities
@@ -36,7 +35,6 @@ class City extends Base
 
     /**
      * Callback for "city-get" command
-     * Displays one or several cities
      */
     public function cmdGetCity()
     {
@@ -48,7 +46,6 @@ class City extends Base
 
     /**
      * Callback for "city-delete" command
-     * Delete one or several cities
      */
     public function cmdDeleteCity()
     {
@@ -87,7 +84,6 @@ class City extends Base
 
     /**
      * Callback for "city-add" command
-     * Add a new city
      */
     public function cmdAddCity()
     {
@@ -102,11 +98,19 @@ class City extends Base
 
     /**
      * Callback for "city-update" command
-     * Update a city
      */
     public function cmdUpdateCity()
     {
-        $this->submitUpdateCity();
+        $params = $this->getParam();
+
+        if (empty($params[0]) || count($params) < 2) {
+            $this->errorExit($this->text('Invalid command'));
+        }
+
+        $this->setSubmitted(null, $this->getParam());
+        $this->setSubmitted('update', $params[0]);
+        $this->validateComponent('city');
+        $this->updateCity($params[0]);
         $this->output();
     }
 
@@ -118,26 +122,29 @@ class City extends Base
     {
         $id = $this->getParam(0);
 
-        if (isset($id)) {
-
-            if ($this->getParam('state')) {
-                $list = $this->city->getList(array('state_id' => $id));
-            } else if ($this->getParam('country')) {
-                $list = $this->city->getList(array('country' => $id));
-            } else {
-                $result = $this->city->get($id);
-                if (empty($result)) {
-                    $this->errorExit($this->text('Invalid ID'));
-                }
-                $list = array($result);
-            }
-
-        } else {
-            $list = $this->city->getList();
+        if (!isset($id)) {
+            return $this->city->getList(array('limit' => $this->getLimit()));
         }
 
-        $this->limitArray($list);
-        return $list;
+        if ($this->getParam('state')) {
+            return $this->city->getList(array('state_id' => $id, 'limit' => $this->getLimit()));
+        }
+
+        if ($this->getParam('country')) {
+            return $this->city->getList(array('country' => $id, 'limit' => $this->getLimit()));
+        }
+
+        if (!is_numeric($id)) {
+            $this->errorExit($this->text('Invalid ID'));
+        }
+
+        $result = $this->city->get($id);
+
+        if (empty($result)) {
+            $this->errorExit($this->text('Invalid ID'));
+        }
+
+        return array($result);
     }
 
     /**
@@ -171,21 +178,17 @@ class City extends Base
     }
 
     /**
-     * Updates a city
+     * Add a new city
      */
-    protected function submitUpdateCity()
+    protected function addCity()
     {
-        $params = $this->getParam();
-
-        if (empty($params[0]) || count($params) < 2) {
-            $this->errorExit($this->text('Invalid command'));
+        if (!$this->isError()) {
+            $id = $this->city->add($this->getSubmitted());
+            if (empty($id)) {
+                $this->errorExit($this->text('City has not been added'));
+            }
+            $this->line($id);
         }
-
-        $this->setSubmitted(null, $this->getParam());
-        $this->setSubmitted('update', $params[0]);
-
-        $this->validateComponent('city');
-        $this->updateCity($params[0]);
     }
 
     /**
@@ -210,20 +213,6 @@ class City extends Base
     }
 
     /**
-     * Add a new city
-     */
-    protected function addCity()
-    {
-        if (!$this->isError()) {
-            $id = $this->city->add($this->getSubmitted());
-            if (empty($id)) {
-                $this->errorExit($this->text('City has not been added'));
-            }
-            $this->line($id);
-        }
-    }
-
-    /**
      * Add a new city step by step
      */
     protected function wizardAddCity()
@@ -233,7 +222,6 @@ class City extends Base
         $this->validatePrompt('country', $this->text('Country'), 'city');
         $this->validatePrompt('zone_id', $this->text('Zone'), 'city', 0);
         $this->validatePrompt('status', $this->text('Status'), 'city', 0);
-
         $this->validateComponent('city');
         $this->addCity();
     }

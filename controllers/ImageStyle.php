@@ -10,7 +10,6 @@
 namespace gplcart\modules\cli\controllers;
 
 use gplcart\core\models\ImageStyle as ImageStyleModel;
-use gplcart\modules\cli\controllers\Base;
 
 /**
  * Handles commands related to image styles
@@ -36,17 +35,30 @@ class ImageStyle extends Base
 
     /**
      * Callback for "imagestyle-update"
-     * Update an image style
      */
     public function cmdUpdateImageStyle()
     {
-        $this->submitUpdateImageStyle();
+        $params = $this->getParam();
+
+        if (empty($params[0]) || count($params) < 2) {
+            $this->errorExit($this->text('Invalid command'));
+        }
+
+        if (!is_numeric($params[0])) {
+            $this->errorExit($this->text('Invalid ID'));
+        }
+
+        $this->setSubmitted(null, $params);
+        $this->setSubmittedList('actions');
+        $this->setSubmitted('update', $params[0]);
+        $this->validateComponent('image_style');
+        $this->updateImageStyle($params[0]);
+
         $this->output();
     }
 
     /**
      * Callback for "imagestyle-add"
-     * Adds a new image style
      */
     public function cmdAddImageStyle()
     {
@@ -61,13 +73,12 @@ class ImageStyle extends Base
 
     /**
      * Callback for "imagestyle-delete" command
-     * Delete an image style
      */
     public function cmdDeleteImageStyle()
     {
         $id = $this->getParam(0);
 
-        if (empty($id)) {
+        if (empty($id) || !is_numeric($id)) {
             $this->errorExit($this->text('Invalid ID'));
         }
 
@@ -80,21 +91,22 @@ class ImageStyle extends Base
 
     /**
      * Callback for "imagestyle-clear-cache" command
-     * Delete cached images
      */
     public function cmdClearCacheImageStyle()
     {
         $id = $this->getParam(0);
         $all = $this->getParam('all');
 
+        if (!isset($id) && empty($all)) {
+            $this->errorExit($this->text('Invalid command'));
+        }
+
         $result = false;
 
-        if (!empty($id)) {
+        if (isset($id)) {
             $result = $this->image_style->clearCache($id);
         } else if (!empty($all)) {
             $result = $this->image_style->clearCache();
-        } else {
-            $this->errorExit($this->text('Invalid command'));
         }
 
         if (!$result) {
@@ -106,7 +118,6 @@ class ImageStyle extends Base
 
     /**
      * Callback for "imagestyle-get" command
-     * List one or a list of image styles
      */
     public function cmdGetImageStyle()
     {
@@ -124,17 +135,23 @@ class ImageStyle extends Base
     {
         $id = $this->getParam(0);
 
-        if (isset($id)) {
-            $result = $this->image_style->get($id);
-            if (empty($result)) {
-                $this->errorExit($this->text('Invalid ID'));
-            }
-            return array($result);
+        if (!isset($id)) {
+            $list = $this->image_style->getList();
+            $this->limitArray($list);
+            return $list;
         }
 
-        $list = $this->image_style->getList();
-        $this->limitArray($list);
-        return $list;
+        if (!is_numeric($id)) {
+            $this->errorExit($this->text('Invalid ID'));
+        }
+
+        $result = $this->image_style->get($id);
+
+        if (empty($result)) {
+            $this->errorExit($this->text('Invalid ID'));
+        }
+
+        return array($result);
     }
 
     /**
@@ -152,6 +169,7 @@ class ImageStyle extends Base
         );
 
         $rows = array();
+
         foreach ($items as $item) {
             $rows[] = array(
                 $item['imagestyle_id'],
@@ -202,25 +220,6 @@ class ImageStyle extends Base
     }
 
     /**
-     * Updates an image style
-     */
-    protected function submitUpdateImageStyle()
-    {
-        $params = $this->getParam();
-
-        if (empty($params[0]) || count($params) < 2) {
-            $this->errorExit($this->text('Invalid command'));
-        }
-
-        $this->setSubmitted(null, $params);
-        $this->setSubmittedList('actions');
-        $this->setSubmitted('update', $params[0]);
-
-        $this->validateComponent('image_style');
-        $this->updateImageStyle($params[0]);
-    }
-
-    /**
      * Adds an image style step-by-step
      */
     protected function wizardAddImageStyle()
@@ -229,7 +228,6 @@ class ImageStyle extends Base
         $this->validatePromptList('actions', $this->text('Actions'), 'image_style');
         $this->validatePrompt('status', $this->text('Status'), 'image_style', 0);
         $this->setSubmittedList('actions');
-
         $this->validateComponent('image_style');
         $this->addImageStyle();
     }

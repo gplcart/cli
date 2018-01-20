@@ -10,7 +10,6 @@
 namespace gplcart\modules\cli\controllers;
 
 use gplcart\core\models\Zone as ZoneModel;
-use gplcart\modules\cli\controllers\Base;
 
 /**
  * Handles commands related to zones
@@ -107,19 +106,23 @@ class Zone extends Base
      */
     protected function getListZone()
     {
-        $code = $this->getParam(0);
+        $id = $this->getParam(0);
 
-        if (isset($code)) {
-            $zone = $this->zone->get($code);
-            if (empty($zone)) {
-                $this->errorExit($this->text('Invalid ID'));
-            }
-            return array($zone);
+        if (!isset($id)) {
+            return $this->zone->getList(array('limit' => $this->getLimit()));
         }
 
-        $list = $this->zone->getList();
-        $this->limitArray($list);
-        return $list;
+        if (!is_numeric($id)) {
+            $this->errorExit($this->text('Invalid ID'));
+        }
+
+        $zone = $this->zone->get($id);
+
+        if (empty($zone)) {
+            $this->errorExit($this->text('Invalid ID'));
+        }
+
+        return array($zone);
     }
 
     /**
@@ -135,6 +138,7 @@ class Zone extends Base
         );
 
         $rows = array();
+
         foreach ($items as $item) {
             $rows[] = array(
                 $item['zone_id'],
@@ -157,9 +161,12 @@ class Zone extends Base
             $this->errorExit($this->text('Invalid command'));
         }
 
+        if (!is_numeric($params[0])) {
+            $this->errorExit($this->text('Invalid ID'));
+        }
+
         $this->setSubmitted(null, $this->getParam());
         $this->setSubmitted('update', $params[0]);
-
         $this->validateComponent('zone');
         $this->updateZone($params[0]);
     }

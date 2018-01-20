@@ -10,7 +10,6 @@
 namespace gplcart\modules\cli\controllers;
 
 use gplcart\core\models\Address as AddressModel;
-use gplcart\modules\cli\controllers\Base;
 
 /**
  * Handles commands related to user addresses
@@ -96,7 +95,18 @@ class Address extends Base
      */
     public function cmdUpdateAddress()
     {
-        $this->submitUpdateAddress();
+        $params = $this->getParam();
+
+        if (empty($params[0]) || count($params) < 2) {
+            $this->errorExit($this->text('Invalid command'));
+        }
+
+        $this->setSubmitted(null, $this->getParam());
+        $this->setSubmitted('update', $params[0]);
+        $this->setSubmittedJson('data');
+        $this->validateComponent('address');
+        $this->updateAddress($params[0]);
+
         $this->output();
     }
 
@@ -108,30 +118,21 @@ class Address extends Base
     {
         $id = $this->getParam(0);
 
-        if (isset($id)) {
-
-            if (!is_numeric($id)) {
-                $this->errorExit($this->text('Invalid ID'));
-            }
-
-            if ($this->getParam('user')) {
-                $list = $this->address->getList(array('user_id' => $id));
-                $this->limitArray($list);
-                return $list;
-            }
-
-            $result = $this->address->get($id);
-
-            if (empty($result)) {
-                $this->errorExit($this->text('Invalid ID'));
-            }
-
-            return array($result);
+        if (!isset($id)) {
+            return $this->address->getList(array('limit' => $this->getLimit()));
         }
 
-        $list = $this->address->getList();
-        $this->limitArray($list);
-        return $list;
+        if ($this->getParam('user')) {
+            return $this->address->getList(array('user_id' => $id, 'limit' => $this->getLimit()));
+        }
+
+        $result = $this->address->get($id);
+
+        if (empty($result)) {
+            $this->errorExit($this->text('Invalid ID'));
+        }
+
+        return array($result);
     }
 
     /**
@@ -165,22 +166,17 @@ class Address extends Base
     }
 
     /**
-     * Updates an address
+     * Add a new address
      */
-    protected function submitUpdateAddress()
+    protected function addAddress()
     {
-        $params = $this->getParam();
-
-        if (empty($params[0]) || count($params) < 2) {
-            $this->errorExit($this->text('Invalid command'));
+        if (!$this->isError()) {
+            $id = $this->address->add($this->getSubmitted());
+            if (empty($id)) {
+                $this->errorExit($this->text('Address has not been added'));
+            }
+            $this->line($id);
         }
-
-        $this->setSubmitted(null, $this->getParam());
-        $this->setSubmitted('update', $params[0]);
-        $this->setSubmittedJson('data');
-
-        $this->validateComponent('address');
-        $this->updateAddress($params[0]);
     }
 
     /**
@@ -231,20 +227,6 @@ class Address extends Base
         $this->setSubmittedJson('data');
         $this->validateComponent('address');
         $this->addAddress();
-    }
-
-    /**
-     * Add a new address
-     */
-    protected function addAddress()
-    {
-        if (!$this->isError()) {
-            $id = $this->address->add($this->getSubmitted());
-            if (empty($id)) {
-                $this->errorExit($this->text('Address has not been added'));
-            }
-            $this->line($id);
-        }
     }
 
 }

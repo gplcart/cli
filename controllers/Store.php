@@ -10,7 +10,6 @@
 namespace gplcart\modules\cli\controllers;
 
 use gplcart\core\models\Store as StoreModel;
-use gplcart\modules\cli\controllers\Base;
 
 /**
  * Handles commands related to stores
@@ -100,7 +99,21 @@ class Store extends Base
      */
     public function cmdUpdateStore()
     {
-        $this->submitUpdateStore();
+        $params = $this->getParam();
+
+        if (empty($params[0]) || count($params) < 2) {
+            $this->errorExit($this->text('Invalid command'));
+        }
+
+        if (!is_numeric($params[0])) {
+            $this->errorExit($this->text('Invalid ID'));
+        }
+
+        $this->setSubmitted(null, $this->getParam());
+        $this->setSubmitted('update', $params[0]);
+        $this->setSubmittedJson('data');
+        $this->validateComponent('store');
+        $this->updateStore($params[0]);
         $this->output();
     }
 
@@ -113,13 +126,14 @@ class Store extends Base
         $id = $this->getParam(0);
         $all = $this->getParam('all');
 
-        if (empty($id) && empty($all)) {
+        if (!isset($id) && empty($all)) {
             $this->errorExit($this->text('Invalid command'));
         }
 
         $result = false;
 
-        if (!empty($id)) {
+        if (isset($id)) {
+
             if (!is_numeric($id)) {
                 $this->errorExit($this->text('Invalid ID'));
             }
@@ -149,17 +163,21 @@ class Store extends Base
     {
         $id = $this->getParam(0);
 
-        if (isset($id)) {
-            $result = $this->store->get($id);
-            if (empty($result)) {
-                $this->errorExit($this->text('Invalid ID'));
-            }
-            return array($result);
+        if (!isset($id)) {
+            return $this->store->getList(array('limit' => $this->getLimit()));
         }
 
-        $list = $this->store->getList();
-        $this->limitArray($list);
-        return $list;
+        if (!is_numeric($id)) {
+            $this->errorExit($this->text('Invalid ID'));
+        }
+
+        $result = $this->store->get($id);
+
+        if (empty($result)) {
+            $this->errorExit($this->text('Invalid ID'));
+        }
+
+        return array($result);
     }
 
     /**
@@ -177,6 +195,7 @@ class Store extends Base
         );
 
         $rows = array();
+
         foreach ($items as $item) {
             $rows[] = array(
                 $item['store_id'],
@@ -188,25 +207,6 @@ class Store extends Base
         }
 
         $this->outputFormatTable($rows, $header);
-    }
-
-    /**
-     * Updates a store
-     */
-    protected function submitUpdateStore()
-    {
-        $params = $this->getParam();
-
-        if (empty($params[0]) || count($params) < 2) {
-            $this->errorExit($this->text('Invalid command'));
-        }
-
-        $this->setSubmitted(null, $this->getParam());
-        $this->setSubmitted('update', $params[0]);
-        $this->setSubmittedJson('data');
-
-        $this->validateComponent('store');
-        $this->updateStore($params[0]);
     }
 
     /**
@@ -227,7 +227,6 @@ class Store extends Base
     {
         $this->setSubmitted(null, $this->getParam());
         $this->setSubmittedJson('data');
-
         $this->validateComponent('store');
         $this->addStore();
     }
@@ -255,7 +254,6 @@ class Store extends Base
         $this->validatePrompt('domain', $this->text('Domain or IP'), 'store');
         $this->validatePrompt('basepath', $this->text('Path'), 'store', '');
         $this->validatePrompt('status', $this->text('Status'), 'store', 0);
-
         $this->setSubmittedJson('data');
         $this->validateComponent('store');
         $this->addStore();

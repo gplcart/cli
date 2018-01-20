@@ -10,7 +10,6 @@
 namespace gplcart\modules\cli\controllers;
 
 use gplcart\core\models\Country as CountryModel;
-use gplcart\modules\cli\controllers\Base;
 
 /**
  * Handles commands related to countries
@@ -36,7 +35,6 @@ class Country extends Base
 
     /**
      * Callback for "country-get" command
-     * Displays one or several countries
      */
     public function cmdGetCountry()
     {
@@ -48,7 +46,6 @@ class Country extends Base
 
     /**
      * Callback for "country-add" command
-     * Add a new country
      */
     public function cmdAddCountry()
     {
@@ -63,17 +60,25 @@ class Country extends Base
 
     /**
      * Callback for "country-update" command
-     * Update a country
      */
     public function cmdUpdateCountry()
     {
-        $this->submitUpdateCountry();
+        $params = $this->getParam();
+
+        if (empty($params[0]) || count($params) < 2) {
+            $this->errorExit($this->text('Invalid command'));
+        }
+
+        $this->setSubmitted(null, $this->getParam());
+        $this->setSubmitted('update', $params[0]);
+        $this->setSubmittedJson('format');
+        $this->validateComponent('country');
+        $this->updateCountry($params[0]);
         $this->output();
     }
 
     /**
      * Callback for "country-delete" command
-     * Delete a country
      */
     public function cmdDeleteCountry()
     {
@@ -98,17 +103,17 @@ class Country extends Base
     {
         $code = $this->getParam(0);
 
-        if (isset($code)) {
-            $country = $this->country->get($code);
-            if (empty($country)) {
-                $this->errorExit($this->text('Invalid ID'));
-            }
-            return array($country);
+        if (!isset($code)) {
+            return $this->country->getList(array('limit' => $this->getLimit()));
         }
 
-        $list = $this->country->getList();
-        $this->limitArray($list);
-        return $list;
+        $country = $this->country->get($code);
+
+        if (empty($country)) {
+            $this->errorExit($this->text('Invalid ID'));
+        }
+
+        return array($country);
     }
 
     /**
@@ -126,6 +131,7 @@ class Country extends Base
         );
 
         $rows = array();
+
         foreach ($items as $item) {
             $rows[] = array(
                 $item['code'],
@@ -140,22 +146,13 @@ class Country extends Base
     }
 
     /**
-     * Updates an country
+     * Add a new country
      */
-    protected function submitUpdateCountry()
+    protected function addCountry()
     {
-        $params = $this->getParam();
-
-        if (empty($params[0]) || count($params) < 2) {
-            $this->errorExit($this->text('Invalid command'));
+        if (!$this->isError() && !$this->country->add($this->getSubmitted())) {
+            $this->errorExit($this->text('Country has not been added'));
         }
-
-        $this->setSubmitted(null, $this->getParam());
-        $this->setSubmitted('update', $params[0]);
-        $this->setSubmittedJson('format');
-
-        $this->validateComponent('country');
-        $this->updateCountry($params[0]);
     }
 
     /**
@@ -176,19 +173,8 @@ class Country extends Base
     {
         $this->setSubmitted(null, $this->getParam());
         $this->setSubmittedJson('format');
-
         $this->validateComponent('country');
         $this->addCountry();
-    }
-
-    /**
-     * Add a new country
-     */
-    protected function addCountry()
-    {
-        if (!$this->isError() && !$this->country->add($this->getSubmitted())) {
-            $this->errorExit($this->text('Country has not been added'));
-        }
     }
 
     /**
@@ -202,7 +188,6 @@ class Country extends Base
         $this->validatePrompt('zone_id', $this->text('Zone'), 'country', 0);
         $this->validatePrompt('status', $this->text('Status'), 'country', 0);
         $this->validatePrompt('weight', $this->text('Weight'), 'country', 0);
-
         $this->validateComponent('country');
         $this->addCountry();
     }
