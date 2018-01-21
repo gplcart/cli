@@ -70,11 +70,11 @@ class Store extends Base
         $id = $this->getParam(0);
 
         if (empty($id) || !is_numeric($id)) {
-            $this->errorExit($this->text('Invalid ID'));
+            $this->errorAndExit($this->text('Invalid ID'));
         }
 
         if (!$this->store->delete($id)) {
-            $this->errorExit($this->text('An error occurred'));
+            $this->errorAndExit($this->text('An error occurred'));
         }
 
         $this->output();
@@ -102,17 +102,19 @@ class Store extends Base
         $params = $this->getParam();
 
         if (empty($params[0]) || count($params) < 2) {
-            $this->errorExit($this->text('Invalid command'));
+            $this->errorAndExit($this->text('Invalid command'));
         }
 
         if (!is_numeric($params[0])) {
-            $this->errorExit($this->text('Invalid ID'));
+            $this->errorAndExit($this->text('Invalid ID'));
         }
 
-        $this->setSubmitted(null, $this->getParam());
+        $this->setSubmitted(null, $params);
         $this->setSubmitted('update', $params[0]);
         $this->setSubmittedJson('data');
+
         $this->validateComponent('store');
+
         $this->updateStore($params[0]);
         $this->output();
     }
@@ -127,7 +129,7 @@ class Store extends Base
         $all = $this->getParam('all');
 
         if (!isset($id) && empty($all)) {
-            $this->errorExit($this->text('Invalid command'));
+            $this->errorAndExit($this->text('Invalid command'));
         }
 
         $result = false;
@@ -135,23 +137,24 @@ class Store extends Base
         if (isset($id)) {
 
             if (!is_numeric($id)) {
-                $this->errorExit($this->text('Invalid ID'));
+                $this->errorAndExit($this->text('Invalid ID'));
             }
 
             $result = $this->store->update($id, array('status' => $status));
 
         } else if (!empty($all)) {
+
             $updated = $count = 0;
             foreach ((array) $this->store->getList() as $store) {
                 $count++;
                 $updated += (int) $this->store->update($store['store_id'], array('status' => $status));
             }
 
-            $result = ($count == $updated);
+            $result = $count && $count == $updated;
         }
 
         if (!$result) {
-            $this->errorExit($this->text('An error occurred'));
+            $this->errorAndExit($this->text('An error occurred'));
         }
     }
 
@@ -168,13 +171,13 @@ class Store extends Base
         }
 
         if (!is_numeric($id)) {
-            $this->errorExit($this->text('Invalid ID'));
+            $this->errorAndExit($this->text('Invalid ID'));
         }
 
         $result = $this->store->get($id);
 
         if (empty($result)) {
-            $this->errorExit($this->text('Invalid ID'));
+            $this->errorAndExit($this->text('Invalid ID'));
         }
 
         return array($result);
@@ -216,7 +219,7 @@ class Store extends Base
     protected function updateStore($store_id)
     {
         if (!$this->isError() && !$this->store->update($store_id, $this->getSubmitted())) {
-            $this->errorExit($this->text('Store has not been updated'));
+            $this->errorAndExit($this->text('An error occurred'));
         }
     }
 
@@ -227,6 +230,7 @@ class Store extends Base
     {
         $this->setSubmitted(null, $this->getParam());
         $this->setSubmittedJson('data');
+
         $this->validateComponent('store');
         $this->addStore();
     }
@@ -239,7 +243,7 @@ class Store extends Base
         if (!$this->isError()) {
             $id = $this->store->add($this->getSubmitted());
             if (empty($id)) {
-                $this->errorExit($this->text('Store has not been added'));
+                $this->errorAndExit($this->text('An error occurred'));
             }
             $this->line($id);
         }
@@ -255,6 +259,7 @@ class Store extends Base
         $this->validatePrompt('basepath', $this->text('Path'), 'store', '');
         $this->validatePrompt('status', $this->text('Status'), 'store', 0);
         $this->setSubmittedJson('data');
+
         $this->validateComponent('store');
         $this->addStore();
     }

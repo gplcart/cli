@@ -52,10 +52,11 @@ class Trigger extends Base
         $id = $this->getParam(0);
 
         if (empty($id) || !is_numeric($id)) {
-            $this->errorExit($this->text('Invalid ID'));
+            $this->errorAndExit($this->text('Invalid ID'));
         }
 
         if ($this->getParam('store')) {
+
             $deleted = $count = 0;
             foreach ($this->trigger->getList(array('store_id' => $id)) as $item) {
                 $count++;
@@ -68,7 +69,7 @@ class Trigger extends Base
         }
 
         if (!$result) {
-            $this->errorExit($this->text('An error occurred'));
+            $this->errorAndExit($this->text('An error occurred'));
         }
 
         $this->output();
@@ -96,18 +97,20 @@ class Trigger extends Base
         $params = $this->getParam();
 
         if (empty($params[0]) || count($params) < 2) {
-            $this->errorExit($this->text('Invalid command'));
+            $this->errorAndExit($this->text('Invalid command'));
         }
 
         if (!is_numeric($params[0])) {
-            $this->errorExit($this->text('Invalid ID'));
+            $this->errorAndExit($this->text('Invalid ID'));
         }
 
-        $this->setSubmitted(null, $this->getParam());
+        $this->setSubmitted(null, $params);
         $this->setSubmitted('data.conditions', $this->getSubmitted('conditions'));
         $this->setSubmittedList('data.conditions');
         $this->setSubmitted('update', $params[0]);
+
         $this->validateComponent('trigger');
+
         $this->updateTrigger($params[0]);
         $this->output();
     }
@@ -125,7 +128,7 @@ class Trigger extends Base
         }
 
         if (!is_numeric($id)) {
-            $this->errorExit($this->text('Invalid ID'));
+            $this->errorAndExit($this->text('Invalid ID'));
         }
 
         if ($this->getParam('store')) {
@@ -135,7 +138,7 @@ class Trigger extends Base
         $result = $this->trigger->get($id);
 
         if (empty($result)) {
-            $this->errorExit($this->text('Invalid ID'));
+            $this->errorAndExit($this->text('Invalid ID'));
         }
 
         return array($result);
@@ -178,7 +181,7 @@ class Trigger extends Base
         if (!$this->isError()) {
             $state_id = $this->trigger->add($this->getSubmitted());
             if (empty($state_id)) {
-                $this->errorExit($this->text('Trigger has not been added'));
+                $this->errorAndExit($this->text('An error occurred'));
             }
             $this->line($state_id);
         }
@@ -191,7 +194,7 @@ class Trigger extends Base
     protected function updateTrigger($trigger_id)
     {
         if (!$this->isError() && !$this->trigger->update($trigger_id, $this->getSubmitted())) {
-            $this->errorExit($this->text('Trigger has not been updated'));
+            $this->errorAndExit($this->text('An error occurred'));
         }
     }
 
@@ -203,6 +206,7 @@ class Trigger extends Base
         $this->setSubmitted(null, $this->getParam());
         $this->setSubmitted('data.conditions', $this->getSubmitted('conditions'));
         $this->setSubmittedList('data.conditions');
+
         $this->validateComponent('trigger');
         $this->addTrigger();
     }
@@ -218,6 +222,7 @@ class Trigger extends Base
         $this->validatePrompt('status', $this->text('Status'), 'trigger', 0);
         $this->validatePrompt('weight', $this->text('Weight'), 'trigger', 0);
         $this->setSubmittedList('data.conditions');
+
         $this->validateComponent('trigger');
         $this->addTrigger();
     }

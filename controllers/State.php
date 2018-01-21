@@ -52,27 +52,29 @@ class State extends Base
         $id = $this->getParam(0);
 
         if (empty($id)) {
-            $this->errorExit($this->text('Invalid ID'));
+            $this->errorAndExit($this->text('Invalid ID'));
         }
 
         if ($this->getParam('country')) {
+
             $deleted = $count = 0;
             foreach ($this->state->getList(array('country' => $id)) as $item) {
                 $count++;
                 $deleted += (int) $this->state->delete($item['state_id']);
             }
-            $result = ($count == $deleted);
+
+            $result = $count && $count == $deleted;
         } else {
 
             if (!is_numeric($id)) {
-                $this->errorExit($this->text('Invalid ID'));
+                $this->errorAndExit($this->text('Invalid ID'));
             }
 
             $result = $this->state->delete($id);
         }
 
         if (!$result) {
-            $this->errorExit($this->text('An error occurred'));
+            $this->errorAndExit($this->text('An error occurred'));
         }
 
         $this->output();
@@ -100,16 +102,18 @@ class State extends Base
         $params = $this->getParam();
 
         if (empty($params[0]) || count($params) < 2) {
-            $this->errorExit($this->text('Invalid command'));
+            $this->errorAndExit($this->text('Invalid command'));
         }
 
         if (!is_numeric($params[0])) {
-            $this->errorExit($this->text('Invalid ID'));
+            $this->errorAndExit($this->text('Invalid ID'));
         }
 
-        $this->setSubmitted(null, $this->getParam());
+        $this->setSubmitted(null, $params);
         $this->setSubmitted('update', $params[0]);
+
         $this->validateComponent('state');
+
         $this->updateState($params[0]);
         $this->output();
     }
@@ -135,13 +139,13 @@ class State extends Base
         }
 
         if (!is_numeric($id)) {
-            $this->errorExit($this->text('Invalid ID'));
+            $this->errorAndExit($this->text('Invalid ID'));
         }
 
         $result = $this->state->get($id);
 
         if (empty($result)) {
-            $this->errorExit($this->text('Invalid ID'));
+            $this->errorAndExit($this->text('Invalid ID'));
         }
 
         return array($result);
@@ -183,7 +187,7 @@ class State extends Base
     protected function updateState($state_id)
     {
         if (!$this->isError() && !$this->state->update($state_id, $this->getSubmitted())) {
-            $this->errorExit($this->text('Country state has not been updated'));
+            $this->errorAndExit($this->text('An error occurred'));
         }
     }
 
@@ -205,7 +209,7 @@ class State extends Base
         if (!$this->isError()) {
             $state_id = $this->state->add($this->getSubmitted());
             if (empty($state_id)) {
-                $this->errorExit($this->text('Country state has not been added'));
+                $this->errorAndExit($this->text('An error occurred'));
             }
             $this->line($state_id);
         }
@@ -221,6 +225,7 @@ class State extends Base
         $this->validatePrompt('country', $this->text('Country'), 'state');
         $this->validatePrompt('zone_id', $this->text('Zone'), 'state', 0);
         $this->validatePrompt('status', $this->text('Status'), 'state', 0);
+
         $this->validateComponent('state');
         $this->addState();
     }

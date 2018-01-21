@@ -24,13 +24,13 @@ class Address extends Base
     protected $address;
 
     /**
-     * @param AddressModel $role
+     * @param AddressModel $rule
      */
-    public function __construct(AddressModel $role)
+    public function __construct(AddressModel $rule)
     {
         parent::__construct();
 
-        $this->address = $role;
+        $this->address = $rule;
     }
 
     /**
@@ -52,7 +52,7 @@ class Address extends Base
         $id = $this->getParam(0);
 
         if (empty($id)) {
-            $this->errorExit($this->text('Invalid ID'));
+            $this->errorAndExit($this->text('Invalid ID'));
         }
 
         if ($this->getParam('user')) {
@@ -66,11 +66,16 @@ class Address extends Base
             $result = ($count == $deleted);
 
         } else {
+
+            if (!is_numeric($id)) {
+                $this->errorAndExit($this->text('Invalid ID'));
+            }
+
             $result = $this->address->delete($id);
         }
 
         if (!$result) {
-            $this->errorExit($this->text('An error occurred'));
+            $this->errorAndExit($this->text('An error occurred'));
         }
 
         $this->output();
@@ -98,10 +103,14 @@ class Address extends Base
         $params = $this->getParam();
 
         if (empty($params[0]) || count($params) < 2) {
-            $this->errorExit($this->text('Invalid command'));
+            $this->errorAndExit($this->text('Invalid command'));
         }
 
-        $this->setSubmitted(null, $this->getParam());
+        if (!is_numeric($params[0])) {
+            $this->errorAndExit($this->text('Invalid ID'));
+        }
+
+        $this->setSubmitted(null, $params);
         $this->setSubmitted('update', $params[0]);
         $this->setSubmittedJson('data');
         $this->validateComponent('address');
@@ -126,10 +135,14 @@ class Address extends Base
             return $this->address->getList(array('user_id' => $id, 'limit' => $this->getLimit()));
         }
 
+        if (!is_numeric($id)) {
+            $this->errorAndExit($this->text('Invalid ID'));
+        }
+
         $result = $this->address->get($id);
 
         if (empty($result)) {
-            $this->errorExit($this->text('Invalid ID'));
+            $this->errorAndExit($this->text('Invalid ID'));
         }
 
         return array($result);
@@ -171,10 +184,13 @@ class Address extends Base
     protected function addAddress()
     {
         if (!$this->isError()) {
+
             $id = $this->address->add($this->getSubmitted());
+
             if (empty($id)) {
-                $this->errorExit($this->text('Address has not been added'));
+                $this->errorAndExit($this->text('Address has not been added'));
             }
+
             $this->line($id);
         }
     }
@@ -186,7 +202,7 @@ class Address extends Base
     protected function updateAddress($address_id)
     {
         if (!$this->isError() && !$this->address->update($address_id, $this->getSubmitted())) {
-            $this->errorExit($this->text('Address has not been updated'));
+            $this->errorAndExit($this->text('Address has not been updated'));
         }
     }
 

@@ -41,7 +41,7 @@ class Currency extends Base
         $params = $this->getParam();
 
         if (empty($params[0]) || count($params) < 2) {
-            $this->errorExit($this->text('Invalid command'));
+            $this->errorAndExit($this->text('Invalid command'));
         }
 
         $this->setSubmitted(null, $params);
@@ -85,7 +85,7 @@ class Currency extends Base
         $all = $this->getParam('all');
 
         if (empty($id) && empty($all)) {
-            $this->errorExit($this->text('Invalid command'));
+            $this->errorAndExit($this->text('Invalid command'));
         }
 
         $result = false;
@@ -102,7 +102,7 @@ class Currency extends Base
         }
 
         if (!$result) {
-            $this->errorExit($this->text('An error occurred'));
+            $this->errorAndExit($this->text('An error occurred'));
         }
 
         $this->output();
@@ -125,7 +125,7 @@ class Currency extends Base
         $result = $this->currency->get($id);
 
         if (empty($result)) {
-            $this->errorExit($this->text('Invalid ID'));
+            $this->errorAndExit($this->text('Invalid ID'));
         }
 
         return array($result);
@@ -168,7 +168,7 @@ class Currency extends Base
     protected function addCurrency()
     {
         if (!$this->isError() && !$this->currency->add($this->getSubmitted())) {
-            $this->errorExit($this->text('Currency has not been added'));
+            $this->errorAndExit($this->text('An error occurred'));
         }
     }
 
@@ -179,7 +179,7 @@ class Currency extends Base
     protected function updateCurrency($code)
     {
         if (!$this->isError() && !$this->currency->update($code, $this->getSubmitted())) {
-            $this->errorExit($this->text('Currency has not been updated'));
+            $this->errorAndExit($this->text('An error occurred'));
         }
     }
 

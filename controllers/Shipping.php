@@ -61,7 +61,7 @@ class Shipping extends Base
         $method = $this->shipping->get($id);
 
         if (empty($method)) {
-            $this->errorExit($this->text('Invalid ID'));
+            $this->errorAndExit($this->text('Invalid ID'));
         }
 
         return array($method);

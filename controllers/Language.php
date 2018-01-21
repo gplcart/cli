@@ -31,12 +31,13 @@ class Language extends Base
         $params = $this->getParam();
 
         if (empty($params[0]) || count($params) < 2) {
-            $this->errorExit($this->text('Invalid command'));
+            $this->errorAndExit($this->text('Invalid command'));
         }
 
         $this->setSubmitted(null, $params);
         $this->setSubmitted('update', $params[0]);
         $this->validateComponent('language');
+
         $this->updateLanguage($params[0]);
         $this->output();
     }
@@ -75,7 +76,7 @@ class Language extends Base
         $all = $this->getParam('all');
 
         if (!isset($id) && empty($all)) {
-            $this->errorExit($this->text('Invalid command'));
+            $this->errorAndExit($this->text('Invalid command'));
         }
 
         $result = false;
@@ -83,16 +84,18 @@ class Language extends Base
         if (isset($id)) {
             $result = $this->language->delete($id);
         } else if (!empty($all)) {
+
             $deleted = $count = 0;
             foreach ($this->language->getList(array('in_database' => true)) as $language) {
                 $count++;
                 $deleted += (int) $this->language->delete($language['code']);
             }
-            $result = ($count == $deleted);
+
+            $result = $count && $count == $deleted;
         }
 
         if (!$result) {
-            $this->errorExit($this->text('An error occurred'));
+            $this->errorAndExit($this->text('An error occurred'));
         }
 
         $this->output();
@@ -115,7 +118,7 @@ class Language extends Base
         $result = $this->language->get($id);
 
         if (empty($result)) {
-            $this->errorExit($this->text('Invalid ID'));
+            $this->errorAndExit($this->text('Invalid ID'));
         }
 
         return array($result);
@@ -160,7 +163,7 @@ class Language extends Base
     protected function addLanguage()
     {
         if (!$this->isError() && !$this->language->add($this->getSubmitted())) {
-            $this->errorExit($this->text('Language has not been added'));
+            $this->errorAndExit($this->text('An error occurred'));
         }
     }
 
@@ -171,7 +174,7 @@ class Language extends Base
     protected function updateLanguage($code)
     {
         if (!$this->isError() && !$this->language->update($code, $this->getSubmitted())) {
-            $this->errorExit($this->text('Language has not been updated'));
+            $this->errorAndExit($this->text('An error occurred'));
         }
     }
 
@@ -197,6 +200,7 @@ class Language extends Base
         $this->validatePrompt('default', $this->text('Default') . '?', 'language', 0);
         $this->validatePrompt('weight', $this->text('Weight'), 'language', 0);
         $this->validatePrompt('rtl', $this->text('Right-to-left') . '?', 'language', 0);
+
         $this->validateComponent('language');
         $this->addLanguage();
     }

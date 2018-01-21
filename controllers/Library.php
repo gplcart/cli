@@ -71,7 +71,7 @@ class Library extends Base
         $library = $this->library->get($id);
 
         if (empty($library)) {
-            $this->errorExit($this->text('Invalid ID'));
+            $this->errorAndExit($this->text('Invalid ID'));
         }
 
         return array($library);

@@ -40,7 +40,7 @@ class Database extends Base
         $tables = $this->getArguments();
 
         if (empty($tables) && empty($all)) {
-            $this->errorExit($this->text('Invalid command'));
+            $this->errorAndExit($this->text('Invalid command'));
         }
 
         $confirm = null;
@@ -70,7 +70,7 @@ class Database extends Base
         $tables = $this->getArguments();
 
         if (empty($tables) && empty($all)) {
-            $this->errorExit($this->text('Invalid command'));
+            $this->errorAndExit($this->text('Invalid command'));
         }
 
         $confirm = null;
@@ -100,7 +100,7 @@ class Database extends Base
         $data = $this->getOptions();
 
         if (empty($table) || empty($data)) {
-            $this->errorExit($this->text('Invalid command'));
+            $this->errorAndExit($this->text('Invalid command'));
         }
 
         $this->line($this->db->insert($table, $data));
@@ -116,11 +116,11 @@ class Database extends Base
         $conditions = $this->getOptions();
 
         if (empty($table) || empty($conditions)) {
-            $this->errorExit($this->text('Invalid command'));
+            $this->errorAndExit($this->text('Invalid command'));
         }
 
         if (!$this->db->delete($table, $conditions)) {
-            $this->errorExit($this->text('An error occurred'));
+            $this->errorAndExit($this->text('An error occurred'));
         }
 
         $this->output();
@@ -134,7 +134,7 @@ class Database extends Base
         $sql = $this->getParam(0);
 
         if (empty($sql)) {
-            $this->errorExit($this->text('Invalid command'));
+            $this->errorAndExit($this->text('Invalid command'));
         }
 
         $result = $this->db->query($sql);

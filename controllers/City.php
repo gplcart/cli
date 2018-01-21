@@ -24,13 +24,13 @@ class City extends Base
     protected $city;
 
     /**
-     * @param CityModel $role
+     * @param CityModel $rule
      */
-    public function __construct(CityModel $role)
+    public function __construct(CityModel $rule)
     {
         parent::__construct();
 
-        $this->city = $role;
+        $this->city = $rule;
     }
 
     /**
@@ -52,7 +52,7 @@ class City extends Base
         $id = $this->getParam(0);
 
         if (empty($id)) {
-            $this->errorExit($this->text('Invalid ID'));
+            $this->errorAndExit($this->text('Invalid ID'));
         }
 
         $options = null;
@@ -76,7 +76,7 @@ class City extends Base
         }
 
         if (empty($result)) {
-            $this->errorExit($this->text('An error occurred'));
+            $this->errorAndExit($this->text('An error occurred'));
         }
 
         $this->output();
@@ -104,12 +104,17 @@ class City extends Base
         $params = $this->getParam();
 
         if (empty($params[0]) || count($params) < 2) {
-            $this->errorExit($this->text('Invalid command'));
+            $this->errorAndExit($this->text('Invalid command'));
         }
 
-        $this->setSubmitted(null, $this->getParam());
+        if (!is_numeric($params[0])) {
+            $this->errorAndExit($this->text('Invalid ID'));
+        }
+
+        $this->setSubmitted(null, $params);
         $this->setSubmitted('update', $params[0]);
         $this->validateComponent('city');
+
         $this->updateCity($params[0]);
         $this->output();
     }
@@ -135,13 +140,13 @@ class City extends Base
         }
 
         if (!is_numeric($id)) {
-            $this->errorExit($this->text('Invalid ID'));
+            $this->errorAndExit($this->text('Invalid ID'));
         }
 
         $result = $this->city->get($id);
 
         if (empty($result)) {
-            $this->errorExit($this->text('Invalid ID'));
+            $this->errorAndExit($this->text('Invalid ID'));
         }
 
         return array($result);
@@ -163,6 +168,7 @@ class City extends Base
         );
 
         $rows = array();
+
         foreach ($items as $item) {
             $rows[] = array(
                 $item['city_id'],
@@ -185,7 +191,7 @@ class City extends Base
         if (!$this->isError()) {
             $id = $this->city->add($this->getSubmitted());
             if (empty($id)) {
-                $this->errorExit($this->text('City has not been added'));
+                $this->errorAndExit($this->text('An error occurred'));
             }
             $this->line($id);
         }
@@ -198,7 +204,7 @@ class City extends Base
     protected function updateCity($city_id)
     {
         if (!$this->isError() && !$this->city->update($city_id, $this->getSubmitted())) {
-            $this->errorExit($this->text('City has not been updated'));
+            $this->errorAndExit($this->text('An error occurred'));
         }
     }
 
@@ -222,6 +228,7 @@ class City extends Base
         $this->validatePrompt('country', $this->text('Country'), 'city');
         $this->validatePrompt('zone_id', $this->text('Zone'), 'city', 0);
         $this->validatePrompt('status', $this->text('Status'), 'city', 0);
+
         $this->validateComponent('city');
         $this->addCity();
     }

@@ -66,13 +66,14 @@ class Country extends Base
         $params = $this->getParam();
 
         if (empty($params[0]) || count($params) < 2) {
-            $this->errorExit($this->text('Invalid command'));
+            $this->errorAndExit($this->text('Invalid command'));
         }
 
-        $this->setSubmitted(null, $this->getParam());
+        $this->setSubmitted(null, $params);
         $this->setSubmitted('update', $params[0]);
         $this->setSubmittedJson('format');
         $this->validateComponent('country');
+
         $this->updateCountry($params[0]);
         $this->output();
     }
@@ -85,11 +86,11 @@ class Country extends Base
         $code = $this->getParam(0);
 
         if (empty($code)) {
-            $this->errorExit($this->text('Invalid ID'));
+            $this->errorAndExit($this->text('Invalid ID'));
         }
 
         if (!$this->country->delete($code)) {
-            $this->errorExit($this->text('Country has not been deleted'));
+            $this->errorAndExit($this->text('An error occurred'));
         }
 
         $this->output();
@@ -110,7 +111,7 @@ class Country extends Base
         $country = $this->country->get($code);
 
         if (empty($country)) {
-            $this->errorExit($this->text('Invalid ID'));
+            $this->errorAndExit($this->text('Invalid ID'));
         }
 
         return array($country);
@@ -151,7 +152,7 @@ class Country extends Base
     protected function addCountry()
     {
         if (!$this->isError() && !$this->country->add($this->getSubmitted())) {
-            $this->errorExit($this->text('Country has not been added'));
+            $this->errorAndExit($this->text('An error occurred'));
         }
     }
 
@@ -162,7 +163,7 @@ class Country extends Base
     protected function updateCountry($code)
     {
         if (!$this->isError() && !$this->country->update($code, $this->getSubmitted())) {
-            $this->errorExit($this->text('Country has not been updated'));
+            $this->errorAndExit($this->text('An error occurred'));
         }
     }
 
@@ -188,6 +189,7 @@ class Country extends Base
         $this->validatePrompt('zone_id', $this->text('Zone'), 'country', 0);
         $this->validatePrompt('status', $this->text('Status'), 'country', 0);
         $this->validatePrompt('weight', $this->text('Weight'), 'country', 0);
+
         $this->validateComponent('country');
         $this->addCountry();
     }

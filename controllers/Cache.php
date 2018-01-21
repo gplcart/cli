@@ -34,6 +34,27 @@ class Cache extends Base
     }
 
     /**
+     * Callback for "cache-get" command
+     */
+    public function cmdGetCache()
+    {
+        $id = $this->getParam(0);
+
+        if (empty($id)) {
+            $this->errorAndExit($this->text('Invalid command'));
+        }
+
+        $result = $this->cache->get($id);
+
+        if (!isset($result)) {
+            $this->errorAndExit($this->text('Invalid ID'));
+        }
+
+        $this->outputFormat($result, 'json');
+        $this->output();
+    }
+
+    /**
      * Callback for "cache-clear" command
      */
     public function cmdClearCache()
@@ -42,7 +63,7 @@ class Cache extends Base
         $all = $this->getParam('all');
 
         if (!isset($id) && empty($all)) {
-            $this->errorExit($this->text('Invalid command'));
+            $this->errorAndExit($this->text('Invalid command'));
         }
 
         $result = false;
@@ -59,7 +80,7 @@ class Cache extends Base
         }
 
         if (!$result) {
-            $this->errorExit($this->text('An error occurred'));
+            $this->errorAndExit($this->text('An error occurred'));
         }
 
         $this->output();

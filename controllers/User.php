@@ -70,7 +70,7 @@ class User extends Base
         $id = $this->getParam(0);
 
         if (!isset($id) || !is_numeric($id)) {
-            $this->errorExit($this->text('Invalid ID'));
+            $this->errorAndExit($this->text('Invalid ID'));
         }
 
         $options = null;
@@ -82,18 +82,20 @@ class User extends Base
         }
 
         if (isset($options)) {
+
             $deleted = $count = 0;
             foreach ($this->user->getList($options) as $item) {
                 $count++;
                 $deleted += (int) $this->user->delete($item['user_id']);
             }
+
             $result = ($count == $deleted);
         } else {
             $result = $this->user->delete($id);
         }
 
         if (!$result) {
-            $this->errorExit($this->text('An error occurred'));
+            $this->errorAndExit($this->text('An error occurred'));
         }
 
         $this->output();
@@ -121,17 +123,19 @@ class User extends Base
         $params = $this->getParam();
 
         if (empty($params[0]) || count($params) < 2) {
-            $this->errorExit($this->text('Invalid command'));
+            $this->errorAndExit($this->text('Invalid command'));
         }
 
         if (!is_numeric($params[0])) {
-            $this->errorExit($this->text('Invalid ID'));
+            $this->errorAndExit($this->text('Invalid ID'));
         }
 
-        $this->setSubmitted(null, $this->getParam());
+        $this->setSubmitted(null, $params);
         $this->setSubmitted('update', $params[0]);
         $this->setSubmittedJson('data');
+
         $this->validateComponent('user', array('admin' => true));
+
         $this->updateUser($params[0]);
         $this->output();
     }
@@ -149,13 +153,13 @@ class User extends Base
         }
 
         if (!is_numeric($id)) {
-            $this->errorExit($this->text('Invalid ID'));
+            $this->errorAndExit($this->text('Invalid ID'));
         }
 
         $result = $this->user->get($id);
 
         if (empty($result)) {
-            $this->errorExit($this->text('Invalid ID'));
+            $this->errorAndExit($this->text('Invalid ID'));
         }
 
         return array($result);
@@ -201,7 +205,7 @@ class User extends Base
     protected function updateUser($user_id)
     {
         if (!$this->isError() && !$this->user->update($user_id, $this->getSubmitted())) {
-            $this->errorExit($this->text('User has not been updated'));
+            $this->errorAndExit($this->text('An error occurred'));
         }
     }
 
@@ -212,6 +216,7 @@ class User extends Base
     {
         $this->setSubmitted(null, $this->getParam());
         $this->setSubmittedJson('data');
+
         $this->validateComponent('user');
         $this->addUser();
     }
@@ -224,7 +229,7 @@ class User extends Base
         if (!$this->isError()) {
             $id = $this->user->add($this->getSubmitted());
             if (empty($id)) {
-                $this->errorExit($this->text('User has not been added'));
+                $this->errorAndExit($this->text('User has not been added'));
             }
             $this->line($id);
         }
@@ -246,8 +251,8 @@ class User extends Base
         $this->validatePrompt('timezone', $this->text('Timezone'), 'user', $this->config->get('timezone', 'Europe/London'));
         $this->validatePrompt('status', $this->text('Status'), 'user', 0);
         $this->validatePrompt('data', $this->text('Data'), 'user');
-
         $this->setSubmittedJson('data');
+
         $this->validateComponent('user');
         $this->addUser();
     }
@@ -267,7 +272,7 @@ class User extends Base
             $id = $this->getParam(0);
 
             if (!is_numeric($id)) { // Allow 0 for roleless users
-                $this->errorExit($this->text('Invalid ID'));
+                $this->errorAndExit($this->text('Invalid ID'));
             }
 
             if ($this->getParam('role')) {
@@ -289,7 +294,7 @@ class User extends Base
         }
 
         if (empty($result)) {
-            $this->errorExit($this->text('An error occurred'));
+            $this->errorAndExit($this->text('An error occurred'));
         }
     }
 

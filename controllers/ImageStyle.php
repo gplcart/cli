@@ -41,19 +41,19 @@ class ImageStyle extends Base
         $params = $this->getParam();
 
         if (empty($params[0]) || count($params) < 2) {
-            $this->errorExit($this->text('Invalid command'));
+            $this->errorAndExit($this->text('Invalid command'));
         }
 
         if (!is_numeric($params[0])) {
-            $this->errorExit($this->text('Invalid ID'));
+            $this->errorAndExit($this->text('Invalid ID'));
         }
 
         $this->setSubmitted(null, $params);
         $this->setSubmittedList('actions');
         $this->setSubmitted('update', $params[0]);
+
         $this->validateComponent('image_style');
         $this->updateImageStyle($params[0]);
-
         $this->output();
     }
 
@@ -79,11 +79,11 @@ class ImageStyle extends Base
         $id = $this->getParam(0);
 
         if (empty($id) || !is_numeric($id)) {
-            $this->errorExit($this->text('Invalid ID'));
+            $this->errorAndExit($this->text('Invalid ID'));
         }
 
         if (!$this->image_style->delete($id)) {
-            $this->errorExit($this->text('Image style has not been deleted'));
+            $this->errorAndExit($this->text('An error occurred'));
         }
 
         $this->output();
@@ -98,19 +98,24 @@ class ImageStyle extends Base
         $all = $this->getParam('all');
 
         if (!isset($id) && empty($all)) {
-            $this->errorExit($this->text('Invalid command'));
+            $this->errorAndExit($this->text('Invalid command'));
         }
 
         $result = false;
 
         if (isset($id)) {
+
+            if (!is_numeric($id)) {
+                $this->errorAndExit($this->text('Invalid ID'));
+            }
+
             $result = $this->image_style->clearCache($id);
         } else if (!empty($all)) {
             $result = $this->image_style->clearCache();
         }
 
         if (!$result) {
-            $this->errorExit($this->text('An error occurred'));
+            $this->errorAndExit($this->text('An error occurred'));
         }
 
         $this->output();
@@ -142,13 +147,13 @@ class ImageStyle extends Base
         }
 
         if (!is_numeric($id)) {
-            $this->errorExit($this->text('Invalid ID'));
+            $this->errorAndExit($this->text('Invalid ID'));
         }
 
         $result = $this->image_style->get($id);
 
         if (empty($result)) {
-            $this->errorExit($this->text('Invalid ID'));
+            $this->errorAndExit($this->text('Invalid ID'));
         }
 
         return array($result);
@@ -191,7 +196,7 @@ class ImageStyle extends Base
         if (!$this->isError()) {
             $id = $this->image_style->add($this->getSubmitted());
             if (empty($id)) {
-                $this->errorExit($this->text('Image style has not been added'));
+                $this->errorAndExit($this->text('An error occurred'));
             }
             $this->line($id);
         }
@@ -204,7 +209,7 @@ class ImageStyle extends Base
     protected function updateImageStyle($imagestyle_id)
     {
         if (!$this->isError() && !$this->image_style->update($imagestyle_id, $this->getSubmitted())) {
-            $this->errorExit($this->text('Image style has not been updated'));
+            $this->errorAndExit($this->text('An error occurred'));
         }
     }
 
@@ -228,6 +233,7 @@ class ImageStyle extends Base
         $this->validatePromptList('actions', $this->text('Actions'), 'image_style');
         $this->validatePrompt('status', $this->text('Status'), 'image_style', 0);
         $this->setSubmittedList('actions');
+
         $this->validateComponent('image_style');
         $this->addImageStyle();
     }

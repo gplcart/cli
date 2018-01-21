@@ -31,11 +31,12 @@ class Base extends CliController
     /**
      * Output formatted data
      * @param mixed $data
+     * @param null|string $default
      * @return null
      */
-    protected function outputFormat($data)
+    protected function outputFormat($data, $default = null)
     {
-        switch ($this->getParam(array('f'))) {
+        switch ($this->getParam(array('f'), $default)) {
             case 'print-r':
                 $this->line(print_r($data, true));
                 break;
@@ -72,7 +73,7 @@ class Base extends CliController
         foreach ($data as &$row) {
 
             if (!is_array($row)) {
-                $this->errorExit($this->text('Unexpected table row format'));
+                $this->errorAndExit($this->text('Unexpected table row format'));
             }
 
             ksort($row);

@@ -24,13 +24,13 @@ class Role extends Base
     protected $role;
 
     /**
-     * @param UserRoleModel $role
+     * @param UserRoleModel $rule
      */
-    public function __construct(UserRoleModel $role)
+    public function __construct(UserRoleModel $rule)
     {
         parent::__construct();
 
-        $this->role = $role;
+        $this->role = $rule;
     }
 
     /**
@@ -44,7 +44,9 @@ class Role extends Base
 
         $this->setSubmitted(null, $data);
         $this->setSubmitted('update', $role_id);
+
         $this->validateComponent('user_role');
+
         $this->updateRole($role_id);
         $this->output();
     }
@@ -62,7 +64,9 @@ class Role extends Base
 
         $this->setSubmitted(null, $data);
         $this->setSubmitted('update', $role_id);
+
         $this->validateComponent('user_role');
+
         $this->updateRole($role_id);
         $this->output();
     }
@@ -87,31 +91,32 @@ class Role extends Base
         $all = $this->getParam('all');
 
         if (!isset($id) && empty($all)) {
-            $this->errorExit($this->text('Invalid command'));
+            $this->errorAndExit($this->text('Invalid command'));
         }
 
         $result = false;
 
         if (isset($id)) {
 
-            if (!is_numeric($id)) {
-                $this->errorExit($this->text('Invalid ID'));
+            if (empty($id) || !is_numeric($id)) {
+                $this->errorAndExit($this->text('Invalid ID'));
             }
 
             $result = $this->role->delete($id);
 
         } else if ($all) {
+
             $deleted = $count = 0;
             foreach ($this->role->getList() as $item) {
                 $count++;
                 $deleted += (int) $this->role->delete($item['role_id']);
             }
 
-            $result = ($count == $deleted);
+            $result = $count && $count == $deleted;
         }
 
         if (!$result) {
-            $this->errorExit($this->text('An error occurred'));
+            $this->errorAndExit($this->text('An error occurred'));
         }
 
         $this->output();
@@ -139,17 +144,19 @@ class Role extends Base
         $params = $this->getParam();
 
         if (empty($params[0]) || count($params) < 2) {
-            $this->errorExit($this->text('Invalid command'));
+            $this->errorAndExit($this->text('Invalid command'));
         }
 
         if (!is_numeric($params[0])) {
-            $this->errorExit($this->text('Invalid ID'));
+            $this->errorAndExit($this->text('Invalid ID'));
         }
 
-        $this->setSubmitted(null, $this->getParam());
+        $this->setSubmitted(null, $params);
         $this->setSubmittedList('permissions');
         $this->setSubmitted('update', $params[0]);
+
         $this->validateComponent('user_role');
+
         $this->updateRole($params[0]);
         $this->output();
     }
@@ -167,13 +174,13 @@ class Role extends Base
         }
 
         if (empty($id) || !is_numeric($id)) {
-            $this->errorExit($this->text('Invalid ID'));
+            $this->errorAndExit($this->text('Invalid ID'));
         }
 
         $result = $this->role->get($id);
 
         if (empty($result)) {
-            $this->errorExit($this->text('Invalid ID'));
+            $this->errorAndExit($this->text('Invalid ID'));
         }
 
         return array($result);
@@ -218,19 +225,19 @@ class Role extends Base
         $arguments = $this->getArguments();
 
         if (count($arguments) < 2) {
-            $this->errorExit($this->text('Invalid command'));
+            $this->errorAndExit($this->text('Invalid command'));
         }
 
         $role_id = array_shift($arguments);
 
         if (!is_numeric($role_id)) {
-            $this->errorExit($this->text('Invalid ID'));
+            $this->errorAndExit($this->text('Invalid ID'));
         }
 
         $role = $this->role->get($role_id);
 
         if (!isset($role['permissions'])) {
-            $this->errorExit($this->text('Invalid ID'));
+            $this->errorAndExit($this->text('Invalid ID'));
         }
 
         return array($role_id, $role['permissions'], $arguments);
@@ -243,7 +250,7 @@ class Role extends Base
     protected function updateRole($role_id)
     {
         if (!$this->isError() && !$this->role->update($role_id, $this->getSubmitted())) {
-            $this->errorExit($this->text('Role has not been updated'));
+            $this->errorAndExit($this->text('An error occurred'));
         }
     }
 
@@ -266,7 +273,7 @@ class Role extends Base
         if (!$this->isError()) {
             $id = $this->role->add($this->getSubmitted());
             if (empty($id)) {
-                $this->errorExit($this->text('Role has not been added'));
+                $this->errorAndExit($this->text('An error occurred'));
             }
             $this->line($id);
         }
@@ -282,6 +289,7 @@ class Role extends Base
         $this->validatePrompt('redirect', $this->text('Redirect'), 'user_role', '');
         $this->validatePrompt('status', $this->text('Status'), 'user_role', 0);
         $this->setSubmittedList('permissions');
+
         $this->validateComponent('user_role');
         $this->addRole();
     }

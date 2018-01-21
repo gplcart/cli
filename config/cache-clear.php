@@ -7,12 +7,12 @@
  * @license https://www.gnu.org/licenses/gpl.html GNU/GPLv3
  */
 return array(
-    'alias' => 'cac',
+    'alias' => 'chc',
     'description' => /* @text */'Clear cache',
     'usage' => array(
-        'gplcart (cache-clear | cac) -h',
-        'gplcart (cache-clear | cac) --all',
-        'gplcart (cache-clear | cac) <cache id or pattern> [--pattern=<pattern>]'
+        'gplcart (cache-clear | chc) -h',
+        'gplcart (cache-clear | chc) --all',
+        'gplcart (cache-clear | chc) <cache id or pattern> [--pattern=<pattern>]'
     ),
     'options' => array(
         '-h' => /* @text */'Show command help',

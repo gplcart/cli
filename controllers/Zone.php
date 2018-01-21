@@ -64,7 +64,22 @@ class Zone extends Base
      */
     public function cmdUpdateZone()
     {
-        $this->submitUpdateZone();
+        $params = $this->getParam();
+
+        if (empty($params[0]) || count($params) < 2) {
+            $this->errorAndExit($this->text('Invalid command'));
+        }
+
+        if (!is_numeric($params[0])) {
+            $this->errorAndExit($this->text('Invalid ID'));
+        }
+
+        $this->setSubmitted(null, $params);
+        $this->setSubmitted('update', $params[0]);
+
+        $this->validateComponent('zone');
+
+        $this->updateZone($params[0]);
         $this->output();
     }
 
@@ -77,7 +92,7 @@ class Zone extends Base
         $all = $this->getParam('all');
 
         if (empty($id) && empty($all)) {
-            $this->errorExit($this->text('Invalid command'));
+            $this->errorAndExit($this->text('Invalid command'));
         }
 
         $result = false;
@@ -94,7 +109,7 @@ class Zone extends Base
         }
 
         if (!$result) {
-            $this->errorExit($this->text('An error occurred'));
+            $this->errorAndExit($this->text('An error occurred'));
         }
 
         $this->output();
@@ -113,13 +128,13 @@ class Zone extends Base
         }
 
         if (!is_numeric($id)) {
-            $this->errorExit($this->text('Invalid ID'));
+            $this->errorAndExit($this->text('Invalid ID'));
         }
 
         $zone = $this->zone->get($id);
 
         if (empty($zone)) {
-            $this->errorExit($this->text('Invalid ID'));
+            $this->errorAndExit($this->text('Invalid ID'));
         }
 
         return array($zone);
@@ -152,33 +167,12 @@ class Zone extends Base
 
     /**
      * Updates a zone
-     */
-    protected function submitUpdateZone()
-    {
-        $params = $this->getParam();
-
-        if (empty($params[0]) || count($params) < 2) {
-            $this->errorExit($this->text('Invalid command'));
-        }
-
-        if (!is_numeric($params[0])) {
-            $this->errorExit($this->text('Invalid ID'));
-        }
-
-        $this->setSubmitted(null, $this->getParam());
-        $this->setSubmitted('update', $params[0]);
-        $this->validateComponent('zone');
-        $this->updateZone($params[0]);
-    }
-
-    /**
-     * Updates a zone
      * @param string $zone_id
      */
     protected function updateZone($zone_id)
     {
         if (!$this->isError() && !$this->zone->update($zone_id, $this->getSubmitted())) {
-            $this->errorExit($this->text('Zone has not been updated'));
+            $this->errorAndExit($this->text('An error occurred'));
         }
     }
 
@@ -200,7 +194,7 @@ class Zone extends Base
         if (!$this->isError()) {
             $id = $this->zone->add($this->getSubmitted());
             if (empty($id)) {
-                $this->errorExit($this->text('Zone has not been added'));
+                $this->errorAndExit($this->text('An error occurred'));
             }
             $this->line($id);
         }
@@ -213,6 +207,7 @@ class Zone extends Base
     {
         $this->validatePrompt('title', $this->text('Title'), 'zone');
         $this->validatePrompt('status', $this->text('Status'), 'zone', 0);
+
         $this->validateComponent('zone');
         $this->addZone();
     }

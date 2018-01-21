@@ -40,7 +40,7 @@ class Cron extends Base
     public function cmdCronCron()
     {
         if (!$this->cron->run()) {
-            $this->errorExit($this->text('An error occurred'));
+            $this->errorAndExit($this->text('An error occurred'));
         }
 
         $this->output();

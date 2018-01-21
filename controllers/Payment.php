@@ -61,7 +61,7 @@ class Payment extends Base
         $method = $this->payment->get($id);
 
         if (empty($method)) {
-            $this->errorExit($this->text('Invalid ID'));
+            $this->errorAndExit($this->text('Invalid ID'));
         }
 
         return array($method);

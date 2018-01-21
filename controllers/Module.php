@@ -50,7 +50,7 @@ class Module extends Base
         $result = $this->module_model->uninstall($this->getParam(0));
 
         if ($result !== true) {
-            $this->errorExit($result);
+            $this->errorAndExit($result);
         }
 
         $this->output();
@@ -64,7 +64,7 @@ class Module extends Base
         $result = $this->module_model->install($this->getParam(0));
 
         if ($result !== true) {
-            $this->errorExit($result);
+            $this->errorAndExit($result);
         }
 
         $this->output();
@@ -78,13 +78,13 @@ class Module extends Base
         $id = $this->getParam(0);
 
         if (empty($id)) {
-            $this->errorExit($this->text('Invalid ID'));
+            $this->errorAndExit($this->text('Invalid ID'));
         }
 
         $result = $this->module_model->disable($id);
 
         if ($result !== true) {
-            $this->errorExit($result);
+            $this->errorAndExit($result);
         }
 
         $this->output();
@@ -98,13 +98,13 @@ class Module extends Base
         $id = $this->getParam(0);
 
         if (empty($id)) {
-            $this->errorExit($this->text('Invalid ID'));
+            $this->errorAndExit($this->text('Invalid ID'));
         }
 
         $result = $this->module_model->enable($id);
 
         if ($result !== true) {
-            $this->errorExit($result);
+            $this->errorAndExit($result);
         }
 
         $this->output();
@@ -147,7 +147,7 @@ class Module extends Base
         $module = $this->module->get($id);
 
         if (empty($module)) {
-            $this->errorExit($this->text('Invalid ID'));
+            $this->errorAndExit($this->text('Invalid ID'));
         }
 
         return array($module);

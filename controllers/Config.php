@@ -45,7 +45,7 @@ class Config extends Base
         if (isset($name)) {
             $result = $this->config->get($name);
             if (!isset($result)) {
-                $this->errorExit($this->text('Invalid ID'));
+                $this->errorAndExit($this->text('Invalid ID'));
             }
             $list = array($name => $result);
         } else {
@@ -75,11 +75,11 @@ class Config extends Base
         $id = $this->getParam(0);
 
         if (!isset($id)) {
-            $this->errorExit($this->text('Invalid ID'));
+            $this->errorAndExit($this->text('Invalid ID'));
         }
 
         if (!$this->config->reset($id)) {
-            $this->errorExit($this->text('An error occurred'));
+            $this->errorAndExit($this->text('An error occurred'));
         }
 
         $this->output();
@@ -94,11 +94,11 @@ class Config extends Base
         $value = $this->getParam(1);
 
         if (!isset($key) || !isset($value)) {
-            $this->errorExit($this->text('Invalid command'));
+            $this->errorAndExit($this->text('Invalid command'));
         }
 
         if (!$this->config->set($key, $value)) {
-            $this->errorExit($this->text('An error occurred'));
+            $this->errorAndExit($this->text('An error occurred'));
         }
 
         $this->output();
@@ -117,6 +117,7 @@ class Config extends Base
         );
 
         $rows = array();
+
         foreach ($items as $item) {
             $rows[] = array(
                 $item['key'],
