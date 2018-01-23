@@ -78,7 +78,7 @@ class Module extends Base
         $id = $this->getParam(0);
 
         if (empty($id)) {
-            $this->errorAndExit($this->text('Invalid ID'));
+            $this->errorAndExit($this->text('Invalid argument'));
         }
 
         $result = $this->module_model->disable($id);
@@ -98,7 +98,7 @@ class Module extends Base
         $id = $this->getParam(0);
 
         if (empty($id)) {
-            $this->errorAndExit($this->text('Invalid ID'));
+            $this->errorAndExit($this->text('Invalid argument'));
         }
 
         $result = $this->module_model->enable($id);
@@ -147,7 +147,7 @@ class Module extends Base
         $module = $this->module->get($id);
 
         if (empty($module)) {
-            $this->errorAndExit($this->text('Invalid ID'));
+            $this->errorAndExit($this->text('Unexpected result'));
         }
 
         return array($module);

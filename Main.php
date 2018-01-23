@@ -38,19 +38,12 @@ class Main
             $command = pathinfo($file, PATHINFO_FILENAME);
             $list[$command] = gplcart_config_get($file);
 
-            $method = explode('-', $command);
-            $class_name = array_shift($method);
-
-            if (empty($method)) {
-                $method = array($class_name);
-            }
-
-            array_unshift($method, 'cmd');
+            $parts = explode('-', $command);
+            $method = array_pop($parts);
+            $class_name = implode('', $parts);
 
             $list[$command]['handlers']['controller'] = array(
-                "gplcart\\modules\\cli\\controllers\\$class_name",
-                implode('', $method) . $class_name
-            );
+                "gplcart\\modules\\cli\\controllers\\$class_name", "cmd$method$class_name");
         }
 
         return $list;

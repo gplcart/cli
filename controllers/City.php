@@ -24,13 +24,13 @@ class City extends Base
     protected $city;
 
     /**
-     * @param CityModel $rule
+     * @param CityModel $alias
      */
-    public function __construct(CityModel $rule)
+    public function __construct(CityModel $alias)
     {
         parent::__construct();
 
-        $this->city = $rule;
+        $this->city = $alias;
     }
 
     /**
@@ -52,7 +52,7 @@ class City extends Base
         $id = $this->getParam(0);
 
         if (empty($id)) {
-            $this->errorAndExit($this->text('Invalid ID'));
+            $this->errorAndExit($this->text('Invalid argument'));
         }
 
         $options = null;
@@ -64,19 +64,20 @@ class City extends Base
         }
 
         if (isset($options)) {
+
             $deleted = $count = 0;
             foreach ($this->city->getList($options) as $item) {
                 $count++;
                 $deleted += (int) $this->city->delete($item['city_id']);
             }
 
-            $result = ($count == $deleted);
+            $result = $count && $count == $deleted;
         } else {
             $result = $this->city->delete($id);
         }
 
         if (empty($result)) {
-            $this->errorAndExit($this->text('An error occurred'));
+            $this->errorAndExit($this->text('Unexpected result'));
         }
 
         $this->output();
@@ -108,7 +109,7 @@ class City extends Base
         }
 
         if (!is_numeric($params[0])) {
-            $this->errorAndExit($this->text('Invalid ID'));
+            $this->errorAndExit($this->text('Invalid argument'));
         }
 
         $this->setSubmitted(null, $params);
@@ -140,13 +141,13 @@ class City extends Base
         }
 
         if (!is_numeric($id)) {
-            $this->errorAndExit($this->text('Invalid ID'));
+            $this->errorAndExit($this->text('Invalid argument'));
         }
 
         $result = $this->city->get($id);
 
         if (empty($result)) {
-            $this->errorAndExit($this->text('Invalid ID'));
+            $this->errorAndExit($this->text('Unexpected result'));
         }
 
         return array($result);
@@ -191,7 +192,7 @@ class City extends Base
         if (!$this->isError()) {
             $id = $this->city->add($this->getSubmitted());
             if (empty($id)) {
-                $this->errorAndExit($this->text('An error occurred'));
+                $this->errorAndExit($this->text('Unexpected result'));
             }
             $this->line($id);
         }
@@ -204,7 +205,7 @@ class City extends Base
     protected function updateCity($city_id)
     {
         if (!$this->isError() && !$this->city->update($city_id, $this->getSubmitted())) {
-            $this->errorAndExit($this->text('An error occurred'));
+            $this->errorAndExit($this->text('Unexpected result'));
         }
     }
 

@@ -52,7 +52,7 @@ class Trigger extends Base
         $id = $this->getParam(0);
 
         if (empty($id) || !is_numeric($id)) {
-            $this->errorAndExit($this->text('Invalid ID'));
+            $this->errorAndExit($this->text('Invalid argument'));
         }
 
         if ($this->getParam('store')) {
@@ -63,13 +63,13 @@ class Trigger extends Base
                 $deleted += (int) $this->trigger->delete($item['trigger_id']);
             }
 
-            $result = ($count == $deleted);
+            $result = $count && $count == $deleted;
         } else {
             $result = $this->trigger->delete($id);
         }
 
-        if (!$result) {
-            $this->errorAndExit($this->text('An error occurred'));
+        if (empty($result)) {
+            $this->errorAndExit($this->text('Unexpected result'));
         }
 
         $this->output();
@@ -101,7 +101,7 @@ class Trigger extends Base
         }
 
         if (!is_numeric($params[0])) {
-            $this->errorAndExit($this->text('Invalid ID'));
+            $this->errorAndExit($this->text('Invalid argument'));
         }
 
         $this->setSubmitted(null, $params);
@@ -128,7 +128,7 @@ class Trigger extends Base
         }
 
         if (!is_numeric($id)) {
-            $this->errorAndExit($this->text('Invalid ID'));
+            $this->errorAndExit($this->text('Invalid argument'));
         }
 
         if ($this->getParam('store')) {
@@ -138,7 +138,7 @@ class Trigger extends Base
         $result = $this->trigger->get($id);
 
         if (empty($result)) {
-            $this->errorAndExit($this->text('Invalid ID'));
+            $this->errorAndExit($this->text('Unexpected result'));
         }
 
         return array($result);
@@ -181,7 +181,7 @@ class Trigger extends Base
         if (!$this->isError()) {
             $state_id = $this->trigger->add($this->getSubmitted());
             if (empty($state_id)) {
-                $this->errorAndExit($this->text('An error occurred'));
+                $this->errorAndExit($this->text('Unexpected result'));
             }
             $this->line($state_id);
         }
@@ -194,7 +194,7 @@ class Trigger extends Base
     protected function updateTrigger($trigger_id)
     {
         if (!$this->isError() && !$this->trigger->update($trigger_id, $this->getSubmitted())) {
-            $this->errorAndExit($this->text('An error occurred'));
+            $this->errorAndExit($this->text('Unexpected result'));
         }
     }
 

@@ -31,15 +31,33 @@ class PriceRule extends Base
     protected $currency;
 
     /**
-     * @param PriceRuleModel $price_rule
+     * @param PriceRuleModel $price_alias
      * @param CurrencyModel $currency
      */
-    public function __construct(PriceRuleModel $price_rule, CurrencyModel $currency)
+    public function __construct(PriceRuleModel $price_alias, CurrencyModel $currency)
     {
         parent::__construct();
 
-        $this->price_rule = $price_rule;
+        $this->price_rule = $price_alias;
         $this->currency = $currency;
+    }
+
+    /**
+     * Callback for "pricerule-on" command
+     */
+    public function cmdOnPriceRule()
+    {
+        $this->setStatusPriceRule(true);
+        $this->output();
+    }
+
+    /**
+     * Callback for "pricerule-off" command
+     */
+    public function cmdOffPriceRule()
+    {
+        $this->setStatusPriceRule(false);
+        $this->output();
     }
 
     /**
@@ -70,7 +88,7 @@ class PriceRule extends Base
         if (isset($id)) {
 
             if (empty($id) || !is_numeric($id)) {
-                $this->errorAndExit($this->text('Invalid ID'));
+                $this->errorAndExit($this->text('Invalid argument'));
             }
 
             if ($this->getParam('trigger')) {
@@ -95,7 +113,7 @@ class PriceRule extends Base
         }
 
         if (empty($result)) {
-            $this->errorAndExit($this->text('An error occurred'));
+            $this->errorAndExit($this->text('Unexpected result'));
         }
 
         $this->output();
@@ -127,7 +145,7 @@ class PriceRule extends Base
         }
 
         if (!is_numeric($params[0])) {
-            $this->errorAndExit($this->text('Invalid ID'));
+            $this->errorAndExit($this->text('Invalid argument'));
         }
 
         $this->setSubmitted(null, $params);
@@ -151,7 +169,7 @@ class PriceRule extends Base
         }
 
         if (!is_numeric($id)) {
-            $this->errorAndExit($this->text('Invalid ID'));
+            $this->errorAndExit($this->text('Invalid argument'));
         }
 
         if ($this->getParam('trigger')) {
@@ -161,7 +179,7 @@ class PriceRule extends Base
         $result = $this->price_rule->get($id);
 
         if (empty($result)) {
-            $this->errorAndExit($this->text('Invalid ID'));
+            $this->errorAndExit($this->text('Unexpected result'));
         }
 
         return array($result);
@@ -212,7 +230,7 @@ class PriceRule extends Base
         if (!$this->isError()) {
             $id = $this->price_rule->add($this->getSubmitted());
             if (empty($id)) {
-                $this->errorAndExit($this->text('An error occurred'));
+                $this->errorAndExit($this->text('Unexpected result'));
             }
             $this->line($id);
         }
@@ -225,7 +243,7 @@ class PriceRule extends Base
     protected function updatePriceRule($price_rule_id)
     {
         if (!$this->isError() && !$this->price_rule->update($price_rule_id, $this->getSubmitted())) {
-            $this->errorAndExit($this->text('An error occurred'));
+            $this->errorAndExit($this->text('Unexpected result'));
         }
     }
 
@@ -252,7 +270,7 @@ class PriceRule extends Base
             $types[$id] = $type['title'];
         }
 
-        $this->validateMenu('value_type', $this->text('Value type'), 'price_rule', $types);
+        $this->validateMenu('value_type', $this->text('Value type'), 'price_rule', $types, 'percent');
         $this->validatePrompt('value', $this->text('Value'), 'price_rule');
         $this->validatePrompt('currency', $this->text('Currency'), 'price_rule', $this->currency->getDefault());
         $this->validatePrompt('code', $this->text('Code'), 'price_rule', '');
@@ -261,6 +279,55 @@ class PriceRule extends Base
 
         $this->validateComponent('price_rule');
         $this->addPriceRule();
+    }
+
+    /**
+     * Sets status for one or several price rules
+     * @param bool $status
+     */
+    protected function setStatusPriceRule($status)
+    {
+        $id = $this->getParam(0);
+        $all = $this->getParam('all');
+
+        if (!isset($id) && !$all) {
+            $this->errorAndExit($this->text('Invalid command'));
+        }
+
+        $result = $options = null;
+
+        if (isset($id)) {
+
+            if (empty($id) || !is_numeric($id)) {
+                $this->errorAndExit($this->text('Invalid argument'));
+            }
+
+            if ($this->getParam('trigger')) {
+                $options = array('trigger_id' => $id);
+            } else {
+                $result = $this->price_rule->update($id, array('status' => $status));
+            }
+
+        } else if ($all) {
+            $options = array();
+        }
+
+        if (isset($options)) {
+
+            $updated = $count = 0;
+            foreach ($this->price_rule->getList($options) as $item) {
+                $count++;
+                $updated += (int) $this->price_rule->update($item['price_rule_id'], array('status' => $status));
+            }
+
+            $result = $count && $count == $updated;
+        }
+
+        if (empty($result)) {
+            $this->errorAndExit($this->text('Unexpected result'));
+        }
+
+        $this->output();
     }
 
 }

@@ -86,11 +86,11 @@ class Country extends Base
         $code = $this->getParam(0);
 
         if (empty($code)) {
-            $this->errorAndExit($this->text('Invalid ID'));
+            $this->errorAndExit($this->text('Invalid argument'));
         }
 
         if (!$this->country->delete($code)) {
-            $this->errorAndExit($this->text('An error occurred'));
+            $this->errorAndExit($this->text('Unexpected result'));
         }
 
         $this->output();
@@ -111,7 +111,7 @@ class Country extends Base
         $country = $this->country->get($code);
 
         if (empty($country)) {
-            $this->errorAndExit($this->text('Invalid ID'));
+            $this->errorAndExit($this->text('Unexpected result'));
         }
 
         return array($country);
@@ -152,7 +152,7 @@ class Country extends Base
     protected function addCountry()
     {
         if (!$this->isError() && !$this->country->add($this->getSubmitted())) {
-            $this->errorAndExit($this->text('An error occurred'));
+            $this->errorAndExit($this->text('Unexpected result'));
         }
     }
 
@@ -163,7 +163,7 @@ class Country extends Base
     protected function updateCountry($code)
     {
         if (!$this->isError() && !$this->country->update($code, $this->getSubmitted())) {
-            $this->errorAndExit($this->text('An error occurred'));
+            $this->errorAndExit($this->text('Unexpected result'));
         }
     }
 

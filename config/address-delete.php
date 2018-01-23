@@ -16,6 +16,6 @@ return array(
     ),
     'options' => array(
         '-h' => /* @text */'Show command help',
-        '-country' => /* @text */'Specifies that a user ID used instead of address id. All addresses associated with the user will be deleted'
+        '--country' => /* @text */'Specifies that a user ID used instead of address id'
     )
 );

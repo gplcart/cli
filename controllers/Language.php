@@ -94,8 +94,8 @@ class Language extends Base
             $result = $count && $count == $deleted;
         }
 
-        if (!$result) {
-            $this->errorAndExit($this->text('An error occurred'));
+        if (empty($result)) {
+            $this->errorAndExit($this->text('Unexpected result'));
         }
 
         $this->output();
@@ -118,7 +118,7 @@ class Language extends Base
         $result = $this->language->get($id);
 
         if (empty($result)) {
-            $this->errorAndExit($this->text('Invalid ID'));
+            $this->errorAndExit($this->text('Unexpected result'));
         }
 
         return array($result);
@@ -163,7 +163,7 @@ class Language extends Base
     protected function addLanguage()
     {
         if (!$this->isError() && !$this->language->add($this->getSubmitted())) {
-            $this->errorAndExit($this->text('An error occurred'));
+            $this->errorAndExit($this->text('Unexpected result'));
         }
     }
 
@@ -174,7 +174,7 @@ class Language extends Base
     protected function updateLanguage($code)
     {
         if (!$this->isError() && !$this->language->update($code, $this->getSubmitted())) {
-            $this->errorAndExit($this->text('An error occurred'));
+            $this->errorAndExit($this->text('Unexpected result'));
         }
     }
 

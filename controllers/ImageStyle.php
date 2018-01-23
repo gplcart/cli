@@ -45,7 +45,7 @@ class ImageStyle extends Base
         }
 
         if (!is_numeric($params[0])) {
-            $this->errorAndExit($this->text('Invalid ID'));
+            $this->errorAndExit($this->text('Invalid argument'));
         }
 
         $this->setSubmitted(null, $params);
@@ -79,11 +79,11 @@ class ImageStyle extends Base
         $id = $this->getParam(0);
 
         if (empty($id) || !is_numeric($id)) {
-            $this->errorAndExit($this->text('Invalid ID'));
+            $this->errorAndExit($this->text('Invalid argument'));
         }
 
         if (!$this->image_style->delete($id)) {
-            $this->errorAndExit($this->text('An error occurred'));
+            $this->errorAndExit($this->text('Unexpected result'));
         }
 
         $this->output();
@@ -106,7 +106,7 @@ class ImageStyle extends Base
         if (isset($id)) {
 
             if (!is_numeric($id)) {
-                $this->errorAndExit($this->text('Invalid ID'));
+                $this->errorAndExit($this->text('Invalid argument'));
             }
 
             $result = $this->image_style->clearCache($id);
@@ -114,8 +114,8 @@ class ImageStyle extends Base
             $result = $this->image_style->clearCache();
         }
 
-        if (!$result) {
-            $this->errorAndExit($this->text('An error occurred'));
+        if (empty($result)) {
+            $this->errorAndExit($this->text('Unexpected result'));
         }
 
         $this->output();
@@ -147,13 +147,13 @@ class ImageStyle extends Base
         }
 
         if (!is_numeric($id)) {
-            $this->errorAndExit($this->text('Invalid ID'));
+            $this->errorAndExit($this->text('Invalid argument'));
         }
 
         $result = $this->image_style->get($id);
 
         if (empty($result)) {
-            $this->errorAndExit($this->text('Invalid ID'));
+            $this->errorAndExit($this->text('Unexpected result'));
         }
 
         return array($result);
@@ -196,7 +196,7 @@ class ImageStyle extends Base
         if (!$this->isError()) {
             $id = $this->image_style->add($this->getSubmitted());
             if (empty($id)) {
-                $this->errorAndExit($this->text('An error occurred'));
+                $this->errorAndExit($this->text('Unexpected result'));
             }
             $this->line($id);
         }
@@ -209,7 +209,7 @@ class ImageStyle extends Base
     protected function updateImageStyle($imagestyle_id)
     {
         if (!$this->isError() && !$this->image_style->update($imagestyle_id, $this->getSubmitted())) {
-            $this->errorAndExit($this->text('An error occurred'));
+            $this->errorAndExit($this->text('Unexpected result'));
         }
     }
 

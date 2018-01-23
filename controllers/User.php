@@ -70,7 +70,7 @@ class User extends Base
         $id = $this->getParam(0);
 
         if (!isset($id) || !is_numeric($id)) {
-            $this->errorAndExit($this->text('Invalid ID'));
+            $this->errorAndExit($this->text('Invalid argument'));
         }
 
         $options = null;
@@ -89,13 +89,14 @@ class User extends Base
                 $deleted += (int) $this->user->delete($item['user_id']);
             }
 
-            $result = ($count == $deleted);
+            $result = $count && $count == $deleted;
+
         } else {
             $result = $this->user->delete($id);
         }
 
-        if (!$result) {
-            $this->errorAndExit($this->text('An error occurred'));
+        if (empty($result)) {
+            $this->errorAndExit($this->text('Unexpected result'));
         }
 
         $this->output();
@@ -127,7 +128,7 @@ class User extends Base
         }
 
         if (!is_numeric($params[0])) {
-            $this->errorAndExit($this->text('Invalid ID'));
+            $this->errorAndExit($this->text('Invalid argument'));
         }
 
         $this->setSubmitted(null, $params);
@@ -153,13 +154,13 @@ class User extends Base
         }
 
         if (!is_numeric($id)) {
-            $this->errorAndExit($this->text('Invalid ID'));
+            $this->errorAndExit($this->text('Invalid argument'));
         }
 
         $result = $this->user->get($id);
 
         if (empty($result)) {
-            $this->errorAndExit($this->text('Invalid ID'));
+            $this->errorAndExit($this->text('Unexpected result'));
         }
 
         return array($result);
@@ -205,7 +206,7 @@ class User extends Base
     protected function updateUser($user_id)
     {
         if (!$this->isError() && !$this->user->update($user_id, $this->getSubmitted())) {
-            $this->errorAndExit($this->text('An error occurred'));
+            $this->errorAndExit($this->text('Unexpected result'));
         }
     }
 
@@ -229,7 +230,7 @@ class User extends Base
         if (!$this->isError()) {
             $id = $this->user->add($this->getSubmitted());
             if (empty($id)) {
-                $this->errorAndExit($this->text('User has not been added'));
+                $this->errorAndExit($this->text('Unexpected result'));
             }
             $this->line($id);
         }
@@ -272,7 +273,7 @@ class User extends Base
             $id = $this->getParam(0);
 
             if (!is_numeric($id)) { // Allow 0 for roleless users
-                $this->errorAndExit($this->text('Invalid ID'));
+                $this->errorAndExit($this->text('Invalid argument'));
             }
 
             if ($this->getParam('role')) {
@@ -283,18 +284,21 @@ class User extends Base
         }
 
         if (isset($options)) {
+
             $updated = $count = 0;
             foreach ($this->user->getList($options) as $item) {
                 $count++;
                 $updated += (int) $this->user->update($item['user_id'], array('status' => (bool) $status));
             }
-            $result = ($count == $updated);
+
+            $result = $count && $count == $updated;
+
         } else if (isset($id)) {
             $result = $this->user->update($id, array('status' => (bool) $status));
         }
 
         if (empty($result)) {
-            $this->errorAndExit($this->text('An error occurred'));
+            $this->errorAndExit($this->text('Unexpected result'));
         }
     }
 

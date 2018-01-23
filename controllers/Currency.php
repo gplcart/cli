@@ -101,8 +101,8 @@ class Currency extends Base
             $result = ($count == $deleted);
         }
 
-        if (!$result) {
-            $this->errorAndExit($this->text('An error occurred'));
+        if (empty($result)) {
+            $this->errorAndExit($this->text('Unexpected result'));
         }
 
         $this->output();
@@ -125,7 +125,7 @@ class Currency extends Base
         $result = $this->currency->get($id);
 
         if (empty($result)) {
-            $this->errorAndExit($this->text('Invalid ID'));
+            $this->errorAndExit($this->text('Unexpected result'));
         }
 
         return array($result);
@@ -168,7 +168,7 @@ class Currency extends Base
     protected function addCurrency()
     {
         if (!$this->isError() && !$this->currency->add($this->getSubmitted())) {
-            $this->errorAndExit($this->text('An error occurred'));
+            $this->errorAndExit($this->text('Unexpected result'));
         }
     }
 
@@ -179,7 +179,7 @@ class Currency extends Base
     protected function updateCurrency($code)
     {
         if (!$this->isError() && !$this->currency->update($code, $this->getSubmitted())) {
-            $this->errorAndExit($this->text('An error occurred'));
+            $this->errorAndExit($this->text('Unexpected result'));
         }
     }
 

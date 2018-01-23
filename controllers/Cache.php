@@ -47,7 +47,7 @@ class Cache extends Base
         $result = $this->cache->get($id);
 
         if (!isset($result)) {
-            $this->errorAndExit($this->text('Invalid ID'));
+            $this->errorAndExit($this->text('Unexpected result'));
         }
 
         $this->outputFormat($result, 'json');
@@ -79,8 +79,8 @@ class Cache extends Base
             $result = $this->cache->clear(null);
         }
 
-        if (!$result) {
-            $this->errorAndExit($this->text('An error occurred'));
+        if (empty($result)) {
+            $this->errorAndExit($this->text('Unexpected result'));
         }
 
         $this->output();

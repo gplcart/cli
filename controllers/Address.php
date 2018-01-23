@@ -24,13 +24,13 @@ class Address extends Base
     protected $address;
 
     /**
-     * @param AddressModel $rule
+     * @param AddressModel $alias
      */
-    public function __construct(AddressModel $rule)
+    public function __construct(AddressModel $alias)
     {
         parent::__construct();
 
-        $this->address = $rule;
+        $this->address = $alias;
     }
 
     /**
@@ -52,7 +52,7 @@ class Address extends Base
         $id = $this->getParam(0);
 
         if (empty($id)) {
-            $this->errorAndExit($this->text('Invalid ID'));
+            $this->errorAndExit($this->text('Invalid argument'));
         }
 
         if ($this->getParam('user')) {
@@ -63,19 +63,19 @@ class Address extends Base
                 $deleted += (int) $this->address->delete($item['address_id']);
             }
 
-            $result = ($count == $deleted);
+            $result = $count && $count == $deleted;
 
         } else {
 
             if (!is_numeric($id)) {
-                $this->errorAndExit($this->text('Invalid ID'));
+                $this->errorAndExit($this->text('Invalid argument'));
             }
 
             $result = $this->address->delete($id);
         }
 
-        if (!$result) {
-            $this->errorAndExit($this->text('An error occurred'));
+        if (empty($result)) {
+            $this->errorAndExit($this->text('Unexpected result'));
         }
 
         $this->output();
@@ -107,7 +107,7 @@ class Address extends Base
         }
 
         if (!is_numeric($params[0])) {
-            $this->errorAndExit($this->text('Invalid ID'));
+            $this->errorAndExit($this->text('Invalid argument'));
         }
 
         $this->setSubmitted(null, $params);
@@ -136,13 +136,13 @@ class Address extends Base
         }
 
         if (!is_numeric($id)) {
-            $this->errorAndExit($this->text('Invalid ID'));
+            $this->errorAndExit($this->text('Invalid argument'));
         }
 
         $result = $this->address->get($id);
 
         if (empty($result)) {
-            $this->errorAndExit($this->text('Invalid ID'));
+            $this->errorAndExit($this->text('Unexpected result'));
         }
 
         return array($result);
@@ -188,7 +188,7 @@ class Address extends Base
             $id = $this->address->add($this->getSubmitted());
 
             if (empty($id)) {
-                $this->errorAndExit($this->text('Address has not been added'));
+                $this->errorAndExit($this->text('Unexpected result'));
             }
 
             $this->line($id);
@@ -202,7 +202,7 @@ class Address extends Base
     protected function updateAddress($address_id)
     {
         if (!$this->isError() && !$this->address->update($address_id, $this->getSubmitted())) {
-            $this->errorAndExit($this->text('Address has not been updated'));
+            $this->errorAndExit($this->text('Unexpected result'));
         }
     }
 

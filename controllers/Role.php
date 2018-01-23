@@ -24,13 +24,13 @@ class Role extends Base
     protected $role;
 
     /**
-     * @param UserRoleModel $rule
+     * @param UserRoleModel $alias
      */
-    public function __construct(UserRoleModel $rule)
+    public function __construct(UserRoleModel $alias)
     {
         parent::__construct();
 
-        $this->role = $rule;
+        $this->role = $alias;
     }
 
     /**
@@ -99,7 +99,7 @@ class Role extends Base
         if (isset($id)) {
 
             if (empty($id) || !is_numeric($id)) {
-                $this->errorAndExit($this->text('Invalid ID'));
+                $this->errorAndExit($this->text('Invalid argument'));
             }
 
             $result = $this->role->delete($id);
@@ -115,8 +115,8 @@ class Role extends Base
             $result = $count && $count == $deleted;
         }
 
-        if (!$result) {
-            $this->errorAndExit($this->text('An error occurred'));
+        if (empty($result)) {
+            $this->errorAndExit($this->text('Unexpected result'));
         }
 
         $this->output();
@@ -148,7 +148,7 @@ class Role extends Base
         }
 
         if (!is_numeric($params[0])) {
-            $this->errorAndExit($this->text('Invalid ID'));
+            $this->errorAndExit($this->text('Invalid argument'));
         }
 
         $this->setSubmitted(null, $params);
@@ -174,13 +174,13 @@ class Role extends Base
         }
 
         if (empty($id) || !is_numeric($id)) {
-            $this->errorAndExit($this->text('Invalid ID'));
+            $this->errorAndExit($this->text('Invalid argument'));
         }
 
         $result = $this->role->get($id);
 
         if (empty($result)) {
-            $this->errorAndExit($this->text('Invalid ID'));
+            $this->errorAndExit($this->text('Unexpected result'));
         }
 
         return array($result);
@@ -231,13 +231,13 @@ class Role extends Base
         $role_id = array_shift($arguments);
 
         if (!is_numeric($role_id)) {
-            $this->errorAndExit($this->text('Invalid ID'));
+            $this->errorAndExit($this->text('Invalid argument'));
         }
 
         $role = $this->role->get($role_id);
 
         if (!isset($role['permissions'])) {
-            $this->errorAndExit($this->text('Invalid ID'));
+            $this->errorAndExit($this->text('Unexpected result'));
         }
 
         return array($role_id, $role['permissions'], $arguments);
@@ -250,7 +250,7 @@ class Role extends Base
     protected function updateRole($role_id)
     {
         if (!$this->isError() && !$this->role->update($role_id, $this->getSubmitted())) {
-            $this->errorAndExit($this->text('An error occurred'));
+            $this->errorAndExit($this->text('Unexpected result'));
         }
     }
 
@@ -273,7 +273,7 @@ class Role extends Base
         if (!$this->isError()) {
             $id = $this->role->add($this->getSubmitted());
             if (empty($id)) {
-                $this->errorAndExit($this->text('An error occurred'));
+                $this->errorAndExit($this->text('Unexpected result'));
             }
             $this->line($id);
         }

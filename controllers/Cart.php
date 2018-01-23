@@ -24,13 +24,13 @@ class Cart extends Base
     protected $cart;
 
     /**
-     * @param CartModel $rule
+     * @param CartModel $alias
      */
-    public function __construct(CartModel $rule)
+    public function __construct(CartModel $alias)
     {
         parent::__construct();
 
-        $this->cart = $rule;
+        $this->cart = $alias;
     }
 
     /**
@@ -60,7 +60,7 @@ class Cart extends Base
         } else if ($this->getParam('order')) {
 
             if (!is_numeric($id)) {
-                $this->errorAndExit($this->text('Invalid ID'));
+                $this->errorAndExit($this->text('Invalid argument'));
             }
 
             $options = array('order_id' => $id);
@@ -79,14 +79,14 @@ class Cart extends Base
         } else {
 
             if (empty($id) || !is_numeric($id)) {
-                $this->errorAndExit($this->text('Invalid ID'));
+                $this->errorAndExit($this->text('Invalid argument'));
             }
 
             $result = $this->cart->delete($id);
         }
 
-        if (!$result) {
-            $this->errorAndExit($this->text('An error occurred'));
+        if (empty($result)) {
+            $this->errorAndExit($this->text('Unexpected result'));
         }
 
         $this->output();
@@ -127,7 +127,7 @@ class Cart extends Base
         }
 
         if (!is_numeric($id)) {
-            $this->errorAndExit($this->text('Invalid ID'));
+            $this->errorAndExit($this->text('Invalid argument'));
         }
 
         if ($this->getParam('order')) {
@@ -141,7 +141,7 @@ class Cart extends Base
         $result = $this->cart->get($id);
 
         if (empty($result)) {
-            $this->errorAndExit($this->text('Invalid ID'));
+            $this->errorAndExit($this->text('Unexpected result'));
         }
 
         return array($result);
@@ -220,7 +220,7 @@ class Cart extends Base
         if (!$this->isError()) {
             $id = $this->cart->add($this->getSubmitted());
             if (empty($id)) {
-                $this->errorAndExit($this->text('An error occurred'));
+                $this->errorAndExit($this->text('Unexpected result'));
             }
             $this->line($id);
         }

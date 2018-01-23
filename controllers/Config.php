@@ -45,7 +45,7 @@ class Config extends Base
         if (isset($name)) {
             $result = $this->config->get($name);
             if (!isset($result)) {
-                $this->errorAndExit($this->text('Invalid ID'));
+                $this->errorAndExit($this->text('Invalid argument'));
             }
             $list = array($name => $result);
         } else {
@@ -75,11 +75,11 @@ class Config extends Base
         $id = $this->getParam(0);
 
         if (!isset($id)) {
-            $this->errorAndExit($this->text('Invalid ID'));
+            $this->errorAndExit($this->text('Invalid argument'));
         }
 
         if (!$this->config->reset($id)) {
-            $this->errorAndExit($this->text('An error occurred'));
+            $this->errorAndExit($this->text('Unexpected result'));
         }
 
         $this->output();
@@ -98,7 +98,7 @@ class Config extends Base
         }
 
         if (!$this->config->set($key, $value)) {
-            $this->errorAndExit($this->text('An error occurred'));
+            $this->errorAndExit($this->text('Unexpected result'));
         }
 
         $this->output();

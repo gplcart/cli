@@ -71,7 +71,7 @@ class Zone extends Base
         }
 
         if (!is_numeric($params[0])) {
-            $this->errorAndExit($this->text('Invalid ID'));
+            $this->errorAndExit($this->text('Invalid argument'));
         }
 
         $this->setSubmitted(null, $params);
@@ -100,16 +100,18 @@ class Zone extends Base
         if (!empty($id)) {
             $result = $this->zone->delete($id);
         } else if (!empty($all)) {
+
             $deleted = $count = 0;
             foreach ($this->zone->getList() as $zone) {
                 $count++;
                 $deleted += (int) $this->zone->delete($zone['zone_id']);
             }
-            $result = ($count == $deleted);
+
+            $result = $count && $count == $deleted;
         }
 
-        if (!$result) {
-            $this->errorAndExit($this->text('An error occurred'));
+        if (empty($result)) {
+            $this->errorAndExit($this->text('Unexpected result'));
         }
 
         $this->output();
@@ -128,16 +130,16 @@ class Zone extends Base
         }
 
         if (!is_numeric($id)) {
-            $this->errorAndExit($this->text('Invalid ID'));
+            $this->errorAndExit($this->text('Invalid argument'));
         }
 
-        $zone = $this->zone->get($id);
+        $result = $this->zone->get($id);
 
-        if (empty($zone)) {
-            $this->errorAndExit($this->text('Invalid ID'));
+        if (empty($result)) {
+            $this->errorAndExit($this->text('Unexpected result'));
         }
 
-        return array($zone);
+        return array($result);
     }
 
     /**
@@ -172,7 +174,7 @@ class Zone extends Base
     protected function updateZone($zone_id)
     {
         if (!$this->isError() && !$this->zone->update($zone_id, $this->getSubmitted())) {
-            $this->errorAndExit($this->text('An error occurred'));
+            $this->errorAndExit($this->text('Unexpected result'));
         }
     }
 
@@ -194,7 +196,7 @@ class Zone extends Base
         if (!$this->isError()) {
             $id = $this->zone->add($this->getSubmitted());
             if (empty($id)) {
-                $this->errorAndExit($this->text('An error occurred'));
+                $this->errorAndExit($this->text('Unexpected result'));
             }
             $this->line($id);
         }
