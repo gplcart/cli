@@ -24,13 +24,13 @@ class Cart extends Base
     protected $cart;
 
     /**
-     * @param CartModel $alias
+     * @param CartModel $cart
      */
-    public function __construct(CartModel $alias)
+    public function __construct(CartModel $cart)
     {
         parent::__construct();
 
-        $this->cart = $alias;
+        $this->cart = $cart;
     }
 
     /**

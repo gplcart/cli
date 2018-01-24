@@ -31,14 +31,14 @@ class PriceRule extends Base
     protected $currency;
 
     /**
-     * @param PriceRuleModel $price_alias
+     * @param PriceRuleModel $price_rule
      * @param CurrencyModel $currency
      */
-    public function __construct(PriceRuleModel $price_alias, CurrencyModel $currency)
+    public function __construct(PriceRuleModel $price_rule, CurrencyModel $currency)
     {
         parent::__construct();
 
-        $this->price_rule = $price_alias;
+        $this->price_rule = $price_rule;
         $this->currency = $currency;
     }
 

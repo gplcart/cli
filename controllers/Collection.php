@@ -56,7 +56,7 @@ class Collection extends Base
             $this->errorAndExit($this->text('Invalid command'));
         }
 
-        $options = $result = null;
+        $options = null;
 
         if (isset($id)) {
 

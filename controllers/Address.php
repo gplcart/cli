@@ -24,13 +24,13 @@ class Address extends Base
     protected $address;
 
     /**
-     * @param AddressModel $alias
+     * @param AddressModel $address
      */
-    public function __construct(AddressModel $alias)
+    public function __construct(AddressModel $address)
     {
         parent::__construct();
 
-        $this->address = $alias;
+        $this->address = $address;
     }
 
     /**

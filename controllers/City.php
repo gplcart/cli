@@ -24,13 +24,13 @@ class City extends Base
     protected $city;
 
     /**
-     * @param CityModel $alias
+     * @param CityModel $city
      */
-    public function __construct(CityModel $alias)
+    public function __construct(CityModel $city)
     {
         parent::__construct();
 
-        $this->city = $alias;
+        $this->city = $city;
     }
 
     /**

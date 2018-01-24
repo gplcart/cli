@@ -24,13 +24,13 @@ class Role extends Base
     protected $role;
 
     /**
-     * @param UserRoleModel $alias
+     * @param UserRoleModel $role
      */
-    public function __construct(UserRoleModel $alias)
+    public function __construct(UserRoleModel $role)
     {
         parent::__construct();
 
-        $this->role = $alias;
+        $this->role = $role;
     }
 
     /**
