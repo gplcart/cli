@@ -38,8 +38,13 @@ class Main
             $command = pathinfo($file, PATHINFO_FILENAME);
             $list[$command] = gplcart_config_get($file);
 
+            $method = $command;
             $parts = explode('-', $command);
-            $method = array_pop($parts);
+
+            if (count($parts) > 1) {
+                $method = array_pop($parts);
+            }
+
             $class_name = implode('', $parts);
 
             $list[$command]['handlers']['controller'] = array(
