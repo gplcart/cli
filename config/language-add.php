@@ -15,13 +15,13 @@ return array(
         'gplcart (language-add | ladd) (--code=<code>) [options]'
     ),
     'options' => array(
-        '--code' => /* @text */'Language code',
-        '--name' => /* @text */'Language name [default: ]',
-        '--native_name' => /* @text */'Language native name [default: ]',
-        '--status' => /* @text */'Enable / disable for customers [default: 0]',
-        '--default' => /* @text */'Set default [default: 0]',
-        '--weight' => /* @text */'Position in lists [default: 0]',
-        '--rtl' => /* @text */'Set right-to-left script [default: 0]',
-        '-h' => /* @text */'Show command help'
+        '-h' => /* @text */'Show command help',
+        '--code' => /* @text */'Code',
+        '--name' => /* @text */'Name' . ' [default: ]',
+        '--native_name' => /* @text */'Native name' . ' [default: ]',
+        '--status' => /* @text */'Status' . ' [default: 0]',
+        '--default' => /* @text */'Default' . ' [default: 0]',
+        '--weight' => /* @text */'Weight' . ' [default: 0]',
+        '--rtl' => /* @text */'Right-to-left' . ' [default: 0]'
     )
 );

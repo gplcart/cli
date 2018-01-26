@@ -11,16 +11,16 @@ return array(
     'description' => /* @text */'Display one or several cities',
     'usage' => array(
         'gplcart (city-get | ciget) -h',
-        'gplcart (city-get | ciget) [-f=<format> -l=<number>]',
+        'gplcart (city-get | ciget) [-f=<format> -l=<offset,limit>]',
         'gplcart (city-get | ciget) <city id> [-f=<format>]',
-        'gplcart (city-get | ciget) <state id> --state [-f=<format>]',
-        'gplcart (city-get | ciget) <country code> --country [-f=<format>]'
+        'gplcart (city-get | ciget) <state id> --state [-f=<format> -l=<offset,limit>]',
+        'gplcart (city-get | ciget) <country code> --country [-f=<format> -l=<offset,limit>]'
     ),
     'options' => array(
         '-h' => /* @text */'Show command help',
-        '-f' => /* @text */'Format of displayed data. Allowed values: print-r, var-export, var-dump, json, table [default: table]',
         '-l' => /* @text */'Max number of displayed items [default: 100]',
-        '--state' => /* @text */'Specifies that a country state ID used instead of city ID',
-        '--country' => /* @text */'Specifies that a country code used instead of city ID',
+        '-f' => /* @text */'Format of displayed data: print-r, var-export, var-dump, json, table [default: table]',
+        '--state' => /* @text */'Delete ALL cities for the country state ID argument',
+        '--country' => /* @text */'Delete ALL cities for the country code argument',
     )
 );

@@ -16,6 +16,6 @@ return array(
     ),
     'options' => array(
         '-h' => /* @text */'Show command help',
-        '--country' => /* @text */'Specifies that a user ID used instead of address id'
+        '--country' => /* @text */'Specifies that a user ID used instead of address ID'
     )
 );

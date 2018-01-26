@@ -12,13 +12,13 @@ return array(
     'usage' => array(
         'gplcart (field-value-add | fvadd) -h',
         'gplcart (field-value-add | fvadd)',
-        'gplcart (field-value-add | fvadd) (--title=<varchar> --field_id=<int>) [--color=<varchar> --weight=<varchar>]',
+        'gplcart (field-value-add | fvadd) (--title=<varchar> --field_id=<int>) [--color=<varchar> --weight=<int>]',
     ),
     'options' => array(
         '-h' => /* @text */'Show command help',
         '--title' => /* @text */'Title',
         '--field_id' => /* @text */'Field ID',
-        '--color' => /* @text */'HEX color code [default: ]',
-        '--weight' => /* @text */'Position in lists [default: 0]',
+        '--color' => /* @text */'Color' . ' [default: ]',
+        '--weight' => /* @text */'Weight' . ' [default: 0]',
     )
 );

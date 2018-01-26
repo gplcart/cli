@@ -11,13 +11,14 @@ return array(
     'description' => /* @text */'Update field value',
     'usage' => array(
         'gplcart (field-value-update | fvup) -h',
-        'gplcart (field-value-update | fvup) <field value id> (--title=<varchar> | --field_id=<int> | --color=<varchar> | --weight=<varchar>)',
+        'gplcart (field-value-update | fvup) <field value id> (--title=<varchar> | --field_id=<int>
+        | --color=<varchar> | --weight=<int>)',
     ),
     'options' => array(
         '-h' => /* @text */'Show command help',
         '--title' => /* @text */'Title',
         '--field_id' => /* @text */'Field ID',
-        '--color' => /* @text */'HEX color code',
-        '--weight' => /* @text */'Position in lists',
+        '--color' => /* @text */'Color',
+        '--weight' => /* @text */'Weight',
     )
 );

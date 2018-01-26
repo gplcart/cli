@@ -16,6 +16,6 @@ return array(
     ),
     'options' => array(
         '-h' => /* @text */'Show command help',
-        '--all' => /* @text */'Drop all tables in the database'
+        '--all' => /* @text */'Drop ALL tables in the database'
     )
 );

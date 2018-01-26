@@ -30,19 +30,28 @@ class Asset extends Base
      */
     public function cmdCacheClearAsset()
     {
-        $type = $this->getParam(0);
+        $params = $this->getParam();
 
-        if (empty($type)) {
+        if (empty($params)) {
             foreach (new DirectoryIterator(GC_DIR_ASSET_COMPILED) as $file) {
                 if ($file->isDir() && !$file->isDot()) {
                     gplcart_file_delete_recursive($file->getRealPath());
                 }
             }
         } else {
-            $file = GC_DIR_ASSET_COMPILED . "/$type";
-            if (!is_dir($file)) {
+
+            $file = null;
+
+            if (!empty($params['css'])) {
+                $file = GC_DIR_ASSET_COMPILED . '/css';
+            } else if (!empty($params['js'])) {
+                $file = GC_DIR_ASSET_COMPILED . '/js';
+            }
+
+            if (empty($file) || !is_dir($file)) {
                 $this->errorAndExit($this->text('Invalid command'));
             }
+
             gplcart_file_delete_recursive($file);
         }
 

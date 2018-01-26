@@ -149,6 +149,10 @@ class Page extends Base
             return $this->page->getList(array('limit' => $this->getLimit()));
         }
 
+        if (!is_numeric($id)) {
+            $this->errorAndExit($this->text('Invalid argument'));
+        }
+
         if ($this->getParam('user')) {
             return $this->page->getList(array('user_id' => $id, 'limit' => $this->getLimit()));
         }
@@ -159,10 +163,6 @@ class Page extends Base
 
         if ($this->getParam('store')) {
             return $this->page->getList(array('store_id' => $id, 'limit' => $this->getLimit()));
-        }
-
-        if (!is_numeric($id)) {
-            $this->errorAndExit($this->text('Invalid argument'));
         }
 
         $result = $this->page->get($id);

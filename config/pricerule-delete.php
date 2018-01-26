@@ -18,7 +18,7 @@ return array(
     ),
     'options' => array(
         '-h' => /* @text */'Show command help',
-        '--all' => /* @text */'Delete all price rules',
-        '--trigger' => /* @text */'Specifies that a trigger ID used instead of price rule ID'
+        '--all' => /* @text */'Delete ALL price rules if no ID argument specified',
+        '--trigger' => /* @text */'Delete ALL price rules with the trigger ID argument'
     )
 );

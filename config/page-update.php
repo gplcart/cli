@@ -12,7 +12,7 @@ return array(
     'usage' => array(
         'gplcart (page-update | pgup) -h',
         'gplcart (page-update | pgup) <page id> (--title=<varchar> | --description=<text> | --user_id=<int>
-        | --related_page_id=<int> | --category_id=<int> | --store_id=<int> | --blog_post=<bool>
+        | --category_id=<int> | --store_id=<int> | --blog_post=<bool>
         | --meta_title=<varchar> | --meta_description=<varchar> | --status=<bool>)',
     ),
     'options' => array(
@@ -21,9 +21,8 @@ return array(
         '--description' => /* @text */'Description',
         '--store_id' => /* @text */'Store ID',
         '--user_id' => /* @text */'User ID',
-        '--related_page_id' => /* @text */'Related page ID',
         '--category_id' => /* @text */'Category ID',
-        '--blog_post' => /* @text */'Is blog post',
+        '--blog_post' => /* @text */'Blog post',
         '--meta_title' => /* @text */'Meta title',
         '--meta_description' => /* @text */'Meta description',
         '--status' => /* @text */'Status'

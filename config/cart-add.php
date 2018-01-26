@@ -16,13 +16,13 @@ return array(
         [--order_id=<int> --quantity=<int> --data=<json>]',
     ),
     'options' => array(
+        '-h' => /* @text */'Show command help',
         '--user_id' => /* @text */'User ID',
-        '--sku' => /* @text */'Product SKU',
+        '--sku' => /* @text */'SKU',
         '--product_id' => /* @text */'Product ID',
         '--store_id' => /* @text */'Store ID',
-        '--order_id' => /* @text */'Order ID [default: 0]',
-        '--quantity' => /* @text */'Product quantity [default: 1]',
-        '--data' => /* @text */'JSON string',
-        '-h' => /* @text */'Show command help'
+        '--order_id' => /* @text */'Order ID' . ' [default: 0]',
+        '--quantity' => /* @text */'Quantity' . ' [default: 1]',
+        '--data' => /* @text */'JSON string'
     )
 );

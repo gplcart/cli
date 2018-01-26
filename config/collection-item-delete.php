@@ -16,6 +16,6 @@ return array(
     ),
     'options' => array(
         '-h' => /* @text */'Show command help',
-        '--collection' => /* @text */'Specifies that a collection ID used instead of collection item ID'
+        '--collection' => /* @text */'Delete ALL collection items for the collection ID argument'
     )
 );

@@ -11,26 +11,27 @@ return array(
     'description' => /* @text */'Update currency',
     'usage' => array(
         'gplcart (currency-update | cuup) -h',
-        'gplcart (currency-update | cuup) <currency code> (--name=<name> | --symbol=<symbol>'
-        . ' | --status=<boolean> | --default=<boolean> | --decimals=<integer>'
-        . ' | --major_unit=<name> | --minor_unit=<name> | --numeric_code=<integer>'
-        . ' | --rounding_step=<numeric> | --conversion_rate=<numeric>'
-        . ' | --decimal_separator=<string> | --thousands_separator=<string> | --template=<string>)'
+        'gplcart (currency-update | cuup) <currency code> (--name=<varchar> | --symbol=<varchar>'
+        . ' | --status=<bool> | --default=<bool> | --decimals=<int>'
+        . ' | --major_unit=<varchar> | --minor_unit=<varchar> | --numeric_code=<int>'
+        . ' | --rounding_step=<decimal> | --conversion_rate=<decimal>'
+        . ' | --decimal_separator=<varchar> | --thousands_separator=<varchar> | --template=<varchar>)'
     ),
     'options' => array(
-        '--name' => /* @text */'Currency name',
-        '--symbol' => /* @text */'Currency sign',
-        '--status' => /* @text */'Enable / disable for customers',
-        '--default' => /* @text */'Set default',
-        '--decimals' => /* @text */'Number of decimal points',
-        '--major_unit' => /* @text */'Name of the highest valued currency unit',
-        '--minor_unit' => /* @text */'Name of the lowest valued currency unit',
-        '--numeric_code' => /* @text */'ISO 4217 currency numeric code',
+        '-h' => /* @text */'Show command help',
+        '--code' => /* @text */'Code',
+        '--name' => /* @text */'Name',
+        '--symbol' => /* @text */'Symbol',
+        '--major_unit' => /* @text */'Major unit',
+        '--minor_unit' => /* @text */'Minor unit',
+        '--numeric_code' => /* @text */'Numeric code',
+        '--status' => /* @text */'Status',
+        '--default' => /* @text */'Default',
+        '--decimals' => /* @text */'Decimals',
         '--rounding_step' => /* @text */'Rounding step',
-        '--conversion_rate' => /* @text */'Exchange rate against base currency',
-        '--decimal_separator' => /* @text */'Character to separate decimals',
-        '--thousands_separator' => /* @text */'Character to separate thousands',
-        '--template' => /* @text */'Template to format prices',
-        '-h' => /* @text */'Show command help'
+        '--conversion_rate' => /* @text */'Conversion rate',
+        '--decimal_separator' => /* @text */'Decimal separator',
+        '--thousands_separator' => /* @text */'Thousands separator',
+        '--template' => /* @text */'Template'
     )
 );

@@ -12,12 +12,12 @@ return array(
     'description' => /* @text */'Display one or several shipping methods',
     'usage' => array(
         'gplcart (shipping-get | smget) -h',
-        'gplcart (shipping-get | smget) [-f=<format> -l=<number>]',
+        'gplcart (shipping-get | smget) [-f=<format> -l=<offset,limit>]',
         'gplcart (shipping-get | smget) <shipping method id> [-f=<format>]'
     ),
     'options' => array(
-        '-f' => /* @text */'Format of displayed data. Allowed values: print-r, var-export, var-dump, json, table [default: table]',
+        '-h' => /* @text */'Show command help',
         '-l' => /* @text */'Max number of displayed items [default: 100]',
-        '-h' => /* @text */'Show command help'
+        '-f' => /* @text */'Format of displayed data: print-r, var-export, var-dump, json, table [default: table]'
     )
 );

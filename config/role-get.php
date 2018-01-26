@@ -11,12 +11,12 @@ return array(
     'description' => /* @text */'Display one or several user roles',
     'usage' => array(
         'gplcart (role-get | rget) -h',
-        'gplcart (role-get | rget) [-f=<format> -l=<number>]',
+        'gplcart (role-get | rget) [-f=<format> -l=<offset,limit>]',
         'gplcart (role-get | rget) <role id> [-f=<format>]'
     ),
     'options' => array(
         '-h' => /* @text */'Show command help',
-        '-f' => /* @text */'Format of displayed data. Allowed values: print-r, var-export, var-dump, json, table [default: table]',
-        '-l' => /* @text */'Max number of displayed items [default: 100]'
+        '-l' => /* @text */'Max number of displayed items [default: 100]',
+        '-f' => /* @text */'Format of displayed data: print-r, var-export, var-dump, json, table [default: table]'
     )
 );

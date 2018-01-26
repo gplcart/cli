@@ -20,11 +20,11 @@ return array(
     ),
     'options' => array(
         '-h' => /* @text */'Show command help',
-        '-f' => /* @text */'Format of displayed data. Allowed values: print-r, var-export, var-dump, json, table [default: table]',
+        '-f' => /* @text */'Format of displayed data: print-r, var-export, var-dump, json, table [default: table]',
         '-l' => /* @text */'Max number of displayed items [default: 100]',
-        '--user' => /* @text */'Specifies that a user ID used instead of cart ID',
-        '--order' => /* @text */'Specifies that an order ID used instead of cart ID',
-        '--sku' => /* @text */'Specifies that a SKU used instead of cart ID',
-        '--store' => /* @text */'Specifies that a store ID used instead of cart ID',
+        '--user' => /* @text */'Display all cart items for the user ID',
+        '--order' => /* @text */'Display all cart items for the order ID',
+        '--sku' => /* @text */'Display all cart items for the SKU',
+        '--store' => /* @text */'Display all cart items for the store ID',
     )
 );

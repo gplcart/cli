@@ -19,10 +19,10 @@ return array(
     ),
     'options' => array(
         '-h' => /* @text */'Show command help',
-        '-f' => /* @text */'Format of displayed data. Allowed values: print-r, var-export, var-dump, json, table [default: table]',
+        '-f' => /* @text */'Format of displayed data: print-r, var-export, var-dump, json, table [default: table]',
         '-l' => /* @text */'Max number of displayed items [default: 100]',
-        '--user' => /* @text */'Specifies that a user ID used instead of page ID',
-        '--store' => /* @text */'Specifies that a store ID used instead of page ID',
-        '--category' => /* @text */'Specifies that a category ID used instead of page ID',
+        '--user' => /* @text */'Display all pages with the user ID argument',
+        '--store' => /* @text */'Display all pages with the store ID argument',
+        '--category' => /* @text */'Display all pages with the category ID argument',
     )
 );

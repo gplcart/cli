@@ -16,6 +16,6 @@ return array(
     ),
     'options' => array(
         '-h' => /* @text */'Show command help',
-        '--all' => /* @text */'Delete all cached images for all image styles if no image style ID specified'
+        '--all' => /* @text */'Delete ALL cached images for all image styles if ID argument specified'
     )
 );

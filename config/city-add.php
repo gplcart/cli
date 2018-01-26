@@ -15,11 +15,11 @@ return array(
         'gplcart (city-add | ciadd) (--name=<name> --state_id=<integer> --country=<code>) [--status=<boolean> --zone_id=<integer>]',
     ),
     'options' => array(
+        '-h' => /* @text */'Show command help',
         '--name' => /* @text */'Name',
-        '--state_id' => /* @text */'Country state ID',
+        '--state_id' => /* @text */'State',
         '--country' => /* @text */'County code',
-        '--status' => /* @text */'Status [default: 0]',
-        '--zone_id' => /* @text */'Zone ID [default: 0]',
-        '-h' => /* @text */'Show command help'
+        '--status' => /* @text */'Status' . ' [default: 0]',
+        '--zone_id' => /* @text */'Zone' . ' [default: 0]'
     )
 );

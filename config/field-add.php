@@ -12,13 +12,13 @@ return array(
     'usage' => array(
         'gplcart (field-add | fdadd) -h',
         'gplcart (field-add | fdadd)',
-        'gplcart (field-add | fdadd) (--title=<varchar> --type=<varchar> --widget=<varchar>) [--status=<boolean>]',
+        'gplcart (field-add | fdadd) (--title=<varchar> --type=<varchar> --widget=<varchar>) [--status=<bool>]',
     ),
     'options' => array(
         '-h' => /* @text */'Show command help',
         '--title' => /* @text */'Title',
         '--type' => /* @text */'Type',
         '--widget' => /* @text */'Widget',
-        '--status' => /* @text */'Enable / disable for customers [default: 0]'
+        '--status' => /* @text */'Status' . ' [default: 0]'
     )
 );

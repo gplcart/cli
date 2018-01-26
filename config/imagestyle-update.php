@@ -15,8 +15,8 @@ return array(
     ),
     'options' => array(
         '-h' => /* @text */'Show command help',
-        '--name' => /* @text */'Image style name',
-        '--status' => /* @text */'Enable / disable',
+        '--name' => /* @text */'Name',
+        '--status' => /* @text */'Status',
         '--actions' => /* @text */'Image style actions, separated by pipe. Action format: [action ID][whitespace][comma separated params]'
     )
 );

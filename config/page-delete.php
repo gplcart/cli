@@ -20,10 +20,10 @@ return array(
     ),
     'options' => array(
         '-h' => /* @text */'Show command help',
-        '--all' => /* @text */'Delete all pages',
-        '--blog' => /* @text */'Delete all blog post pages',
-        '--user' => /* @text */'Specifies that a user ID used instead of page ID',
-        '--store' => /* @text */'Specifies that a store ID used instead of page ID',
-        '--category' => /* @text */'Specifies that a category ID used instead of page ID'
+        '--all' => /* @text */'Delete ALL pages if no ID argument specified',
+        '--blog' => /* @text */'Delete ALL pages which are blog posts',
+        '--user' => /* @text */'Delete ALL pages with user ID argument',
+        '--store' => /* @text */'Delete ALL pages with store ID argument',
+        '--category' => /* @text */'Delete ALL pages with category ID argument'
     )
 );

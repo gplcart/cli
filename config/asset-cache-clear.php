@@ -8,13 +8,16 @@
  */
 return array(
     'alias' => 'ascc',
-    'description' => /* @text */'Delete cached assets',
+    'description' => /* @text */'Delete cached JS and CSS files',
     'usage' => array(
         'gplcart (asset-clear-cache | ascc) -h',
         'gplcart (asset-clear-cache | ascc)',
-        'gplcart (asset-clear-cache | ascc) <asset type>'
+        'gplcart (asset-clear-cache | ascc) --js',
+        'gplcart (asset-clear-cache | ascc) --css'
     ),
     'options' => array(
-        '-h' => /* @text */'Show command help'
+        '-h' => /* @text */'Show command help',
+        '--js' => /* @text */'Delete only cached JS files',
+        '--css' => /* @text */'Delete only cached CSS files'
     )
 );

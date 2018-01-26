@@ -12,14 +12,15 @@ return array(
     'usage' => array(
         'gplcart (collection-add | cladd) -h',
         'gplcart (collection-add | cladd)',
-        'gplcart (collection-add | cladd) (--title=<varchar> --type=<varchar> --description=<text> --store_id=<int>) [--status=<boolean>]',
+        'gplcart (collection-add | cladd) (--title=<varchar> --type=<varchar>
+        --description=<text> --store_id=<int>) [--status=<boolean>]',
     ),
     'options' => array(
         '-h' => /* @text */'Show command help',
-        '--title' => /* @text */'Collection title',
-        '--type' => /* @text */'Collection type',
         '--store_id' => /* @text */'Store ID',
-        '--description' => /* @text */'Collection description [default: ]',
-        '--status' => /* @text */'Enable / disable for customers [default: 0]'
+        '--type' => /* @text */'Collection type',
+        '--title' => /* @text */'Collection title',
+        '--status' => /* @text */'Status' . ' [default: 0]',
+        '--description' => /* @text */'Description' . ' [default: ]'
     )
 );

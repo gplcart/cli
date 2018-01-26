@@ -18,14 +18,14 @@ return array(
     ),
     'options' => array(
         '-h' => /* @text */'Show command help',
-        '--title' => /* @text */'Category title',
-        '--category_group_id' => /* @text */'Category group ID',
-        '--parent_id' => /* @text */'Parent category ID [default: 0]',
-        '--description_1' => /* @text */'First description [default: ]',
-        '--description_2' => /* @text */'Second description [default: ]',
-        '--meta_title' => /* @text */'Meta title [default: ]',
-        '--meta_description' => /* @text */'Meta description [default: ]',
-        '--status' => /* @text */'Enable / disable for customers [default: 0]',
-        '--weight' => /* @text */'Position in lists [default: 0]'
+        '--title' => /* @text */'Title',
+        '--category_group_id' => /* @text */'Category group',
+        '--parent_id' => /* @text */'Parent category ID' . ' [default: 0]',
+        '--description_1' => /* @text */'First description' . ' [default: ]',
+        '--description_2' => /* @text */'Second description' . ' [default: ]',
+        '--meta_title' => /* @text */'Meta title' . ' [default: ]',
+        '--meta_description' => /* @text */'Meta description' . ' [default: ]',
+        '--status' => /* @text */'Status' . ' [default: 0]',
+        '--weight' => /* @text */'Weight' . ' [default: 0]'
     )
 );

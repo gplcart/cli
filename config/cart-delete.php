@@ -17,9 +17,9 @@ return array(
         'gplcart (cart-delete | crdel) <order id> --order'
     ),
     'options' => array(
-        '--sku' => /* @text */'Specifies that a SKU used instead of cart ID',
-        '--user' => /* @text */'Specifies that a user ID used instead of cart ID',
-        '--order' => /* @text */'Specifies that an order ID used instead of cart ID'
-
+        '-h' => /* @text */'Show command help',
+        '--sku' => /* @text */'Delete ALL cart items with the SKU',
+        '--user' => /* @text */'Delete ALL cart items for the user ID',
+        '--order' => /* @text */'Delete ALL cart items for the order ID'
     )
 );

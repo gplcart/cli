@@ -11,16 +11,17 @@ return array(
     'description' => /* @text */'Update country',
     'usage' => array(
         'gplcart (country-update | coup) -h',
-        'gplcart (country-update | coup) <country code> (--code=<code> | --status=<bool> | --name=<name> | --native_name=<native name> | --zone_id=<integer> | --weight=<integer> | --format=<json>)'
+        'gplcart (country-update | coup) <country code> (--code=<varchar> | --status=<bool> | --name=<varchar>
+        | --native_name=<varchar> | --zone_id=<int> | --weight=<int> | --format=<json>)'
     ),
     'options' => array(
-        '--code' => /* @text */'ISO 3166-2 country code',
-        '--name' => /* @text */'International country name',
-        '--native_name' => /* @text */'Local country name',
-        '--status' => /* @text */'Enable / disable for customers',
+        '-h' => /* @text */'Show command help',
+        '--code' => /* @text */'Code',
+        '--name' => /* @text */'Name',
+        '--native_name' => /* @text */'Native name',
+        '--status' => /* @text */'Status',
         '--zone_id' => /* @text */'Zone ID',
-        '--weight' => /* @text */'Position in lists',
-        '--format' => /* @text */'JSON string',
-        '-h' => /* @text */'Show command help'
+        '--weight' => /* @text */'Weight',
+        '--format' => /* @text */'JSON string'
     )
 );

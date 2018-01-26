@@ -11,15 +11,16 @@ return array(
     'description' => /* @text */'Update language',
     'usage' => array(
         'gplcart (language-update | lup) -h',
-        'gplcart (language-update | lup) <language code> (--name=<name> | --native_name=<name> | --status=<boolean> | --weight=<integer> | --default=<boolean> | --rtl=<boolean>)'
+        'gplcart (language-update | lup) <language code> (--name=<varchar> | --native_name=<varchar> | --status=<bool>
+        | --weight=<int> | --default=<bool> | --rtl=<bool>)'
     ),
     'options' => array(
-        '--name' => /* @text */'Language name',
-        '--native_name' => /* @text */'Language native name',
-        '--status' => /* @text */'Enable / disable for customers',
-        '--default' => /* @text */'Set default',
-        '--weight' => /* @text */'Position in lists',
-        '--rtl' => /* @text */'Set right-to-left script',
-        '-h' => /* @text */'Show command help'
+        '-h' => /* @text */'Show command help',
+        '--name' => /* @text */'Name',
+        '--native_name' => /* @text */'Native name',
+        '--status' => /* @text */'Status',
+        '--default' => /* @text */'Default',
+        '--weight' => /* @text */'Weight',
+        '--rtl' => /* @text */'Right-to-left'
     )
 );

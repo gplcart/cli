@@ -18,9 +18,9 @@ return array(
     ),
     'options' => array(
         '-h' => /* @text */'Show command help',
-        '-f' => /* @text */'Format of displayed data. Allowed values: print-r, var-export, var-dump, json, table [default: table]',
         '-l' => /* @text */'Max number of displayed items [default: 100]',
-        '--store' => /* @text */'Specifies that a store ID used instead of category group ID',
-        '--type' => /* @text */'Specifies that a category group type used instead of category group ID'
+        '-f' => /* @text */'Format of displayed data: print-r, var-export, var-dump, json, table [default: table]',
+        '--store' => /* @text */'Display all category groups for the store ID argument',
+        '--type' => /* @text */'Display all category groups for the type argument'
     )
 );

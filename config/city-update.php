@@ -11,14 +11,15 @@ return array(
     'description' => /* @text */'Update city',
     'usage' => array(
         'gplcart (city-update | ciup) -h',
-        'gplcart (city-update | ciup) <city id> (--name=<name> | --state_id=<integer> | --country=<code> | --status=<boolean> | --zone_id=<integer>)'
+        'gplcart (city-update | ciup) <city id> (--name=<name> | --state_id=<integer> | --country=<code>
+        | --status=<boolean> | --zone_id=<integer>)'
     ),
     'options' => array(
+        '-h' => /* @text */'Show command help',
         '--name' => /* @text */'Name',
-        '--state_id' => /* @text */'Country state ID',
-        '--country' => /* @text */'County code',
-        '--status' => /* @text */'Status',
         '--zone_id' => /* @text */'Zone ID',
-        '-h' => /* @text */'Show command help'
+        '--country' => /* @text */'County code',
+        '--state_id' => /* @text */'Country state ID',
+        '--status' => /* @text */'Status' . ' [default: 0]'
     )
 );

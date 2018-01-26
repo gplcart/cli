@@ -16,6 +16,6 @@ return array(
     ),
     'options' => array(
         '-h' => /* @text */'Show command help',
-        '--field' => /* @text */'Specifies that a field ID used instead of field value ID'
+        '--field' => /* @text */'Delete ALL field values with the field ID argument'
     )
 );

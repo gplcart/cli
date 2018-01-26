@@ -18,9 +18,9 @@ return array(
     ),
     'options' => array(
         '-h' => /* @text */'Show command help',
-        '-f' => /* @text */'Format of displayed data. Allowed values: print-r, var-export, var-dump, json, table [default: table]',
+        '-f' => /* @text */'Format of displayed data: print-r, var-export, var-dump, json, table [default: table]',
         '-l' => /* @text */'Max number of displayed items [default: 100]',
-        '--type' => /* @text */'Specifies that a field type used instead of field ID',
-        '--widget' => /* @text */'Specifies that a widget name used instead of field ID'
+        '--widget' => /* @text */'Display all fields with the widget argument',
+        '--type' => /* @text */'Display all fields with the type arguments'
     )
 );

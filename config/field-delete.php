@@ -18,8 +18,8 @@ return array(
     ),
     'options' => array(
         '-h' => /* @text */'Show command help',
-        '--all' => /* @text */'Delete all fields',
-        '--type' => /* @text */'Specifies that a field type used instead of field ID',
-        '--widget' => /* @text */'Specifies that a widget name used instead of field ID'
+        '--all' => /* @text */'Delete ALL fields if not ID argument specified',
+        '--type' => /* @text */'Delete ALL fields with the type argument',
+        '--widget' => /* @text */'Delete ALL fields with the widget argument'
     )
 );

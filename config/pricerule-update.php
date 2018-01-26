@@ -17,12 +17,12 @@ return array(
     'options' => array(
         '--name' => /* @text */'Name',
         '--trigger_id' => /* @text */'Trigger ID',
-        '--value' => /* @text */'Integer value',
+        '--value' => /* @text */'Value',
         '--value_type' => /* @text */'Value type',
-        '--currency' => /* @text */'Currency code',
+        '--currency' => /* @text */'Currency',
         '--code' => /* @text */'Code',
         '--status' => /* @text */'Status',
-        '--weight' => /* @text */'Position in lists',
+        '--weight' => /* @text */'Weight',
         '-h' => /* @text */'Show command help'
     )
 );

@@ -17,7 +17,7 @@ return array(
     ),
     'options' => array(
         '-h' => /* @text */'Show command help',
-        '--country' => /* @text */'Specifies that a country code used instead of city id. All cities associated with the country will be deleted',
-        '--state' => /* @text */'Specifies that a country state ID used instead of city id. All cities associated with the country state will be deleted'
+        '--country' => /* @text */'Delete ALL cities for the country code argument',
+        '--state' => /* @text */'Delete ALL cities for the country state ID argument'
     )
 );

@@ -18,9 +18,9 @@ return array(
     ),
     'options' => array(
         '-h' => /* @text */'Show command help',
-        '-f' => /* @text */'Format of displayed data. Allowed values: print-r, var-export, var-dump, json, table [default: table]',
+        '-f' => /* @text */'Format of displayed data: print-r, var-export, var-dump, json, table [default: table]',
         '-l' => /* @text */'Max number of displayed items [default: 100]',
-        '--group' => /* @text */'Specifies that a category group ID used instead of category ID',
-        '--parent' => /* @text */'Specifies that a parent category ID used instead of category ID',
+        '--group' => /* @text */'Display all categories for the category group ID argument',
+        '--parent' => /* @text */'Display all categories for the parent category ID argument'
     )
 );

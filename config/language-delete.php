@@ -16,6 +16,6 @@ return array(
     ),
     'options' => array(
         '-h' => /* @text */'Show command help',
-        '--all' => /* @text */'Delete all languages if no language code specified',
+        '--all' => /* @text */'Delete ALL languages if no language code specified',
     )
 );

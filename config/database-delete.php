@@ -8,7 +8,7 @@
  */
 return array(
     'alias' => 'dbdel',
-    'description' => /* @text */'Delete table record',
+    'description' => /* @text */'Delete database record',
     'usage' => array(
         'gplcart (database-delete | dbdel) -h',
         'gplcart (database-delete | dbdel) <table name> (--column=<condition value> ...)'

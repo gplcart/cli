@@ -84,12 +84,28 @@ class Country extends Base
     public function cmdDeleteCountry()
     {
         $code = $this->getParam(0);
+        $all = $this->getParam('all');
 
-        if (empty($code)) {
-            $this->errorAndExit($this->text('Invalid argument'));
+        if (empty($code) && empty($all)) {
+            $this->errorAndExit($this->text('Invalid command'));
         }
 
-        if (!$this->country->delete($code)) {
+        $result = null;
+
+        if (!empty($code)) {
+            $result = $this->country->delete($code);
+        } else if (!empty($all)) {
+
+            $deleted = $count = 0;
+            foreach ($this->country->getList() as $item) {
+                $count++;
+                $deleted += (int) $this->country->delete($item['code']);
+            }
+
+            $result = $count && $count == $deleted;
+        }
+
+        if (empty($result)) {
             $this->errorAndExit($this->text('Unexpected result'));
         }
 

@@ -11,14 +11,14 @@ return array(
     'description' => /* @text */'Display one or several triggers',
     'usage' => array(
         'gplcart (trigger-get | trget) -h',
-        'gplcart (trigger-get | trget) [-f=<format> -l=<number>]',
+        'gplcart (trigger-get | trget) [-f=<format> -l=<offset,limit>]',
         'gplcart (trigger-get | trget) <trigger id> [-f=<format>]',
-        'gplcart (trigger-get | trget) <store id> --store [-f=<format>]'
+        'gplcart (trigger-get | trget) <store id> --store [-f=<format> -l=<offset,limit>]'
     ),
     'options' => array(
         '-h' => /* @text */'Show command help',
-        '-f' => /* @text */'Format of displayed data. Allowed values: print-r, var-export, var-dump, json, table [default: table]',
         '-l' => /* @text */'Max number of displayed items [default: 100]',
+        '-f' => /* @text */'Format of displayed data: print-r, var-export, var-dump, json, table [default: table]',
         '--store' => /* @text */'Specifies that a store ID used instead of trigger ID'
     )
 );

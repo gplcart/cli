@@ -11,12 +11,12 @@ return array(
     'description' => /* @text */'Display one or several stores',
     'usage' => array(
         'gplcart (store-get | sget) -h',
-        'gplcart (store-get | sget) [-f=<format> -l=<number>]',
+        'gplcart (store-get | sget) [-f=<format> -l=<offset,limit>]',
         'gplcart (store-get | sget) <store id> [-f=<format>]'
     ),
     'options' => array(
         '-h' => /* @text */'Show command help',
         '-l' => /* @text */'Max number of displayed items [default: 100]',
-        '-f' => /* @text */'Format of displayed data. Allowed values: print-r, var-export, var-dump, json, table [default: table]'
+        '-f' => /* @text */'Format of displayed data: print-r, var-export, var-dump, json, table [default: table]'
     )
 );

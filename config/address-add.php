@@ -18,6 +18,7 @@ return array(
          --postcode=<varchar> --company=<varchar>) [--data=<json>]',
     ),
     'options' => array(
+        '-h' => /* @text */'Show command help',
         '--user_id' => /* @text */'User ID',
         '--state_id' => /* @text */'Country state ID',
         '--country' => /* @text */'County code',
@@ -25,13 +26,12 @@ return array(
         '--address_1' => /* @text */'Address',
         '--address_2' => /* @text */'Additional address',
         '--phone' => /* @text */'Phone',
-        '--type' => /* @text */'Address type [default: shipping]',
+        '--type' => /* @text */'Address type' . ' [default: shipping]',
         '--first_name' => /* @text */'First name',
         '--middle_name' => /* @text */'Middle name',
         '--last_name' => /* @text */'Last name',
         '--postcode' => /* @text */'Phone',
         '--company' => /* @text */'Company',
-        '--data' => /* @text */'JSON string',
-        '-h' => /* @text */'Show command help'
+        '--data' => /* @text */'JSON string'
     )
 );

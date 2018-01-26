@@ -8,13 +8,13 @@
  */
 return array(
     'alias' => 'chget',
-    'description' => /* @text */'Display cache data',
+    'description' => /* @text */'Display cached data',
     'usage' => array(
         'gplcart (cache-get | chget) -h',
         'gplcart (cache-get | chget) <cache id> [-f=<format>]'
     ),
     'options' => array(
         '-h' => /* @text */'Show command help',
-        '-f' => /* @text */'Format of displayed data. Allowed values: print-r, var-export, var-dump, json [default: json]'
+        '-f' => /* @text */'Format of displayed data: print-r, var-export, var-dump, json, table [default: table]'
     )
 );

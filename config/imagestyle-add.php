@@ -12,12 +12,12 @@ return array(
     'usage' => array(
         'gplcart (imagestyle-add | imadd) -h',
         'gplcart (imagestyle-add | imadd)',
-        'gplcart (imagestyle-add | imadd) (--name=<name> --status=<bool> --actions=<action1|action2>)'
+        'gplcart (imagestyle-add | imadd) (--name=<varchar> --status=<bool> --actions=<action1|action2>)'
     ),
     'options' => array(
-        '--name' => /* @text */'Image style name',
-        '--status' => /* @text */'Enable / disable',
-        '--actions' => /* @text */'Image style actions, separated by pipe. Action format: [action ID][whitespace][comma separated params]',
-        '-h' => /* @text */'Show command help'
+        '-h' => /* @text */'Show command help',
+        '--name' => /* @text */'Name',
+        '--status' => /* @text */'Status' . ' [default: 0]',
+        '--actions' => /* @text */'Image style actions, separated by pipe. Action format: [action ID][whitespace][comma separated params]'
     )
 );

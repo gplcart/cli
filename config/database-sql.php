@@ -16,7 +16,7 @@ return array(
     'options' => array(
         '-h' => /* @text */'Show command help',
         '-l' => /* @text */'Max number of displayed items [default: 100]',
-        '-f' => /* @text */'Format of displayed data. Allowed values: print-r, var-export, var-dump, json, table [default: table]',
+        '-f' => /* @text */'Format of displayed data: print-r, var-export, var-dump, json, table [default: table]',
         '--fetch' => /* @text */'Fetch results'
     )
 );

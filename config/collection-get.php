@@ -18,9 +18,9 @@ return array(
     ),
     'options' => array(
         '-h' => /* @text */'Show command help',
-        '-f' => /* @text */'Format of displayed data. Allowed values: print-r, var-export, var-dump, json, table [default: table]',
+        '-f' => /* @text */'Format of displayed data: print-r, var-export, var-dump, json, table [default: table]',
         '-l' => /* @text */'Max number of displayed items [default: 100]',
-        '--type' => /* @text */'Specifies that a collection type used instead of collection ID',
-        '--store' => /* @text */'Specifies that a store ID used instead of collection ID',
+        '--type' => /* @text */'Display all collections with the type argument',
+        '--store' => /* @text */'Display all collections with the store ID argument',
     )
 );

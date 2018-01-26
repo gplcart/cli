@@ -13,11 +13,11 @@ return array(
         'gplcart (alias-delete | aldel) -h',
         'gplcart (alias-delete | aldel) --all',
         'gplcart (alias-delete | aldel) <alias id>',
-        'gplcart (alias-delete | aldel) <entity> --entity'
+        'gplcart (alias-delete | aldel) <entity name> --entity'
     ),
     'options' => array(
         '-h' => /* @text */'Show command help',
-        '--all' => /* @text */'Delete all URL aliases',
-        '--entity' => /* @text */'Specifies that an entity name used instead of alias ID',
+        '--all' => /* @text */'Delete ALL URL aliases',
+        '--entity' => /* @text */'Delete ALL URL aliases with the entity name'
     )
 );

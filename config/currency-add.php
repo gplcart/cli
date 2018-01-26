@@ -12,25 +12,25 @@ return array(
     'usage' => array(
         'gplcart (currency-add | cuadd) -h',
         'gplcart (currency-add | cuadd)',
-        'gplcart (currency-add | cuadd) (--code=<code> --name=<name> --symbol=<symbol> --major_unit=<name> --minor_unit=<name> --numeric_code=<integer>) [options]'
+        'gplcart (currency-add | cuadd)
+        (--code=<code> --name=<varchar> --symbol=<varchar> --major_unit=<varchar> --minor_unit=<varchar>
+        --numeric_code=<int>) [options]'
     ),
     'options' => array(
-        // Required
-        '--code' => /* @text */'ISO 4217 currency code',
-        '--name' => /* @text */'Currency name',
-        '--symbol' => /* @text */'Currency sign',
-        '--major_unit' => /* @text */'Name of the highest valued currency unit',
-        '--minor_unit' => /* @text */'Name of the lowest valued currency unit',
-        '--numeric_code' => /* @text */'ISO 4217 currency numeric code',
-        // Optional
-        '--status' => /* @text */'Enable / disable for customers [default: 0]',
-        '--default' => /* @text */'Set default [default: 0]',
-        '--decimals' => /* @text */'Number of decimal points [default: 2]',
-        '--rounding_step' => /* @text */'Rounding step [default: 0]',
-        '--conversion_rate' => /* @text */'Exchange rate against base currency [default: 1]',
-        '--decimal_separator' => /* @text */'Character to separate decimals [default: "."]',
-        '--thousands_separator' => /* @text */'Character to separate thousands [default: ","]',
-        '--template' => /* @text */'Template to format prices [default: "%symbol%price"]',
-        '-h' => /* @text */'Show command help'
+        '-h' => /* @text */'Show command help',
+        '--code' => /* @text */'Code',
+        '--name' => /* @text */'Name',
+        '--symbol' => /* @text */'Symbol',
+        '--major_unit' => /* @text */'Major unit',
+        '--minor_unit' => /* @text */'Minor unit',
+        '--numeric_code' => /* @text */'Numeric code',
+        '--status' => /* @text */'Status' . ' [default: 0]',
+        '--default' => /* @text */'Default' . ' [default: 0]',
+        '--decimals' => /* @text */'Decimals' . ' [default: 2]',
+        '--rounding_step' => /* @text */'Rounding step' . ' [default: 0]',
+        '--conversion_rate' => /* @text */'Conversion rate' . ' [default: 1]',
+        '--decimal_separator' => /* @text */'Decimal separator' . ' [default: "."]',
+        '--thousands_separator' => /* @text */'Thousands separator' . ' [default: ","]',
+        '--template' => /* @text */'Template' . ' [default: "%symbol%price"]'
     )
 );

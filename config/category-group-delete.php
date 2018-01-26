@@ -18,8 +18,8 @@ return array(
     ),
     'options' => array(
         '-h' => /* @text */'Show command help',
-        '--all' => /* @text */'Delete all category groups',
-        '--type' => /* @text */'Specifies that a category group type used instead of category group ID. All category groups with the type will be deleted',
-        '--store' => /* @text */'Specifies that a store ID used instead of category group ID. All category groups associated with the store will be deleted'
+        '--all' => /* @text */'Delete ALL category groups if no ID argument specified',
+        '--type' => /* @text */'Delete ALL category groups for the type argument',
+        '--store' => /* @text */'Delete ALL category groups for the store ID argument'
     )
 );

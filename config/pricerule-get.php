@@ -17,8 +17,8 @@ return array(
     ),
     'options' => array(
         '-h' => /* @text */'Show command help',
-        '-f' => /* @text */'Format of displayed data. Allowed values: print-r, var-export, var-dump, json, table [default: table]',
+        '-f' => /* @text */'Format of displayed data: print-r, var-export, var-dump, json, table [default: table]',
         '-l' => /* @text */'Max number of displayed items [default: 100]',
-        '--trigger' => /* @text */'Specifies that a trigger ID used instead of price rule ID'
+        '--trigger' => /* @text */'Display all price rules with the trigger ID argument'
     )
 );

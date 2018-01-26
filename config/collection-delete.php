@@ -18,8 +18,8 @@ return array(
     ),
     'options' => array(
         '-h' => /* @text */'Show command help',
-        '--all' => /* @text */'Delete all collections',
-        '--type' => /* @text */'Specifies that a collection type used instead of collection ID',
-        '--store' => /* @text */'Specifies that a store ID used instead of collection ID',
+        '--all' => /* @text */'Delete ALL collections if no ID specified',
+        '--type' => /* @text */'Delete ALL collections with the type argument',
+        '--store' => /* @text */'Delete ALL collections with the store ID argument',
     )
 );

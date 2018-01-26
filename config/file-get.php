@@ -19,10 +19,10 @@ return array(
     ),
     'options' => array(
         '-h' => /* @text */'Show command help',
-        '-f' => /* @text */'Format of displayed data. Allowed values: print-r, var-export, var-dump, json, table [default: table]',
         '-l' => /* @text */'Max number of displayed items [default: 100]',
-        '--type' => /* @text */'Specifies that a file type used instead of file ID',
-        '--mime' => /* @text */'Specifies that a file MIME type used instead of file ID',
-        '--entity' => /* @text */'Specifies that an entity name used instead of file ID'
+        '-f' => /* @text */'Format of displayed data: print-r, var-export, var-dump, json, table [default: table]',
+        '--type' => /* @text */'Display all files with the type argument',
+        '--mime' => /* @text */'Display all files with the MIME type argument',
+        '--entity' => /* @text */'Display all files with the entity name argument'
     )
 );

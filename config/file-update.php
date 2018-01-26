@@ -16,13 +16,13 @@ return array(
     ),
     'options' => array(
         '-h' => /* @text */'Show command help',
-        '--path' => /* @text */'Absolute or relative to file directory path',
+        '--path' => /* @text */'Path',
         '--title' => /* @text */'Title',
         '--description' => /* @text */'Description',
         '--entity' => /* @text */'Entity',
         '--entity_id' => /* @text */'Entity ID',
         '--mime_type' => /* @text */'MIME type',
         '--file_type' => /* @text */'File type',
-        '--weight' => /* @text */'Position in lists',
+        '--weight' => /* @text */'Weight',
     )
 );

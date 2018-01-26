@@ -11,9 +11,11 @@ return array(
     'description' => /* @text */'Delete country',
     'usage' => array(
         'gplcart (country-delete | codel) -h',
+        'gplcart (country-delete | codel) --all',
         'gplcart (country-delete | codel) <country code>'
     ),
     'options' => array(
-        '-h' => /* @text */'Show command help'
+        '-h' => /* @text */'Show command help',
+        '--all' => /* @text */'Delete ALL countries if no ID argument specified'
     )
 );

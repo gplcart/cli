@@ -16,6 +16,6 @@ return array(
     ),
     'options' => array(
         '-h' => /* @text */'Show command help',
-        '--all' => /* @text */'Delete all currencies if no currency code specified',
+        '--all' => /* @text */'Delete ALL currencies if no currency code argument specified',
     )
 );

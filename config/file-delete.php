@@ -19,10 +19,10 @@ return array(
     ),
     'options' => array(
         '-h' => /* @text */'Show command help',
-        '--all' => /* @text */'Delete all files',
-        '--disk' => /* @text */'Delete both from database and disk',
-        '--type' => /* @text */'Specifies that a file type used instead of file ID',
-        '--mime' => /* @text */'Specifies that a file MIME type used instead of file ID',
-        '--entity' => /* @text */'Specifies that an entity name used instead of file ID'
+        '--all' => /* @text */'Delete ALL files if no ID argument specified',
+        '--type' => /* @text */'Delete ALL files with the type argument',
+        '--mime' => /* @text */'Delete ALL files with the MIME type argument',
+        '--entity' => /* @text */'Delete ALL files with the entity name argument',
+        '--disk' => /* @text */'Delete also the corresponding file from disk'
     )
 );

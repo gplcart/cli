@@ -8,7 +8,7 @@
  */
 return array(
     'alias' => 'dbt',
-    'description' => /* @text */'Truncate one or several tables',
+    'description' => /* @text */'Truncate (empty) one or several tables',
     'usage' => array(
         'gplcart (database-truncate | dbt) -h',
         'gplcart (database-truncate | dbt) --all',
@@ -16,6 +16,6 @@ return array(
     ),
     'options' => array(
         '-h' => /* @text */'Show command help',
-        '--all' => /* @text */'Truncate all tables in the database'
+        '--all' => /* @text */'Truncate ALL tables in the database'
     )
 );

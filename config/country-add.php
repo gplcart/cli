@@ -15,13 +15,13 @@ return array(
         'gplcart (country-add | coadd) (--code=<code> --name=<name> --native_name=<native name>) [options]',
     ),
     'options' => array(
-        '--code' => /* @text */'ISO 3166-2 country code',
-        '--name' => /* @text */'International country name',
-        '--native_name' => /* @text */'Local country name',
-        '--status' => /* @text */'Enable / disable for customers [default: 0]',
-        '--zone_id' => /* @text */'Zone ID [default: 0]',
-        '--weight' => /* @text */'Position in lists [default: 0]',
-        '--format' => /* @text */'JSON string',
-        '-h' => /* @text */'Show command help'
+        '-h' => /* @text */'Show command help',
+        '--code' => /* @text */'Code',
+        '--name' => /* @text */'Name',
+        '--native_name' => /* @text */'Native name',
+        '--status' => /* @text */'Status' . ' [default: 0]',
+        '--zone_id' => /* @text */'Zone ID' . ' [default: 0]',
+        '--weight' => /* @text */'Weight' . ' [default: 0]',
+        '--format' => /* @text */'JSON string'
     )
 );

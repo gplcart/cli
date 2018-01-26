@@ -17,7 +17,7 @@ return array(
     ),
     'options' => array(
         '-h' => /* @text */'Show command help',
-        '--all' => /* @text */'Enable all price rules',
-        '--trigger' => /* @text */'Specifies that a trigger ID used instead of price rule ID'
+        '--all' => /* @text */'Enable ALL price rules i no ID argument specified',
+        '--trigger' => /* @text */'Enable ALL price rules with the trigger ID argument'
     )
 );

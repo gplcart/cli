@@ -17,8 +17,8 @@ return array(
     ),
     'options' => array(
         '-h' => /* @text */'Show command help',
-        '-f' => /* @text */'Format of displayed data. Allowed values: print-r, var-export, var-dump, json, table [default: table]',
         '-l' => /* @text */'Max number of displayed items [default: 100]',
-        '--field' => /* @text */'Specifies that a field ID used instead of field value ID'
+        '-f' => /* @text */'Format of displayed data: print-r, var-export, var-dump, json, table [default: table]',
+        '--field' => /* @text */'Display all field values with the field ID argument'
     )
 );
