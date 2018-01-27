@@ -33,7 +33,7 @@ class Main
     {
         $list = array();
 
-        foreach (glob(__DIR__ . '/config/*.php') as $file) {
+        foreach (glob(__DIR__ . '/config/commands/*.php') as $file) {
 
             $command = pathinfo($file, PATHINFO_FILENAME);
             $list[$command] = gplcart_config_get($file);
@@ -48,7 +48,7 @@ class Main
             $class_name = implode('', $parts);
 
             $list[$command]['handlers']['controller'] = array(
-                "gplcart\\modules\\cli\\controllers\\$class_name", "cmd$method$class_name");
+                "gplcart\\modules\\cli\\controllers\\commands\\$class_name", "cmd$method$class_name");
         }
 
         return $list;
