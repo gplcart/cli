@@ -91,9 +91,9 @@ class ImageStyle extends Command
     }
 
     /**
-     * Callback for "imagestyle-clear-cache" command
+     * Callback for "imagestyle-clear" command
      */
-    public function cmdClearCacheImageStyle()
+    public function cmdClearImageStyle()
     {
         $id = $this->getParam(0);
         $all = $this->getParam('all');

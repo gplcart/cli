@@ -27,9 +27,9 @@ class Asset extends Command
     }
 
     /**
-     * Callback for "asset-cache-clear" command
+     * Callback for "asset-clear" command
      */
-    public function cmdCacheClearAsset()
+    public function cmdClearAsset()
     {
         $params = $this->getParam();
 

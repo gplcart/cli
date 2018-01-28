@@ -7,13 +7,13 @@
  * @license https://www.gnu.org/licenses/gpl.html GNU/GPLv3
  */
 return array(
-    'alias' => 'ascc',
+    'alias' => 'asc',
     'description' => /* @text */'Delete cached JS and CSS files',
     'usage' => array(
-        'gplcart (asset-clear-cache | ascc) -h',
-        'gplcart (asset-clear-cache | ascc)',
-        'gplcart (asset-clear-cache | ascc) --js',
-        'gplcart (asset-clear-cache | ascc) --css'
+        'gplcart (asset-clear | asc) -h',
+        'gplcart (asset-clear | asc)',
+        'gplcart (asset-clear | asc) --js',
+        'gplcart (asset-clear | asc) --css'
     ),
     'options' => array(
         '-h' => /* @text */'Show command help',

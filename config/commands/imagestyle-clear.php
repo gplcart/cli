@@ -7,12 +7,12 @@
  * @license https://www.gnu.org/licenses/gpl.html GNU/GPLv3
  */
 return array(
-    'alias' => 'imcc',
+    'alias' => 'imc',
     'description' => /* @text */'Delete cached images for one or all image styles',
     'usage' => array(
-        'gplcart (imagestyle-clear-cache | imcc) -h',
-        'gplcart (imagestyle-clear-cache | imcc) --all',
-        'gplcart (imagestyle-clear-cache | imcc) <image style id>'
+        'gplcart (imagestyle-clear | imc) -h',
+        'gplcart (imagestyle-clear | imc) --all',
+        'gplcart (imagestyle-clear | imc) <image style id>'
     ),
     'options' => array(
         '-h' => /* @text */'Show command help',

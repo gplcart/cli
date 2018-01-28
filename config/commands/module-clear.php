@@ -8,11 +8,11 @@
  *
  */
 return array(
-    'alias' => 'mcc',
+    'alias' => 'mc',
     'description' => /* @text */'Clear module cache',
     'usage' => array(
-        'gplcart (module-cache-clear | mcc) -h',
-        'gplcart (module-cache-clear | mcc)'
+        'gplcart (module-clear | mc) -h',
+        'gplcart (module-clear | mc)'
     ),
     'options' => array(
         '-h' => /* @text */'Show command help'

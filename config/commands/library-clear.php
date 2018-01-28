@@ -8,11 +8,11 @@
  *
  */
 return array(
-    'alias' => 'licc',
+    'alias' => 'lic',
     'description' => /* @text */'Clear library cache',
     'usage' => array(
-        'gplcart (library-cache-clear | licc) -h',
-        'gplcart (library-cache-clear | licc)'
+        'gplcart (library-clear | lic) -h',
+        'gplcart (library-clear | lic)'
     ),
     'options' => array(
         '-h' => /* @text */'Show command help'
