@@ -114,9 +114,10 @@ class Address extends Command
         $this->setSubmitted(null, $params);
         $this->setSubmitted('update', $params[0]);
         $this->setSubmittedJson('data');
-        $this->validateComponent('address');
-        $this->updateAddress($params[0]);
 
+        $this->validateComponent('address');
+
+        $this->updateAddress($params[0]);
         $this->output();
     }
 
