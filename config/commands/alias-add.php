@@ -8,12 +8,12 @@
  */
 return array(
     'alias' => 'aladd',
-    'description' => /* @text */'Add URL alias',
+    'description' => 'Add URL alias', // @text
     'usage' => array(
         'gplcart (alias-add | aladd) -h',
         'gplcart (alias-add | aladd) <entity name> <entity id> <alias>'
     ),
     'options' => array(
-        '-h' => /* @text */'Show command help'
+        '-h' => 'Show command help' // @text
     )
 );

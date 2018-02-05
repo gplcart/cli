@@ -8,15 +8,15 @@
  */
 return array(
     'alias' => 'dbs',
-    'description' => /* @text */'Perform SQL query',
+    'description' => 'Perform SQL query', // @text
     'usage' => array(
         'gplcart (database-sql | dbs) -h',
         'gplcart (database-sql | dbs) <sql> [--fetch]'
     ),
     'options' => array(
-        '-h' => /* @text */'Show command help',
-        '-l' => /* @text */'Max number of displayed items [default: 100]',
-        '-f' => /* @text */'Format of displayed data: print-r, var-export, var-dump, json, table [default: table]',
-        '--fetch' => /* @text */'Fetch results'
+        '-h' => 'Show command help', // @text
+        '-l' => 'Max number of displayed items [default: 100]', // @text
+        '-f' => 'Format of displayed data: print-r, var-export, var-dump, json, table [default: table]', // @text
+        '--fetch' => 'Fetch results' // @text
     )
 );

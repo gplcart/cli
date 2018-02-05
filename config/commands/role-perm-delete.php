@@ -8,12 +8,12 @@
  */
 return array(
     'alias' => 'rpd',
-    'description' => /* @text */'Delete one or several permissions from a user role',
+    'description' => 'Delete one or several permissions from a user role', // @text
     'usage' => array(
         'gplcart (role-perm-delete | rpd) -h',
         'gplcart (role-perm-delete | rpd) <role id> <permission1> <permission2> ...'
     ),
     'options' => array(
-        '-h' => /* @text */'Show command help'
+        '-h' => 'Show command help' // @text
     )
 );

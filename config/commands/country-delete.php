@@ -8,14 +8,14 @@
  */
 return array(
     'alias' => 'codel',
-    'description' => /* @text */'Delete country',
+    'description' => 'Delete country', // @text
     'usage' => array(
         'gplcart (country-delete | codel) -h',
         'gplcart (country-delete | codel) --all',
         'gplcart (country-delete | codel) <country code>'
     ),
     'options' => array(
-        '-h' => /* @text */'Show command help',
-        '--all' => /* @text */'Delete ALL countries if no ID argument specified'
+        '-h' => 'Show command help', // @text
+        '--all' => 'Delete ALL countries if no ID argument specified' // @text
     )
 );

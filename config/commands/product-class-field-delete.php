@@ -8,7 +8,7 @@
  */
 return array(
     'alias' => 'pcfdel',
-    'description' => /* @text */'Delete one or several product class fields',
+    'description' => 'Delete one or several product class fields', // @text
     'usage' => array(
         'gplcart (product-class-field-delete | pcfdel) -h',
         'gplcart (product-class-field-delete | pcfdel) --all',
@@ -17,9 +17,9 @@ return array(
         'gplcart (product-class-field-delete | pcfdel) <field id> --field',
     ),
     'options' => array(
-        '-h' => /* @text */'Show command help',
-        '--all' => /* @text */'Delete ALL product class fields if no ID specified',
-        '--field' => /* @text */'Delete ALL product class fields with the field ID argument',
-        '--class' => /* @text */'Delete ALL product class fields with the product class ID argument'
+        '-h' => 'Show command help', // @text
+        '--all' => 'Delete ALL product class fields if no ID specified', // @text
+        '--field' => 'Delete ALL product class fields with the field ID argument', // @text
+        '--class' => 'Delete ALL product class fields with the product class ID argument' // @text
     )
 );

@@ -8,14 +8,14 @@
  */
 return array(
     'alias' => 'csdel',
-    'description' => /* @text */'Delete one or several country states',
+    'description' => 'Delete one or several country states', // @text
     'usage' => array(
         'gplcart (state-delete | csdel) -h',
         'gplcart (state-delete | csdel) <state id>',
         'gplcart (state-delete | csdel) <country code> --country'
     ),
     'options' => array(
-        '-h' => /* @text */'Show command help',
-        '--country' => /* @text */'Delete ALL country states with the country code argument'
+        '-h' => 'Show command help', // @text
+        '--country' => 'Delete ALL country states with the country code argument' // @text
     )
 );

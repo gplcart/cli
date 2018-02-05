@@ -8,7 +8,7 @@
  */
 return array(
     'alias' => 'cgget',
-    'description' => /* @text */'Display one or several category groups',
+    'description' => 'Display one or several category groups', // @text
     'usage' => array(
         'gplcart (category-group-get | cgget) -h',
         'gplcart (category-group-get | cgget) [-f=<format> -l=<offset,limit>]',
@@ -17,10 +17,10 @@ return array(
         'gplcart (category-group-get | cgget) <store id> --store [-f=<format> -l=<offset,limit>]'
     ),
     'options' => array(
-        '-h' => /* @text */'Show command help',
-        '-l' => /* @text */'Max number of displayed items [default: 100]',
-        '-f' => /* @text */'Format of displayed data: print-r, var-export, var-dump, json, table [default: table]',
-        '--store' => /* @text */'Display all category groups for the store ID argument',
-        '--type' => /* @text */'Display all category groups for the type argument'
+        '-h' => 'Show command help', // @text
+        '-l' => 'Max number of displayed items [default: 100]', // @text
+        '-f' => 'Format of displayed data: print-r, var-export, var-dump, json, table [default: table]', // @text
+        '--store' => 'Display all category groups with the store ID argument', // @text
+        '--type' => 'Display all category groups with the type argument' // @text
     )
 );

@@ -8,18 +8,18 @@
  */
 return array(
     'alias' => 'pcfup',
-    'description' => /* @text */'Update product class field',
+    'description' => 'Update product class field', // @text
     'usage' => array(
         'gplcart (product-class-field-update | pcfup) -h',
         'gplcart (product-class-field-update | pcfup) <product class field id>
         (--product_class_id=<int> | --field_id=<int> | --required=<bool> | --multiple=<bool> | --weight=<int>)',
     ),
     'options' => array(
-        '-h' => /* @text */'Show command help',
-        '--product_class_id' => /* @text */'Product class ID',
-        '--field_id' => /* @text */'Field ID',
-        '--required' => /* @text */'Required',
-        '--multiple' => /* @text */'Multiple',
-        '--weight' => /* @text */'Weight'
+        '-h' => 'Show command help', // @text
+        '--product_class_id' => 'Product class ID', // @text
+        '--field_id' => 'Field ID', // @text
+        '--required' => 'Required', // @text
+        '--multiple' => 'Multiple', // @text
+        '--weight' => 'Weight' // @text
     )
 );

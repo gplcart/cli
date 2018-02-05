@@ -8,7 +8,7 @@
  */
 return array(
     'alias' => 'prdel',
-    'description' => /* @text */'Delete one or several price rules',
+    'description' => 'Delete one or several price rules', // @text
     'usage' => array(
         'gplcart (pricerule-delete | prdel) -h',
         'gplcart (pricerule-delete | prdel) --all',
@@ -17,8 +17,8 @@ return array(
 
     ),
     'options' => array(
-        '-h' => /* @text */'Show command help',
-        '--all' => /* @text */'Delete ALL price rules if no ID argument specified',
-        '--trigger' => /* @text */'Delete ALL price rules with the trigger ID argument'
+        '-h' => 'Show command help', // @text
+        '--all' => 'Delete ALL price rules if no ID argument specified', // @text
+        '--trigger' => 'Delete ALL price rules with the trigger ID argument' // @text
     )
 );

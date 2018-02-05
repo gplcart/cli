@@ -8,7 +8,7 @@
  */
 return array(
     'alias' => 'uoff',
-    'description' => /* @text */'Disable one or several users',
+    'description' => 'Disable one or several users', // @text
     'usage' => array(
         'gplcart (user-off | uoff) -h',
         'gplcart (user-off | uoff) --all',
@@ -17,9 +17,9 @@ return array(
         'gplcart (user-off | uoff) <store id> --store'
     ),
     'options' => array(
-        '-h' => /* @text */'Show command help',
-        '-all' => /* @text */'Disable ALL user if no ID argument specified',
-        '-store' => /* @text */'Disable ALL users with the store ID argument',
-        '-role' => /* @text */'Disable ALL users with the role ID argument'
+        '-h' => 'Show command help', // @text
+        '-all' => 'Disable ALL user if no ID argument specified', // @text
+        '-store' => 'Disable ALL users with the store ID argument', // @text
+        '-role' => 'Disable ALL users with the role ID argument' // @text
     )
 );

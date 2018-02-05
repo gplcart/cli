@@ -8,7 +8,7 @@
  */
 return array(
     'alias' => 'oget',
-    'description' => /* @text */'Display one or several orders',
+    'description' => 'Display one or several orders', // @text
     'usage' => array(
         'gplcart (order-get | oget) -h',
         'gplcart (order-get | oget) [-f=<format> -l=<offset,limit>]',
@@ -20,13 +20,13 @@ return array(
         'gplcart (order-get | oget) <status name> --status [-f=<format> -l=<offset,limit>]'
     ),
     'options' => array(
-        '-h' => /* @text */'Show command help',
-        '-l' => /* @text */'Max number of displayed items [default: 100]',
-        '-f' => /* @text */'Format of displayed data: print-r, var-export, var-dump, json, table [default: table]',
-        '--user' => /* @text */'Display all orders with the user ID argument',
-        '--store' => /* @text */'Display all orders with the store ID argument',
-        '--shipping-address' => /* @text */'Display all orders with the shipping address ID argument',
-        '--payment-address' => /* @text */'Display all orders with the payment address ID argument',
-        '--status' => /* @text */'Display all orders with the status name argument',
+        '-h' => 'Show command help', // @text
+        '-l' => 'Max number of displayed items [default: 100]', // @text
+        '-f' => 'Format of displayed data: print-r, var-export, var-dump, json, table [default: table]', // @text
+        '--user' => 'Display all orders with the user ID argument', // @text
+        '--store' => 'Display all orders with the store ID argument', // @text
+        '--shipping-address' => 'Display all orders with the shipping address ID argument', // @text
+        '--payment-address' => 'Display all orders with the payment address ID argument', // @text
+        '--status' => 'Display all orders with the status name argument', // @text
     )
 );

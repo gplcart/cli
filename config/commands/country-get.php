@@ -8,15 +8,15 @@
  */
 return array(
     'alias' => 'coget',
-    'description' => /* @text */'Display one or several countries',
+    'description' => 'Display one or several countries', // @text
     'usage' => array(
         'gplcart (country-get | coget) -h',
         'gplcart (country-get | coget) [-f=<format> -l=<offset,limit>]',
         'gplcart (country-get | coget) <country code> [-f=<format>]'
     ),
     'options' => array(
-        '-h' => /* @text */'Show command help',
-        '-l' => /* @text */'Max number of displayed items [default: 100]',
-        '-f' => /* @text */'Format of displayed data: print-r, var-export, var-dump, json, table [default: table]'
+        '-h' => 'Show command help', // @text
+        '-l' => 'Max number of displayed items [default: 100]', // @text
+        '-f' => 'Format of displayed data: print-r, var-export, var-dump, json, table [default: table]' // @text
     )
 );

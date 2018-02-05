@@ -8,20 +8,20 @@
  */
 return array(
     'alias' => 'coadd',
-    'description' => /* @text */'Add country',
+    'description' => 'Add country', // @text
     'usage' => array(
         'gplcart (country-add | coadd) -h',
         'gplcart (country-add | coadd)',
         'gplcart (country-add | coadd) (--code=<varchar> --name=<varchar> --native_name=<varchar>) [options]',
     ),
     'options' => array(
-        '-h' => /* @text */'Show command help',
-        '--code' => /* @text */'Code',
-        '--name' => /* @text */'Name',
-        '--native_name' => /* @text */'Native name',
-        '--status' => /* @text */'Status' . ' [default: 0]',
-        '--zone_id' => /* @text */'Zone ID' . ' [default: 0]',
-        '--weight' => /* @text */'Weight' . ' [default: 0]',
-        '--format' => /* @text */'JSON or base64 encoded JSON string'
+        '-h' => 'Show command help', // @text
+        '--code' => 'Code', // @text
+        '--name' => 'Name', // @text
+        '--native_name' => 'Native name', // @text
+        '--status' => 'Status', // @text
+        '--zone_id' => 'Zone ID', // @text
+        '--weight' => 'Weight', // @text
+        '--format' => 'JSON or base64 encoded JSON string' // @text
     )
 );

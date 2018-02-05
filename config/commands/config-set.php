@@ -8,12 +8,12 @@
  */
 return array(
     'alias' => 'cset',
-    'description' => /* @text */'Set configuration option',
+    'description' => 'Set configuration option', // @text
     'usage' => array(
         'gplcart (config-set | cset) -h',
         'gplcart (config-set | cset) <id> <value>'
     ),
     'options' => array(
-        '-h' => /* @text */'Show command help'
+        '-h' => 'Show command help' // @text
     )
 );

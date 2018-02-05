@@ -8,14 +8,14 @@
  */
 return array(
     'alias' => 'dbt',
-    'description' => /* @text */'Truncate (empty) one or several tables',
+    'description' => 'Truncate (empty) one or several tables', // @text
     'usage' => array(
         'gplcart (database-truncate | dbt) -h',
         'gplcart (database-truncate | dbt) --all',
         'gplcart (database-truncate | dbt) <table name> <table name> ...'
     ),
     'options' => array(
-        '-h' => /* @text */'Show command help',
-        '--all' => /* @text */'Truncate ALL tables in the database'
+        '-h' => 'Show command help', // @text
+        '--all' => 'Truncate ALL tables in the database' // @text
     )
 );

@@ -8,7 +8,7 @@
  */
 return array(
     'alias' => 'reon',
-    'description' => /* @text */'Enable one or several reviews',
+    'description' => 'Enable one or several reviews', // @text
     'usage' => array(
         'gplcart (review-on | reon) -h',
         'gplcart (review-on | reon) --all',
@@ -17,9 +17,9 @@ return array(
         'gplcart (review-on | reon) <product id> --product'
     ),
     'options' => array(
-        '-h' => /* @text */'Show command help',
-        '--all' => /* @text */'Enable ALL reviews if no ID argument specified',
-        '--user' => /* @text */'Enable ALL reviews with the user ID argument',
-        '--product' => /* @text */'Enable ALL reviews with the product ID argument'
+        '-h' => 'Show command help', // @text
+        '--all' => 'Enable ALL reviews if no ID argument specified', // @text
+        '--user' => 'Enable ALL reviews with the user ID argument', // @text
+        '--product' => 'Enable ALL reviews with the product ID argument' // @text
     )
 );

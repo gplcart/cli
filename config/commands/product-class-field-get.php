@@ -8,7 +8,7 @@
  */
 return array(
     'alias' => 'pcfget',
-    'description' => /* @text */'Display one or several product class fields',
+    'description' => 'Display one or several product class fields', // @text
     'usage' => array(
         'gplcart (product-class-field-get | pcfget) -h',
         'gplcart (product-class-field-get | pcfget) [-f=<format> -l=<offset,limit>]',
@@ -17,10 +17,10 @@ return array(
         'gplcart (product-class-field-get | pcfget) --field [-f=<format> -l=<offset,limit>]',
     ),
     'options' => array(
-        '-h' => /* @text */'Show command help',
-        '-l' => /* @text */'Max number of displayed items [default: 100]',
-        '-f' => /* @text */'Format of displayed data: print-r, var-export, var-dump, json, table [default: table]',
-        '--class' => /* @text */'Display all product class fields with the product class ID argument',
-        '--field' => /* @text */'Display all product class fields with the field ID argument'
+        '-h' => 'Show command help', // @text
+        '-l' => 'Max number of displayed items [default: 100]', // @text
+        '-f' => 'Format of displayed data: print-r, var-export, var-dump, json, table [default: table]', // @text
+        '--class' => 'Display all product class fields with the product class ID argument', // @text
+        '--field' => 'Display all product class fields with the field ID argument' // @text
     )
 );

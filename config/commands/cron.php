@@ -7,12 +7,12 @@
  * @license https://www.gnu.org/licenses/gpl.html GNU/GPLv3
  */
 return array(
-    'description' => /* @text */'Run CRON',
+    'description' => 'Run CRON', // @text
     'usage' => array(
         'gplcart cron -h',
         'gplcart cron'
     ),
     'options' => array(
-        '-h' => /* @text */'Show command help'
+        '-h' => 'Show command help' // @text
     )
 );

@@ -8,14 +8,14 @@
  */
 return array(
     'alias' => 'pcdel',
-    'description' => /* @text */'Delete one or several product classes',
+    'description' => 'Delete one or several product classes', // @text
     'usage' => array(
         'gplcart (product-class-delete | pcdel) -h',
         'gplcart (product-class-delete | pcdel) --all',
         'gplcart (product-class-delete | pcdel) <product class id>'
     ),
     'options' => array(
-        '-h' => /* @text */'Show command help',
-        '--all' => /* @text */'Delete ALL product classes if no ID specified'
+        '-h' => 'Show command help', // @text
+        '--all' => 'Delete ALL product classes if no ID specified' // @text
     )
 );

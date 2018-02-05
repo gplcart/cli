@@ -8,14 +8,14 @@
  */
 return array(
     'alias' => 'rdel',
-    'description' => /* @text */'Delete one or several roles',
+    'description' => 'Delete one or several roles', // @text
     'usage' => array(
         'gplcart (role-delete | rdel) -h',
         'gplcart (role-delete | rdel) --all',
         'gplcart (role-delete | rdel) <role id>'
     ),
     'options' => array(
-        '-h' => /* @text */'Show command help',
-        '--all' => /* @text */'Delete ALL user roles if no ID specified',
+        '-h' => 'Show command help', // @text
+        '--all' => 'Delete ALL user roles if no ID specified', // @text
     )
 );

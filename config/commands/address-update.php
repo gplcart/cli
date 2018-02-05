@@ -8,7 +8,7 @@
  */
 return array(
     'alias' => 'aup',
-    'description' => /* @text */'Update address',
+    'description' => 'Update address', // @text
     'usage' => array(
         'gplcart (address-update | aup) -h',
         'gplcart (address-update | aup) <address id> (--user_id=<varchar> | --state_id=<int> | --country=<varchar> |
@@ -17,20 +17,20 @@ return array(
          --postcode=<varchar> | --company=<varchar> | --data=<varchar>)',
     ),
     'options' => array(
-        '--user_id' => /* @text */'User ID',
-        '--state_id' => /* @text */'Country state ID',
-        '--country' => /* @text */'County code',
-        '--city_id' => /* @text */'City ID',
-        '--address_1' => /* @text */'Address',
-        '--address_2' => /* @text */'Additional address',
-        '--phone' => /* @text */'Phone',
-        '--type' => /* @text */'Address type',
-        '--first_name' => /* @text */'First name',
-        '--middle_name' => /* @text */'Middle name',
-        '--last_name' => /* @text */'Last name',
-        '--postcode' => /* @text */'Phone',
-        '--company' => /* @text */'Company',
-        '--data' => /* @text */'JSON or base64 encoded JSON string',
-        '-h' => /* @text */'Show command help'
+        '--user_id' => 'User ID', // @text
+        '--state_id' => 'Country state ID', // @text
+        '--country' => 'County code', // @text
+        '--city_id' => 'City ID', // @text
+        '--address_1' => 'Address', // @text
+        '--address_2' => 'Additional address', // @text
+        '--phone' => 'Phone', // @text
+        '--type' => 'Address type', // @text
+        '--first_name' => 'First name', // @text
+        '--middle_name' => 'Middle name', // @text
+        '--last_name' => 'Last name', // @text
+        '--postcode' => 'Phone', // @text
+        '--company' => 'Company', // @text
+        '--data' => 'JSON or base64 encoded JSON string', // @text
+        '-h' => 'Show command help' // @text
     )
 );

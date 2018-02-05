@@ -8,7 +8,7 @@
  */
 return array(
     'alias' => 'udel',
-    'description' => /* @text */'Delete one or several users',
+    'description' => 'Delete one or several users', // @text
     'usage' => array(
         'gplcart (user-delete | udel) -h',
         'gplcart (user-delete | udel) <user id>',
@@ -16,8 +16,8 @@ return array(
         'gplcart (user-delete | udel) <store id> --store'
     ),
     'options' => array(
-        '-h' => /* @text */'Show command help',
-        '-role' => /* @text */'Delete ALL users with the role ID argument',
-        '-store' => /* @text */'Delete ALL users with the store ID argument'
+        '-h' => 'Show command help', // @text
+        '-role' => 'Delete ALL users with the role ID argument', // @text
+        '-store' => 'Delete ALL users with the store ID argument' // @text
     )
 );

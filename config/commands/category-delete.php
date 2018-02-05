@@ -8,7 +8,7 @@
  */
 return array(
     'alias' => 'ctdel',
-    'description' => /* @text */'Delete one or several categories',
+    'description' => 'Delete one or several categories', // @text
     'usage' => array(
         'gplcart (category-delete | ctdel) -h',
         'gplcart (category-delete | ctdel) --all',
@@ -17,9 +17,9 @@ return array(
         'gplcart (category-delete | ctdel) <category group id> --group'
     ),
     'options' => array(
-        '-h' => /* @text */'Show command help',
-        '--all' => /* @text */'Delete ALL categories if no ID argument specified',
-        '--group' => /* @text */'Delete ALL categories for the category group ID argument',
-        '--store' => /* @text */'Delete ALL categories for the store ID argument',
+        '-h' => 'Show command help', // @text
+        '--all' => 'Delete ALL categories if no ID argument specified', // @text
+        '--group' => 'Delete ALL categories with the category group ID argument', // @text
+        '--store' => 'Delete ALL categories with the store ID argument', // @text
     )
 );

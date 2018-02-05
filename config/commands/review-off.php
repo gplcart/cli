@@ -8,7 +8,7 @@
  */
 return array(
     'alias' => 'reoff',
-    'description' => /* @text */'Disable one or several reviews',
+    'description' => 'Disable one or several reviews', // @text
     'usage' => array(
         'gplcart (review-off | reoff) -h',
         'gplcart (review-off | reoff) --all',
@@ -17,9 +17,9 @@ return array(
         'gplcart (review-off | reoff) <product id> --product'
     ),
     'options' => array(
-        '-h' => /* @text */'Show command help',
-        '--all' => /* @text */'Disable ALL reviews if no ID argument specified',
-        '--user' => /* @text */'Disable ALL reviews with the user ID argument',
-        '--product' => /* @text */'Disable ALL reviews with the product ID argument'
+        '-h' => 'Show command help', // @text
+        '--all' => 'Disable ALL reviews if no ID argument specified', // @text
+        '--user' => 'Disable ALL reviews with the user ID argument', // @text
+        '--product' => 'Disable ALL reviews with the product ID argument' // @text
     )
 );

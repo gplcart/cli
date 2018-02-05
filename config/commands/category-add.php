@@ -8,7 +8,7 @@
  */
 return array(
     'alias' => 'ctadd',
-    'description' => /* @text */'Add category',
+    'description' => 'Add category', // @text
     'usage' => array(
         'gplcart (category-add | ctadd) -h',
         'gplcart (category-add | ctadd)',
@@ -17,15 +17,15 @@ return array(
          --weight=<int>]',
     ),
     'options' => array(
-        '-h' => /* @text */'Show command help',
-        '--title' => /* @text */'Title',
-        '--category_group_id' => /* @text */'Category group',
-        '--parent_id' => /* @text */'Parent category ID' . ' [default: 0]',
-        '--description_1' => /* @text */'First description' . ' [default: ]',
-        '--description_2' => /* @text */'Second description' . ' [default: ]',
-        '--meta_title' => /* @text */'Meta title' . ' [default: ]',
-        '--meta_description' => /* @text */'Meta description' . ' [default: ]',
-        '--status' => /* @text */'Status' . ' [default: 0]',
-        '--weight' => /* @text */'Weight' . ' [default: 0]'
+        '-h' => 'Show command help', // @text
+        '--title' => 'Title', // @text
+        '--category_group_id' => 'Category group', // @text
+        '--parent_id' => 'Parent category ID', // @text
+        '--description_1' => 'First description', // @text
+        '--description_2' => 'Second description', // @text
+        '--meta_title' => 'Meta title', // @text
+        '--meta_description' => 'Meta description', // @text
+        '--status' => 'Status', // @text
+        '--weight' => 'Weight', // @text
     )
 );

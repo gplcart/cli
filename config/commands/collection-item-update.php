@@ -8,7 +8,7 @@
  */
 return array(
     'alias' => 'cliup',
-    'description' => /* @text */'Update collection item',
+    'description' => 'Update collection item', // @text
     'usage' => array(
         'gplcart (collection-item-update | cliup) -h',
         'gplcart (collection-item-update | cliup)',
@@ -16,11 +16,11 @@ return array(
         (--collection_id=<int> | --entity_id=<int> | --weight=<int> | --status=<bool> | --data=<json>)',
     ),
     'options' => array(
-        '-h' => /* @text */'Show command help',
-        '--entity_id' => /* @text */'Entity ID',
-        '--collection_id' => /* @text */'Collection ID',
-        '--weight' => /* @text */'Weight' . ' [default: 0]',
-        '--status' => /* @text */'Status' . ' [default: 0]',
-        '--data' => /* @text */'JSON string'
+        '-h' => 'Show command help', // @text
+        '--entity_id' => 'Entity ID', // @text
+        '--collection_id' => 'Collection ID', // @text
+        '--weight' => 'Weight', // @text
+        '--status' => 'Status', // @text
+        '--data' => 'JSON or base64 encoded JSON string' // @text
     )
 );

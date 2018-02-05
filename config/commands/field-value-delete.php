@@ -8,14 +8,14 @@
  */
 return array(
     'alias' => 'fvdel',
-    'description' => /* @text */'Delete one or several field values',
+    'description' => 'Delete one or several field values', // @text
     'usage' => array(
         'gplcart (field-value-delete | fvdel) -h',
         'gplcart (field-value-delete | fvdel) <field value id>',
         'gplcart (field-value-delete | fvdel) <field id> --field',
     ),
     'options' => array(
-        '-h' => /* @text */'Show command help',
-        '--field' => /* @text */'Delete ALL field values with the field ID argument'
+        '-h' => 'Show command help', // @text
+        '--field' => 'Delete ALL field values with the field ID argument' // @text
     )
 );

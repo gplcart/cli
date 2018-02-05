@@ -8,19 +8,19 @@
  */
 return array(
     'alias' => 'lup',
-    'description' => /* @text */'Update language',
+    'description' => 'Update language', // @text
     'usage' => array(
         'gplcart (language-update | lup) -h',
         'gplcart (language-update | lup) <language code> (--name=<varchar> | --native_name=<varchar> | --status=<bool>
         | --weight=<int> | --default=<bool> | --rtl=<bool>)'
     ),
     'options' => array(
-        '-h' => /* @text */'Show command help',
-        '--name' => /* @text */'Name',
-        '--native_name' => /* @text */'Native name',
-        '--status' => /* @text */'Status',
-        '--default' => /* @text */'Default',
-        '--weight' => /* @text */'Weight',
-        '--rtl' => /* @text */'Right-to-left'
+        '-h' => 'Show command help', // @text
+        '--name' => 'Name', // @text
+        '--native_name' => 'Native name', // @text
+        '--status' => 'Status', // @text
+        '--default' => 'Default', // @text
+        '--weight' => 'Weight', // @text
+        '--rtl' => 'Right-to-left' // @text
     )
 );

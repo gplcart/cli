@@ -8,14 +8,14 @@
  */
 return array(
     'alias' => 'adel',
-    'description' => /* @text */'Delete one or several addresses',
+    'description' => 'Delete one or several addresses', // @text
     'usage' => array(
         'gplcart (address-delete | adel) -h',
         'gplcart (address-delete | adel) <address id>',
         'gplcart (address-delete | adel) <user id> --user'
     ),
     'options' => array(
-        '-h' => /* @text */'Show command help',
-        '--country' => /* @text */'Specifies that a user ID used instead of address ID'
+        '-h' => 'Show command help', // @text
+        '--user' => 'Delete ALL addresses with the user ID argument' // @text
     )
 );

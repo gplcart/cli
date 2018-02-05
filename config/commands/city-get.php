@@ -8,7 +8,7 @@
  */
 return array(
     'alias' => 'ciget',
-    'description' => /* @text */'Display one or several cities',
+    'description' => 'Display one or several cities', // @text
     'usage' => array(
         'gplcart (city-get | ciget) -h',
         'gplcart (city-get | ciget) [-f=<format> -l=<offset,limit>]',
@@ -17,10 +17,10 @@ return array(
         'gplcart (city-get | ciget) <country code> --country [-f=<format> -l=<offset,limit>]'
     ),
     'options' => array(
-        '-h' => /* @text */'Show command help',
-        '-l' => /* @text */'Max number of displayed items [default: 100]',
-        '-f' => /* @text */'Format of displayed data: print-r, var-export, var-dump, json, table [default: table]',
-        '--state' => /* @text */'Display all cities for the country state ID argument',
-        '--country' => /* @text */'Display all cities for the country code argument',
+        '-h' => 'Show command help', // @text
+        '-l' => 'Max number of displayed items [default: 100]', // @text
+        '-f' => 'Format of displayed data: print-r, var-export, var-dump, json, table [default: table]', // @text
+        '--state' => 'Display all cities with the country state ID argument', // @text
+        '--country' => 'Display all cities with the country code argument', // @text
     )
 );

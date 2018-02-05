@@ -8,18 +8,18 @@
  */
 return array(
     'alias' => 'csup',
-    'description' => /* @text */'Update country state',
+    'description' => 'Update country state', // @text
     'usage' => array(
         'gplcart (state-update | csup) -h',
         'gplcart (state-update | csup) <state id> (--code=<varchar> | --status=<bool>
         | --name=<varchar> | --country=<varchar> | --zone_id=<int>)'
     ),
     'options' => array(
-        '--code' => /* @text */'Code',
-        '--name' => /* @text */'Name',
-        '--country' => /* @text */'Country code',
-        '--status' => /* @text */'Status',
-        '--zone_id' => /* @text */'Zone ID',
-        '-h' => /* @text */'Show command help'
+        '--code' => 'Code', // @text
+        '--name' => 'Name', // @text
+        '--country' => 'Country code', // @text
+        '--status' => 'Status', // @text
+        '--zone_id' => 'Zone ID', // @text
+        '-h' => 'Show command help' // @text
     )
 );

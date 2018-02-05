@@ -8,7 +8,7 @@
  */
 return array(
     'alias' => 'pgadd',
-    'description' => /* @text */'Add page',
+    'description' => 'Add page', // @text
     'usage' => array(
         'gplcart (page-add | pgadd) -h',
         'gplcart (page-add | pgadd)',
@@ -17,15 +17,15 @@ return array(
          --meta_title=<varchar> --meta_description=<varchar> --status=<bool>]',
     ),
     'options' => array(
-        '-h' => /* @text */'Show command help',
-        '--title' => /* @text */'Title',
-        '--description' => /* @text */'Description',
-        '--store_id' => /* @text */'Store ID',
-        '--user_id' => /* @text */'Author' . ' [default: 0]',
-        '--category_id' => /* @text */'Category' . ' [default: 0]',
-        '--blog_post' => /* @text */'Blog post' . ' [default: 0]',
-        '--meta_title' => /* @text */'Meta title' . ' [default: ]',
-        '--meta_description' => /* @text */'Meta description' . ' [default: ]',
-        '--status' => /* @text */'Status' . ' [default: 0]'
+        '-h' => 'Show command help', // @text
+        '--title' => 'Title', // @text
+        '--description' => 'Description', // @text
+        '--store_id' => 'Store ID', // @text
+        '--user_id' => 'Author', // @text
+        '--category_id' => 'Category', // @text
+        '--blog_post' => 'Blog post', // @text
+        '--meta_title' => 'Meta title', // @text
+        '--meta_description' => 'Meta description', // @text
+        '--status' => 'Status' // @text
     )
 );

@@ -8,7 +8,7 @@
  */
 return array(
     'alias' => 'pdel',
-    'description' => /* @text */'Delete one or several products',
+    'description' => 'Delete one or several products', // @text
     'usage' => array(
         'gplcart (product-delete | pdel) -h',
         'gplcart (product-delete | pdel) --all',
@@ -20,12 +20,12 @@ return array(
         'gplcart (product-delete | pdel) <brand category id> --brand [-f=<format> -l=<offset,limit>]'
     ),
     'options' => array(
-        '-h' => /* @text */'Show command help',
-        '--all' => /* @text */'Delete ALL products if no ID specified',
-        '--user' => /* @text */'Delete ALL products with the user ID argument',
-        '--store' => /* @text */'Delete ALL products with the store ID argument',
-        '--category' => /* @text */'Delete ALL products with the category ID argument',
-        '--class' => /* @text */'Delete ALL products with the product class ID argument',
-        '--brand' => /* @text */'Delete ALL products with the brand category ID argument'
+        '-h' => 'Show command help', // @text
+        '--all' => 'Delete ALL products if no ID specified', // @text
+        '--user' => 'Delete ALL products with the user ID argument', // @text
+        '--store' => 'Delete ALL products with the store ID argument', // @text
+        '--category' => 'Delete ALL products with the category ID argument', // @text
+        '--class' => 'Delete ALL products with the product class ID argument', // @text
+        '--brand' => 'Delete ALL products with the brand category ID argument' // @text
     )
 );

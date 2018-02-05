@@ -8,7 +8,7 @@
  */
 return array(
     'alias' => 'oup',
-    'description' => /* @text */'Update order',
+    'description' => 'Update order', // @text
     'usage' => array(
         'gplcart (order-update | oup) -h',
         'gplcart (order-update | oup) <order id> (--user_id=<int> | --payment=<varchar> | --shipping=<varchar>
@@ -18,24 +18,24 @@ return array(
         | --weight_unit=<varchar> | --data=<json>)',
     ),
     'options' => array(
-        '-h' => /* @text */'Show command help',
-        '--user_id' => /* @text */'User ID',
-        '--payment' => /* @text */'Payment method',
-        '--shipping' => /* @text */'Shipping method',
-        '--status' => /* @text */'Status',
-        '--store_id' => /* @text */'Store ID',
-        '--shipping_address' => /* @text */'Shipping address',
-        '--payment_address' => /* @text */'Payment address',
-        '--total' => /* @text */'Total',
-        '--currency' => /* @text */'Currency',
-        '--creator' => /* @text */'Creator',
-        '--tracking_number' => /* @text */'Tracking number',
-        '--transaction_id' => /* @text */'Transaction ID',
-        '--comment' => /* @text */'Comment',
-        '--volume' => /* @text */'Volume',
-        '--weight' => /* @text */'Weight',
-        '--size_unit' => /* @text */'Size unit',
-        '--weight_unit' => /* @text */'Weight unit',
-        '--data' => /* @text */'Data'
+        '-h' => 'Show command help', // @text
+        '--user_id' => 'User ID', // @text
+        '--payment' => 'Payment method', // @text
+        '--shipping' => 'Shipping method', // @text
+        '--status' => 'Status', // @text
+        '--store_id' => 'Store ID', // @text
+        '--shipping_address' => 'Shipping address', // @text
+        '--payment_address' => 'Payment address', // @text
+        '--total' => 'Total', // @text
+        '--currency' => 'Currency', // @text
+        '--creator' => 'Creator', // @text
+        '--tracking_number' => 'Tracking number', // @text
+        '--transaction_id' => 'Transaction ID', // @text
+        '--comment' => 'Comment', // @text
+        '--volume' => 'Volume', // @text
+        '--weight' => 'Weight', // @text
+        '--size_unit' => 'Size unit', // @text
+        '--weight_unit' => 'Weight unit', // @text
+        '--data' => 'JSON or base64 encoded JSON string' // @text
     )
 );

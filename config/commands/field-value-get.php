@@ -8,7 +8,7 @@
  */
 return array(
     'alias' => 'fvget',
-    'description' => /* @text */'Display one or several field values',
+    'description' => 'Display one or several field values', // @text
     'usage' => array(
         'gplcart (field-value-get | fvget) -h',
         'gplcart (field-value-get | fvget) [-f=<format> -l=<offset,limit>]',
@@ -16,9 +16,9 @@ return array(
         'gplcart (field-value-get | fvget) <field id> --field [-f=<format> -l=<offset,limit>]'
     ),
     'options' => array(
-        '-h' => /* @text */'Show command help',
-        '-l' => /* @text */'Max number of displayed items [default: 100]',
-        '-f' => /* @text */'Format of displayed data: print-r, var-export, var-dump, json, table [default: table]',
-        '--field' => /* @text */'Display all field values with the field ID argument'
+        '-h' => 'Show command help', // @text
+        '-l' => 'Max number of displayed items [default: 100]', // @text
+        '-f' => 'Format of displayed data: print-r, var-export, var-dump, json, table [default: table]', // @text
+        '--field' => 'Display all field values with the field ID argument' // @text
     )
 );

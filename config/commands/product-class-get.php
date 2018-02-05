@@ -8,15 +8,15 @@
  */
 return array(
     'alias' => 'pcget',
-    'description' => /* @text */'Display one or several product classes',
+    'description' => 'Display one or several product classes', // @text
     'usage' => array(
         'gplcart (product-class-get | pcget) -h',
         'gplcart (product-class-get | pcget) [-f=<format> -l=<offset,limit>]',
         'gplcart (product-class-get | pcget) <product class id> [-f=<format>]'
     ),
     'options' => array(
-        '-h' => /* @text */'Show command help',
-        '-l' => /* @text */'Max number of displayed items [default: 100]',
-        '-f' => /* @text */'Format of displayed data: print-r, var-export, var-dump, json, table [default: table]'
+        '-h' => 'Show command help', // @text
+        '-l' => 'Max number of displayed items [default: 100]', // @text
+        '-f' => 'Format of displayed data: print-r, var-export, var-dump, json, table [default: table]' // @text
     )
 );

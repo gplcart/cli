@@ -8,16 +8,16 @@
  */
 return array(
     'alias' => 'cgadd',
-    'description' => /* @text */'Add category group',
+    'description' => 'Add category group', // @text
     'usage' => array(
         'gplcart (category-group-add | cgadd) -h',
         'gplcart (category-group-add | cgadd)',
         'gplcart (category-group-add | cgadd) --title=<varchar> [--type=<varchar> --store_id=<int>]'
     ),
     'options' => array(
-        '-h' => /* @text */'Show command help',
-        '--title' => /* @text */'Category group name',
-        '--type' => /* @text */'Category group type',
-        '--store_id' => /* @text */'Store ID'
+        '-h' => 'Show command help', // @text
+        '--title' => 'Name', // @text
+        '--type' => 'Type', // @text
+        '--store_id' => 'Store ID' // @text
     )
 );

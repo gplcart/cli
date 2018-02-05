@@ -8,7 +8,7 @@
  */
 return array(
     'alias' => 'trget',
-    'description' => /* @text */'Display one or several triggers',
+    'description' => 'Display one or several triggers', // @text
     'usage' => array(
         'gplcart (trigger-get | trget) -h',
         'gplcart (trigger-get | trget) [-f=<format> -l=<offset,limit>]',
@@ -16,9 +16,9 @@ return array(
         'gplcart (trigger-get | trget) <store id> --store [-f=<format> -l=<offset,limit>]'
     ),
     'options' => array(
-        '-h' => /* @text */'Show command help',
-        '-l' => /* @text */'Max number of displayed items [default: 100]',
-        '-f' => /* @text */'Format of displayed data: print-r, var-export, var-dump, json, table [default: table]',
-        '--store' => /* @text */'Display all triggers with the store ID argument'
+        '-h' => 'Show command help', // @text
+        '-l' => 'Max number of displayed items [default: 100]', // @text
+        '-f' => 'Format of displayed data: print-r, var-export, var-dump, json, table [default: table]', // @text
+        '--store' => 'Display all triggers with the store ID argument' // @text
     )
 );

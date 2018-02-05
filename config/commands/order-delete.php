@@ -8,7 +8,7 @@
  */
 return array(
     'alias' => 'odel',
-    'description' => /* @text */'Delete one or several orders',
+    'description' => 'Delete one or several orders', // @text
     'usage' => array(
         'gplcart (order-delete | odel) -h',
         'gplcart (order-delete | odel) <order id>',
@@ -17,9 +17,9 @@ return array(
         'gplcart (order-delete | odel) <status name> --status'
     ),
     'options' => array(
-        '-h' => /* @text */'Show command help',
-        '--user' => /* @text */'Delete ALL orders with the user ID argument',
-        '--store' => /* @text */'Delete ALL orders with the store ID argument',
-        '--status' => /* @text */'Delete ALL orders with the status name argument',
+        '-h' => 'Show command help', // @text
+        '--user' => 'Delete ALL orders with the user ID argument', // @text
+        '--store' => 'Delete ALL orders with the store ID argument', // @text
+        '--status' => 'Delete ALL orders with the status name argument', // @text
     )
 );

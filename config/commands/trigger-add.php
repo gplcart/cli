@@ -8,18 +8,18 @@
  */
 return array(
     'alias' => 'tradd',
-    'description' => /* @text */'Add trigger',
+    'description' => 'Add trigger', // @text
     'usage' => array(
         'gplcart (trigger-add | tradd) -h',
         'gplcart (trigger-add | tradd)',
         'gplcart (trigger-add | tradd) (--name=<varchar> --conditions=<varchar> --store_id=<int>) [options]',
     ),
     'options' => array(
-        '-h' => /* @text */'Show command help',
-        '--name' => /* @text */'Name',
-        '--store_id' => /* @text */'Store ID',
-        '--status' => /* @text */'Status' . ' [default: 0]',
-        '--weight' => /* @text */'Weight' . ' [default: 0]',
-        '--conditions' => /* @text */'One or several conditions separated by pipe. Condition format: [condition ID][space][operator][space][parameter(s)]'
+        '-h' => 'Show command help', // @text
+        '--name' => 'Name', // @text
+        '--store_id' => 'Store ID', // @text
+        '--status' => 'Status', // @text
+        '--weight' => 'Weight', // @text
+        '--conditions' => 'One or several conditions separated by pipe. Condition format: [condition ID][space][operator][space][parameter(s)]' // @text
     )
 );

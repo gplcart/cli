@@ -8,15 +8,15 @@
  */
 return array(
     'alias' => 'pcadd',
-    'description' => /* @text */'Add product class',
+    'description' => 'Add product class', // @text
     'usage' => array(
         'gplcart (product-class-add | pcadd) -h',
         'gplcart (product-class-add | pcadd)',
         'gplcart (product-class-add | pcadd) --title=<varchar> [--status=<bool>]',
     ),
     'options' => array(
-        '-h' => /* @text */'Show command help',
-        '--title' => /* @text */'Title',
-        '--status' => /* @text */'Status' . ' [default: 0]'
+        '-h' => 'Show command help', // @text
+        '--title' => 'Title', // @text
+        '--status' => 'Status' // @text
     )
 );

@@ -8,17 +8,17 @@
  */
 return array(
     'alias' => 'fdup',
-    'description' => /* @text */'Update field',
+    'description' => 'Update field', // @text
     'usage' => array(
         'gplcart (field-update | fdup) -h',
         'gplcart (field-update | fdup) <field id>
         (--title=<varchar> | --type=<varchar> | --widget=<varchar> | --status=<boolean>)',
     ),
     'options' => array(
-        '-h' => /* @text */'Show command help',
-        '--title' => /* @text */'Title',
-        '--type' => /* @text */'Type',
-        '--widget' => /* @text */'Widget',
-        '--status' => /* @text */'Status'
+        '-h' => 'Show command help', // @text
+        '--title' => 'Title', // @text
+        '--type' => 'Type', // @text
+        '--widget' => 'Widget', // @text
+        '--status' => 'Status' // @text
     )
 );

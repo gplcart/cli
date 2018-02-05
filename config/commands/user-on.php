@@ -8,7 +8,7 @@
  */
 return array(
     'alias' => 'uon',
-    'description' => /* @text */'Enable one or several users',
+    'description' => 'Enable one or several users', // @text
     'usage' => array(
         'gplcart (user-on | uon) -h',
         'gplcart (user-on | uon) --all',
@@ -17,9 +17,9 @@ return array(
         'gplcart (user-on | uon) <store id> --store'
     ),
     'options' => array(
-        '-h' => /* @text */'Show command help',
-        '-all' => /* @text */'Enable ALL users if no ID argument specified',
-        '-store' => /* @text */'Enable ALL users with the store ID argument',
-        '-role' => /* @text */'Enable ALL users with the role ID argument'
+        '-h' => 'Show command help', // @text
+        '-all' => 'Enable ALL users if no ID argument specified', // @text
+        '-store' => 'Enable ALL users with the store ID argument', // @text
+        '-role' => 'Enable ALL users with the role ID argument' // @text
     )
 );

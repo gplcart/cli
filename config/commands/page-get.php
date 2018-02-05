@@ -8,7 +8,7 @@
  */
 return array(
     'alias' => 'pgget',
-    'description' => /* @text */'Display one or several pages',
+    'description' => 'Display one or several pages', // @text
     'usage' => array(
         'gplcart (page-get | pgget) -h',
         'gplcart (page-get | pgget) <page id> [-f=<format>]',
@@ -18,11 +18,11 @@ return array(
         'gplcart (page-get | pgget) <category id> --category [-f=<format> -l=<offset,limit>]'
     ),
     'options' => array(
-        '-h' => /* @text */'Show command help',
-        '-f' => /* @text */'Format of displayed data: print-r, var-export, var-dump, json, table [default: table]',
-        '-l' => /* @text */'Max number of displayed items [default: 100]',
-        '--user' => /* @text */'Display all pages with the user ID argument',
-        '--store' => /* @text */'Display all pages with the store ID argument',
-        '--category' => /* @text */'Display all pages with the category ID argument',
+        '-h' => 'Show command help', // @text
+        '-f' => 'Format of displayed data: print-r, var-export, var-dump, json, table [default: table]', // @text
+        '-l' => 'Max number of displayed items [default: 100]', // @text
+        '--user' => 'Display all pages with the user ID argument', // @text
+        '--store' => 'Display all pages with the store ID argument', // @text
+        '--category' => 'Display all pages with the category ID argument', // @text
     )
 );

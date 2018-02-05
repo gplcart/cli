@@ -8,7 +8,7 @@
  */
 return array(
     'alias' => 'pcfadd',
-    'description' => /* @text */'Add product class field',
+    'description' => 'Add product class field', // @text
     'usage' => array(
         'gplcart (product-class-field-add | pcfadd) -h',
         'gplcart (product-class-field-add | pcfadd)',
@@ -16,11 +16,11 @@ return array(
         [--required=<bool> --multiple=<bool> --weight=<int>]',
     ),
     'options' => array(
-        '-h' => /* @text */'Show command help',
-        '--product_class_id' => /* @text */'Product class ID',
-        '--field_id' => /* @text */'Field ID',
-        '--required' => /* @text */'Required' . ' [default: 0]',
-        '--multiple' => /* @text */'Multiple' . ' [default: 0]',
-        '--weight' => /* @text */'Weight' . ' [default: 0]'
+        '-h' => 'Show command help', // @text
+        '--product_class_id' => 'Product class ID', // @text
+        '--field_id' => 'Field ID', // @text
+        '--required' => 'Required', // @text
+        '--multiple' => 'Multiple', // @text
+        '--weight' => 'Weight' // @text
     )
 );

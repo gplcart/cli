@@ -8,18 +8,18 @@
  */
 return array(
     'alias' => 'cladd',
-    'description' => /* @text */'Add collection',
+    'description' => 'Add collection', // @text
     'usage' => array(
         'gplcart (collection-add | cladd) -h',
         'gplcart (collection-add | cladd)',
         'gplcart (collection-add | cladd) (--title=<varchar> --type=<varchar> --description=<varchar> --store_id=<int>) [--status=<bool>]',
     ),
     'options' => array(
-        '-h' => /* @text */'Show command help',
-        '--store_id' => /* @text */'Store ID',
-        '--type' => /* @text */'Collection type',
-        '--title' => /* @text */'Collection title',
-        '--status' => /* @text */'Status' . ' [default: 0]',
-        '--description' => /* @text */'Description' . ' [default: ]'
+        '-h' => 'Show command help', // @text
+        '--store_id' => 'Store ID', // @text
+        '--type' => 'Type', // @text
+        '--title' => 'Title', // @text
+        '--status' => 'Status', // @text
+        '--description' => 'Description' // @text
     )
 );

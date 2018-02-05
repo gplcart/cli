@@ -8,7 +8,7 @@
  */
 return array(
     'alias' => 'pradd',
-    'description' => /* @text */'Add price rule',
+    'description' => 'Add price rule', // @text
     'usage' => array(
         'gplcart (pricerule-add | pradd) -h',
         'gplcart (pricerule-add | pradd)',
@@ -16,14 +16,14 @@ return array(
          --value_type=<varchar> --currency=<varchar>) [--code=<varchar> --status=<bool> --weight=<int>]',
     ),
     'options' => array(
-        '-h' => /* @text */'Show command help',
-        '--name' => /* @text */'Name',
-        '--trigger_id' => /* @text */'Trigger ID',
-        '--value' => /* @text */'Value',
-        '--value_type' => /* @text */'Value type',
-        '--currency' => /* @text */'Currency',
-        '--code' => /* @text */'Code',
-        '--status' => /* @text */'Status' . ' [default: 0]',
-        '--weight' => /* @text */'Weight' . ' [default: 0]'
+        '-h' => 'Show command help', // @text
+        '--name' => 'Name', // @text
+        '--trigger_id' => 'Trigger ID', // @text
+        '--value' => 'Value', // @text
+        '--value_type' => 'Value type', // @text
+        '--currency' => 'Currency', // @text
+        '--code' => 'Code', // @text
+        '--status' => 'Status', // @text
+        '--weight' => 'Weight' // @text
     )
 );

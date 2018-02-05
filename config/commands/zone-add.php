@@ -8,15 +8,15 @@
  */
 return array(
     'alias' => 'zadd',
-    'description' => /* @text */'Add zone',
+    'description' => 'Add zone', // @text
     'usage' => array(
         'gplcart (zone-add | zadd) -h',
         'gplcart (zone-add | zadd)',
         'gplcart (zone-add | zadd) --title=<varchar> [--status=<bool>]',
     ),
     'options' => array(
-        '-h' => /* @text */'Show command help',
-        '--title' => /* @text */'Name',
-        '--status' => /* @text */'Status' . ' [default: 0]'
+        '-h' => 'Show command help', // @text
+        '--title' => 'Name', // @text
+        '--status' => 'Status' // @text
     )
 );

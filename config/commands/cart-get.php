@@ -8,7 +8,7 @@
  */
 return array(
     'alias' => 'crget',
-    'description' => /* @text */'Display one or several cart items',
+    'description' => 'Display one or several cart items', // @text
     'usage' => array(
         'gplcart (cart-get | crget) -h',
         'gplcart (cart-get | crget) [-f=<format> -l=<offset,limit>]',
@@ -19,12 +19,12 @@ return array(
         'gplcart (cart-get | crget) <store id> --store [-f=<format> -l=<offset,limit>]'
     ),
     'options' => array(
-        '-h' => /* @text */'Show command help',
-        '-f' => /* @text */'Format of displayed data: print-r, var-export, var-dump, json, table [default: table]',
-        '-l' => /* @text */'Max number of displayed items [default: 100]',
-        '--user' => /* @text */'Display all cart items for the user ID',
-        '--order' => /* @text */'Display all cart items for the order ID',
-        '--sku' => /* @text */'Display all cart items for the SKU',
-        '--store' => /* @text */'Display all cart items for the store ID',
+        '-h' => 'Show command help', // @text
+        '-f' => 'Format of displayed data: print-r, var-export, var-dump, json, table [default: table]', // @text
+        '-l' => 'Max number of displayed items [default: 100]', // @text
+        '--user' => 'Display all cart items with the user ID argument', // @text
+        '--order' => 'Display all cart items with the order ID argument', // @text
+        '--sku' => 'Display all cart items with the SKU argument', // @text
+        '--store' => 'Display all cart items with the store ID argument', // @text
     )
 );

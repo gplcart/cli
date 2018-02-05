@@ -8,7 +8,7 @@
  */
 return array(
     'alias' => 'asc',
-    'description' => /* @text */'Delete cached JS and CSS files',
+    'description' => 'Delete cached JS and CSS files', // @text
     'usage' => array(
         'gplcart (asset-clear | asc) -h',
         'gplcart (asset-clear | asc)',
@@ -16,8 +16,8 @@ return array(
         'gplcart (asset-clear | asc) --css'
     ),
     'options' => array(
-        '-h' => /* @text */'Show command help',
-        '--js' => /* @text */'Delete only cached JS files',
-        '--css' => /* @text */'Delete only cached CSS files'
+        '-h' => 'Show command help', // @text
+        '--js' => 'Delete only cached JS files', // @text
+        '--css' => 'Delete only cached CSS files' // @text
     )
 );

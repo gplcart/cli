@@ -8,7 +8,7 @@
  */
 return array(
     'alias' => 'fdget',
-    'description' => /* @text */'Display one or several fields',
+    'description' => 'Display one or several fields', // @text
     'usage' => array(
         'gplcart (field-get | fdget) -h',
         'gplcart (field-get | fdget) [-f=<format> -l=<offset,limit>]',
@@ -17,10 +17,10 @@ return array(
         'gplcart (field-get | fdget) <widget> --widget [-f=<format> -l=<offset,limit>]'
     ),
     'options' => array(
-        '-h' => /* @text */'Show command help',
-        '-f' => /* @text */'Format of displayed data: print-r, var-export, var-dump, json, table [default: table]',
-        '-l' => /* @text */'Max number of displayed items [default: 100]',
-        '--widget' => /* @text */'Display all fields with the widget argument',
-        '--type' => /* @text */'Display all fields with the type arguments'
+        '-h' => 'Show command help', // @text
+        '-f' => 'Format of displayed data: print-r, var-export, var-dump, json, table [default: table]', // @text
+        '-l' => 'Max number of displayed items [default: 100]', // @text
+        '--widget' => 'Display all fields with the widget argument', // @text
+        '--type' => 'Display all fields with the type arguments' // @text
     )
 );

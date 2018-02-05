@@ -8,7 +8,7 @@
  */
 return array(
     'alias' => 'ctup',
-    'description' => /* @text */'Update category',
+    'description' => 'Update category', // @text
     'usage' => array(
         'gplcart (category-update | ctup) -h',
         'gplcart (category-update | ctup) <category id> (--title=<varchar> | --category_group_id=<int>
@@ -16,15 +16,15 @@ return array(
          | --meta_description=<text> | --status=<int> | --weight=<int>)',
     ),
     'options' => array(
-        '-h' => /* @text */'Show command help',
-        '--title' => /* @text */'Category title',
-        '--category_group_id' => /* @text */'Category group ID',
-        '--parent_id' => /* @text */'Parent category',
-        '--description_1' => /* @text */'First description',
-        '--description_2' => /* @text */'Second description',
-        '--meta_title' => /* @text */'Meta title',
-        '--meta_description' => /* @text */'Meta description',
-        '--status' => /* @text */'Status' . ' [default: 0]',
-        '--weight' => /* @text */'Weight' . ' [default: 0]'
+        '-h' => 'Show command help', // @text
+        '--title' => 'Title', // @text
+        '--category_group_id' => 'Category group ID', // @text
+        '--parent_id' => 'Parent category', // @text
+        '--description_1' => 'First description', // @text
+        '--description_2' => 'Second description', // @text
+        '--meta_title' => 'Meta title', // @text
+        '--meta_description' => 'Meta description', // @text
+        '--status' => 'Status', // @text
+        '--weight' => 'Weight' // @text
     )
 );

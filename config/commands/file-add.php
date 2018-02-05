@@ -8,7 +8,7 @@
  */
 return array(
     'alias' => 'fadd',
-    'description' => /* @text */'Add file',
+    'description' => 'Add file', // @text
     'usage' => array(
         'gplcart (file-add | fadd) -h',
         'gplcart (file-add | fadd)',
@@ -16,14 +16,14 @@ return array(
         --entity=<varchar> --entity_id=<int> --mime_type=<varchar> --file_type=<varchar> --weight=<int>]',
     ),
     'options' => array(
-        '-h' => /* @text */'Show command help',
-        '--path' => /* @text */'Path',
-        '--title' => /* @text */'Title',
-        '--entity' => /* @text */'Entity',
-        '--entity_id' => /* @text */'Entity ID',
-        '--mime_type' => /* @text */'MIME type',
-        '--file_type' => /* @text */'File type',
-        '--description' => /* @text */'Description',
-        '--weight' => /* @text */'Weight' . ' [default: 0]',
+        '-h' => 'Show command help', // @text
+        '--path' => 'Path', // @text
+        '--title' => 'Title', // @text
+        '--entity' => 'Entity', // @text
+        '--entity_id' => 'Entity ID', // @text
+        '--mime_type' => 'MIME type', // @text
+        '--file_type' => 'Type', // @text
+        '--description' => 'Description', // @text
+        '--weight' => 'Weight', // @text
     )
 );

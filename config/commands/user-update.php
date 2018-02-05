@@ -8,21 +8,21 @@
  */
 return array(
     'alias' => 'uup',
-    'description' => /* @text */'Update user',
+    'description' => 'Update user', // @text
     'usage' => array(
         'gplcart (user-update | uup) -h',
         'gplcart (user-update | uup) <user id> (--name=<varchar> | --password=<varchar> | --email=<varchar>
         | --status=<bool> | --store_id=<int> | --role_id=<int> | --timezone=<varchar> | --data=<varchar>)'
     ),
     'options' => array(
-        '--name' => /* @text */'Name',
-        '--password' => /* @text */'Password',
-        '--email' => /* @text */'E-mail',
-        '--status' => /* @text */'Status',
-        '--store_id' => /* @text */'Store ID',
-        '--role_id' => /* @text */'Role ID',
-        '--timezone' => /* @text */'Timezone',
-        '--data' => /* @text */'JSON or base64 encoded JSON string',
-        '-h' => /* @text */'Show command help'
+        '--name' => 'Name', // @text
+        '--password' => 'Password', // @text
+        '--email' => 'E-mail', // @text
+        '--status' => 'Status', // @text
+        '--store_id' => 'Store ID', // @text
+        '--role_id' => 'Role ID', // @text
+        '--timezone' => 'Timezone', // @text
+        '--data' => 'JSON or base64 encoded JSON string', // @text
+        '-h' => 'Show command help' // @text
     )
 );

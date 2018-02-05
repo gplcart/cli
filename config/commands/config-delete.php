@@ -8,12 +8,12 @@
  */
 return array(
     'alias' => 'cdel',
-    'description' => /* @text */'Delete configuration option',
+    'description' => 'Delete configuration option', // @text
     'usage' => array(
         'gplcart (config-delete | cdel) -h',
         'gplcart (config-delete | cdel) <id>'
     ),
     'options' => array(
-        '-h' => /* @text */'Show command help'
+        '-h' => 'Show command help' // @text
     )
 );

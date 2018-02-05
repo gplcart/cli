@@ -8,12 +8,12 @@
  */
 return array(
     'alias' => 'rpa',
-    'description' => /* @text */'Add one or several permissions to a user role',
+    'description' => 'Add one or several permissions to a user role', // @text
     'usage' => array(
         'gplcart (role-perm-add | rpa) -h',
         'gplcart (role-perm-add | rpa) <role id> <permission1> <permission2> ...'
     ),
     'options' => array(
-        '-h' => /* @text */'Show command help'
+        '-h' => 'Show command help' // @text
     )
 );

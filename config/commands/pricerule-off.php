@@ -8,7 +8,7 @@
  */
 return array(
     'alias' => 'proff',
-    'description' => /* @text */'Disable one or several price rules',
+    'description' => 'Disable one or several price rules', // @text
     'usage' => array(
         'gplcart (pricerule-off | proff) -h',
         'gplcart (pricerule-off | proff) --all',
@@ -16,8 +16,8 @@ return array(
         'gplcart (pricerule-off | proff) <trigger id> --trigger',
     ),
     'options' => array(
-        '-h' => /* @text */'Show command help',
-        '--all' => /* @text */'Disable ALL price rules i no ID argument specified',
-        '--trigger' => /* @text */'Disable ALL price rules with the trigger ID argument'
+        '-h' => 'Show command help', // @text
+        '--all' => 'Disable ALL price rules i no ID argument specified', // @text
+        '--trigger' => 'Disable ALL price rules with the trigger ID argument' // @text
     )
 );

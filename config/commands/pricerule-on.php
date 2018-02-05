@@ -8,7 +8,7 @@
  */
 return array(
     'alias' => 'pron',
-    'description' => /* @text */'Enable one or several price rules',
+    'description' => 'Enable one or several price rules', // @text
     'usage' => array(
         'gplcart (pricerule-on | pron) -h',
         'gplcart (pricerule-on | pron) --all',
@@ -16,8 +16,8 @@ return array(
         'gplcart (pricerule-on | pron) <trigger id> --trigger',
     ),
     'options' => array(
-        '-h' => /* @text */'Show command help',
-        '--all' => /* @text */'Enable ALL price rules i no ID argument specified',
-        '--trigger' => /* @text */'Enable ALL price rules with the trigger ID argument'
+        '-h' => 'Show command help', // @text
+        '--all' => 'Enable ALL price rules i no ID argument specified', // @text
+        '--trigger' => 'Enable ALL price rules with the trigger ID argument' // @text
     )
 );

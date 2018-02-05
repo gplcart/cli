@@ -8,21 +8,21 @@
  */
 return array(
     'alias' => 'uadd',
-    'description' => /* @text */'Add user',
+    'description' => 'Add user', // @text
     'usage' => array(
         'gplcart (user-add | uadd) -h',
         'gplcart (user-add | uadd)',
         'gplcart (user-add | uadd) (--email=<varchar> --password=<varchar> --name=<varchar>) [options]',
     ),
     'options' => array(
-        '-h' => /* @text */'Show command help',
-        '--name' => /* @text */'Name',
-        '--password' => /* @text */'Password',
-        '--email' => /* @text */'E-mail',
-        '--status' => /* @text */'Status',
-        '--store_id' => /* @text */'Store ID',
-        '--role_id' => /* @text */'Role',
-        '--timezone' => /* @text */'Timezone',
-        '--data' => /* @text */'JSON or base64 encoded JSON string'
+        '-h' => 'Show command help', // @text
+        '--name' => 'Name', // @text
+        '--password' => 'Password', // @text
+        '--email' => 'E-mail', // @text
+        '--status' => 'Status', // @text
+        '--store_id' => 'Store ID', // @text
+        '--role_id' => 'Role', // @text
+        '--timezone' => 'Timezone', // @text
+        '--data' => 'JSON or base64 encoded JSON string' // @text
     )
 );

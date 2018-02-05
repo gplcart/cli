@@ -8,7 +8,7 @@
  */
 return array(
     'alias' => 'ctget',
-    'description' => /* @text */'Display one or several categories',
+    'description' => 'Display one or several categories', // @text
     'usage' => array(
         'gplcart (category-get | ctget) -h',
         'gplcart (category-get | ctget) [-f=<format> -l=<offset,limit>]',
@@ -17,10 +17,10 @@ return array(
         'gplcart (category-get | ctget) <parent category id> --parent [-f=<format> -l=<offset,limit>]'
     ),
     'options' => array(
-        '-h' => /* @text */'Show command help',
-        '-f' => /* @text */'Format of displayed data: print-r, var-export, var-dump, json, table [default: table]',
-        '-l' => /* @text */'Max number of displayed items [default: 100]',
-        '--group' => /* @text */'Display all categories for the category group ID argument',
-        '--parent' => /* @text */'Display all categories for the parent category ID argument'
+        '-h' => 'Show command help', // @text
+        '-f' => 'Format of displayed data: print-r, var-export, var-dump, json, table [default: table]', // @text
+        '-l' => 'Max number of displayed items [default: 100]', // @text
+        '--group' => 'Display all categories with the category group ID argument', // @text
+        '--parent' => 'Display all categories with the parent category ID argument' // @text
     )
 );

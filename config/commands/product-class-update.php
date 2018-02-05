@@ -8,15 +8,15 @@
  */
 return array(
     'alias' => 'pcup',
-    'description' => /* @text */'Update product class',
+    'description' => 'Update product class', // @text
     'usage' => array(
         'gplcart (product-class-update | pcup) -h',
         'gplcart (product-class-update | pcup)',
         'gplcart (product-class-update | pcup) <product class id> (--title=<varchar> | --status=<bool>)',
     ),
     'options' => array(
-        '-h' => /* @text */'Show command help',
-        '--title' => /* @text */'Title',
-        '--status' => /* @text */'Status'
+        '-h' => 'Show command help', // @text
+        '--title' => 'Title', // @text
+        '--status' => 'Status' // @text
     )
 );

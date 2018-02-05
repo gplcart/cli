@@ -8,17 +8,17 @@
  */
 return array(
     'alias' => 'radd',
-    'description' => /* @text */'Add user role',
+    'description' => 'Add user role', // @text
     'usage' => array(
         'gplcart (role-add | radd) -h',
         'gplcart (role-add | radd)',
         'gplcart (role-add | radd) (--name=<name> --permissions=<permission1|permission2>) [options]',
     ),
     'options' => array(
-        '-h' => /* @text */'Show command help',
-        '--name' => /* @text */'Role name',
-        '--permissions' => /* @text */'One or several permissions separated by pipe',
-        '--status' => /* @text */'Status' . ' [default: 0]',
-        '--redirect' => /* @text */'Redirect' . ' [default: ]'
+        '-h' => 'Show command help', // @text
+        '--name' => 'Name', // @text
+        '--permissions' => 'One or several permissions separated by pipe', // @text
+        '--status' => 'Status', // @text
+        '--redirect' => 'Redirect' // @text
     )
 );

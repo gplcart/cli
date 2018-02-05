@@ -8,14 +8,14 @@
  */
 return array(
     'alias' => 'imc',
-    'description' => /* @text */'Delete cached images for one or all image styles',
+    'description' => 'Delete cached images for one or all image styles', // @text
     'usage' => array(
         'gplcart (imagestyle-clear | imc) -h',
         'gplcart (imagestyle-clear | imc) --all',
         'gplcart (imagestyle-clear | imc) <image style id>'
     ),
     'options' => array(
-        '-h' => /* @text */'Show command help',
-        '--all' => /* @text */'Delete ALL cached images for all image styles if ID argument specified'
+        '-h' => 'Show command help', // @text
+        '--all' => 'Delete ALL cached images for all image styles if ID argument specified' // @text
     )
 );

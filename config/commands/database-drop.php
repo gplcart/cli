@@ -8,14 +8,14 @@
  */
 return array(
     'alias' => 'dbd',
-    'description' => /* @text */'Drop (delete) one or several tables',
+    'description' => 'Drop (delete) one or several database tables', // @text
     'usage' => array(
         'gplcart (database-drop | dbd) -h',
         'gplcart (database-drop | dbd) --all',
         'gplcart (database-drop | dbd) <table name> <table name> ...'
     ),
     'options' => array(
-        '-h' => /* @text */'Show command help',
-        '--all' => /* @text */'Drop ALL tables in the database'
+        '-h' => 'Show command help', // @text
+        '--all' => 'Drop ALL tables in the database' // @text
     )
 );

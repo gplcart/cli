@@ -8,12 +8,12 @@
  */
 return array(
     'alias' => 'imdel',
-    'description' => /* @text */'Delete image style',
+    'description' => 'Delete image style', // @text
     'usage' => array(
         'gplcart (imagestyle-delete | imdel) -h',
         'gplcart (imagestyle-delete | imdel) <image style id>'
     ),
     'options' => array(
-        '-h' => /* @text */'Show command help'
+        '-h' => 'Show command help' // @text
     )
 );

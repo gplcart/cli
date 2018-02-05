@@ -8,14 +8,14 @@
  */
 return array(
     'alias' => 'ldel',
-    'description' => /* @text */'Delete one or all languages',
+    'description' => 'Delete one or all languages', // @text
     'usage' => array(
         'gplcart (language-delete | ldel) -h',
         'gplcart (language-delete | ldel) --all',
         'gplcart (language-delete | ldel) <language code>'
     ),
     'options' => array(
-        '-h' => /* @text */'Show command help',
-        '--all' => /* @text */'Delete ALL languages if no language code specified',
+        '-h' => 'Show command help', // @text
+        '--all' => 'Delete ALL languages if no language code specified', // @text
     )
 );

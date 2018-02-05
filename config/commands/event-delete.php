@@ -8,13 +8,13 @@
  */
 return array(
     'alias' => 'edel',
-    'description' => /* @text */'Delete logged system events',
+    'description' => 'Delete logged system events', // @text
     'usage' => array(
         'gplcart (event-delete | edel) -h',
         'gplcart (event-delete | edel) [--expired]'
     ),
     'options' => array(
-        '-h' => /* @text */'Display help message',
-        '--expired' => /* @text */'Delete only expired records'
+        '-h' => 'Display help message', // @text
+        '--expired' => 'Delete only expired records' // @text
     )
 );

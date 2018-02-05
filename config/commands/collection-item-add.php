@@ -8,7 +8,7 @@
  */
 return array(
     'alias' => 'cliadd',
-    'description' => /* @text */'Add collection item',
+    'description' => 'Add collection item',
     'usage' => array(
         'gplcart (collection-item-add | cliadd) -h',
         'gplcart (collection-item-add | cliadd)',
@@ -16,11 +16,11 @@ return array(
          [--weight=<int> --status=<bool> --data=<varchar>]',
     ),
     'options' => array(
-        '-h' => /* @text */'Show command help',
-        '--entity_id' => /* @text */'Entity ID',
-        '--collection_id' => /* @text */'Collection ID',
-        '--weight' => /* @text */'Weight' . ' [default: 0]',
-        '--status' => /* @text */'Status' . ' [default: 0]',
-        '--data' => /* @text */'JSON or base64 encoded JSON string'
+        '-h' => 'Show command help', // @text
+        '--entity_id' => 'Entity ID', // @text
+        '--collection_id' => 'Collection ID', // @text
+        '--weight' => 'Weight', // @text
+        '--status' => 'Status', // @text
+        '--data' => 'JSON or base64 encoded JSON string' // @text
     )
 );

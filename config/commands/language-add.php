@@ -8,20 +8,20 @@
  */
 return array(
     'alias' => 'ladd',
-    'description' => /* @text */'Add language',
+    'description' => 'Add language', // @text
     'usage' => array(
         'gplcart (language-add | ladd) -h',
         'gplcart (language-add | ladd)',
         'gplcart (language-add | ladd) (--code=<code>) [options]'
     ),
     'options' => array(
-        '-h' => /* @text */'Show command help',
-        '--code' => /* @text */'Code',
-        '--name' => /* @text */'Name' . ' [default: ]',
-        '--native_name' => /* @text */'Native name' . ' [default: ]',
-        '--status' => /* @text */'Status' . ' [default: 0]',
-        '--default' => /* @text */'Default' . ' [default: 0]',
-        '--weight' => /* @text */'Weight' . ' [default: 0]',
-        '--rtl' => /* @text */'Right-to-left' . ' [default: 0]'
+        '-h' => 'Show command help', // @text
+        '--code' => 'Code', // @text
+        '--name' => 'Name', // @text
+        '--native_name' => 'Native name', // @text
+        '--status' => 'Status', // @text
+        '--default' => 'Default', // @text
+        '--weight' => 'Weight', // @text
+        '--rtl' => 'Right-to-left' // @text
     )
 );

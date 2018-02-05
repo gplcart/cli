@@ -8,12 +8,12 @@
  */
 return array(
     'alias' => 'dbdel',
-    'description' => /* @text */'Delete database record',
+    'description' => 'Delete database record', // @text
     'usage' => array(
         'gplcart (database-delete | dbdel) -h',
         'gplcart (database-delete | dbdel) <table name> (--column=<condition value> ...)'
     ),
     'options' => array(
-        '-h' => /* @text */'Show command help'
+        '-h' => 'Show command help' // @text
     )
 );

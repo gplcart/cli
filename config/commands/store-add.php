@@ -8,18 +8,18 @@
  */
 return array(
     'alias' => 'sadd',
-    'description' => /* @text */'Add store',
+    'description' => 'Add store', // @text
     'usage' => array(
         'gplcart (store-add | sadd) -h',
         'gplcart (store-add | sadd)',
         'gplcart (store-add | sadd) (--name=<varchar> --domain=<varchar> --data=<varchar>) [--basepath=<varchar> --status=<bool>]',
     ),
     'options' => array(
-        '-h' => /* @text */'Show command help',
-        '--name' => /* @text */'Name',
-        '--data' => /* @text */'JSON or base64 encoded JSON string',
-        '--basepath' => /* @text */'Path' . ' [default: ]',
-        '--status' => /* @text */'Status' . ' [default: 0]',
-        '--domain' => /* @text */'Domain or IP address without scheme'
+        '-h' => 'Show command help', // @text
+        '--name' => 'Name', // @text
+        '--data' => 'JSON or base64 encoded JSON string', // @text
+        '--basepath' => 'Path', // @text
+        '--status' => 'Status', // @text
+        '--domain' => 'Domain or IP address without scheme' // @text
     )
 );

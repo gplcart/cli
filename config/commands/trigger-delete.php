@@ -8,14 +8,14 @@
  */
 return array(
     'alias' => 'trdel',
-    'description' => /* @text */'Delete one or several triggers',
+    'description' => 'Delete one or several triggers', // @text
     'usage' => array(
         'gplcart (trigger-delete | trdel) -h',
         'gplcart (trigger-delete | trdel) <trigger id>',
         'gplcart (trigger-delete | trdel) <store id> --store'
     ),
     'options' => array(
-        '-h' => /* @text */'Show command help',
-        '-store' => /* @text */'Delete ALL triggers with the store ID argument'
+        '-h' => 'Show command help', // @text
+        '-store' => 'Delete ALL triggers with the store ID argument' // @text
     )
 );

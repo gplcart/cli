@@ -8,7 +8,7 @@
  */
 return array(
     'alias' => 'pgdel',
-    'description' => /* @text */'Delete one or several pages',
+    'description' => 'Delete one or several pages', // @text
     'usage' => array(
         'gplcart (page-delete | pgdel) -h',
         'gplcart (page-delete | pgdel) --all',
@@ -19,11 +19,11 @@ return array(
         'gplcart (page-delete | pgdel) <user id> --user'
     ),
     'options' => array(
-        '-h' => /* @text */'Show command help',
-        '--all' => /* @text */'Delete ALL pages if no ID argument specified',
-        '--blog' => /* @text */'Delete ALL pages which are blog posts',
-        '--user' => /* @text */'Delete ALL pages with user ID argument',
-        '--store' => /* @text */'Delete ALL pages with store ID argument',
-        '--category' => /* @text */'Delete ALL pages with category ID argument'
+        '-h' => 'Show command help', // @text
+        '--all' => 'Delete ALL pages if no ID argument specified', // @text
+        '--blog' => 'Delete ALL pages which are blog posts', // @text
+        '--user' => 'Delete ALL pages with the user ID argument', // @text
+        '--store' => 'Delete ALL pages with the store ID argument', // @text
+        '--category' => 'Delete ALL pages with the category ID argument' // @text
     )
 );

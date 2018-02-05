@@ -8,7 +8,7 @@
  */
 return array(
     'alias' => 'clget',
-    'description' => /* @text */'Display one or several collections',
+    'description' => 'Display one or several collections', // @text
     'usage' => array(
         'gplcart (collection-get | clget) -h',
         'gplcart (collection-get | clget) [-f=<format> -l=<offset,limit>]',
@@ -17,10 +17,10 @@ return array(
         'gplcart (collection-get | clget) <store id> --store [-f=<format> -l=<offset,limit>]'
     ),
     'options' => array(
-        '-h' => /* @text */'Show command help',
-        '-f' => /* @text */'Format of displayed data: print-r, var-export, var-dump, json, table [default: table]',
-        '-l' => /* @text */'Max number of displayed items [default: 100]',
-        '--type' => /* @text */'Display all collections with the type argument',
-        '--store' => /* @text */'Display all collections with the store ID argument',
+        '-h' => 'Show command help', // @text
+        '-f' => 'Format of displayed data: print-r, var-export, var-dump, json, table [default: table]', // @text
+        '-l' => 'Max number of displayed items [default: 100]', // @text
+        '--type' => 'Display all collections with the type argument', // @text
+        '--store' => 'Display all collections with the store ID argument' // @text
     )
 );

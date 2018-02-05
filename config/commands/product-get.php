@@ -8,7 +8,7 @@
  */
 return array(
     'alias' => 'pget',
-    'description' => /* @text */'Display one or several products',
+    'description' => 'Display one or several products', // @text
     'usage' => array(
         'gplcart (product-get | pget) -h',
         'gplcart (product-get | pget) <product id> [-f=<format>]',
@@ -20,13 +20,13 @@ return array(
         'gplcart (product-get | pget) <brand category id> --brand [-f=<format> -l=<offset,limit>]'
     ),
     'options' => array(
-        '-h' => /* @text */'Show command help',
-        '-f' => /* @text */'Format of displayed data: print-r, var-export, var-dump, json, table [default: table]',
-        '-l' => /* @text */'Max number of displayed items [default: 100]',
-        '--user' => /* @text */'Display all products with the user ID argument',
-        '--store' => /* @text */'Display all products with the store ID argument',
-        '--category' => /* @text */'Display all products with the category ID argument',
-        '--class' => /* @text */'Display all products with the product class ID argument',
-        '--brand' => /* @text */'Display all products with the brand category ID argument',
+        '-h' => 'Show command help', // @text
+        '-f' => 'Format of displayed data: print-r, var-export, var-dump, json, table [default: table]', // @text
+        '-l' => 'Max number of displayed items [default: 100]', // @text
+        '--user' => 'Display all products with the user ID argument', // @text
+        '--store' => 'Display all products with the store ID argument', // @text
+        '--category' => 'Display all products with the category ID argument', // @text
+        '--class' => 'Display all products with the product class ID argument', // @text
+        '--brand' => 'Display all products with the brand category ID argument', // @text
     )
 );

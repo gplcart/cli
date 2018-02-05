@@ -8,14 +8,14 @@
  */
 return array(
     'alias' => 'clidel',
-    'description' => /* @text */'Delete one or several collection items',
+    'description' => 'Delete one or several collection items', // @text
     'usage' => array(
         'gplcart (collection-item-delete | clidel) -h',
         'gplcart (collection-item-delete | clidel) <collection item id>',
         'gplcart (collection-item-delete | clidel) <collection id> --collection',
     ),
     'options' => array(
-        '-h' => /* @text */'Show command help',
-        '--collection' => /* @text */'Delete ALL collection items for the collection ID argument'
+        '-h' => 'Show command help', // @text
+        '--collection' => 'Delete ALL collection items with the collection ID argument' // @text
     )
 );

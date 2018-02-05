@@ -8,7 +8,7 @@
  */
 return array(
     'alias' => 'crdel',
-    'description' => /* @text */'Delete one or several cart items',
+    'description' => 'Delete one or several cart items', // @text
     'usage' => array(
         'gplcart (cart-delete | crdel) -h',
         'gplcart (cart-delete | crdel) <cart id>',
@@ -17,9 +17,9 @@ return array(
         'gplcart (cart-delete | crdel) <order id> --order'
     ),
     'options' => array(
-        '-h' => /* @text */'Show command help',
-        '--sku' => /* @text */'Delete ALL cart items with the SKU',
-        '--user' => /* @text */'Delete ALL cart items for the user ID',
-        '--order' => /* @text */'Delete ALL cart items for the order ID'
+        '-h' => 'Show command help', // @text
+        '--sku' => 'Delete ALL cart items with the SKU argument', // @text
+        '--user' => 'Delete ALL cart items with the user ID argument', // @text
+        '--order' => 'Delete ALL cart items with the order ID argument' // @text
     )
 );

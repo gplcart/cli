@@ -8,16 +8,16 @@
  */
 return array(
     'alias' => 'rup',
-    'description' => /* @text */'Update user role',
+    'description' => 'Update user role', // @text
     'usage' => array(
         'gplcart (role-update | rup) -h',
         'gplcart (role-update | rup) <role id> (--name=<varchar> | --permissions=<varchar> | --status=<bool> | --redirect=<varchar>)'
     ),
     'options' => array(
-        '-h' => /* @text */'Show command help',
-        '--name' => /* @text */'Role name',
-        '--permissions' => /* @text */'One or several permissions separated by pipe',
-        '--status' => /* @text */'Status' . ' [default: 0]',
-        '--redirect' => /* @text */'Redirect' . ' [default: ]'
+        '-h' => 'Show command help', // @text
+        '--name' => 'Name', // @text
+        '--permissions' => 'One or several permissions separated by pipe', // @text
+        '--status' => 'Status', // @text
+        '--redirect' => 'Redirect' // @text
     )
 );

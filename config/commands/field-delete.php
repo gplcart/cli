@@ -8,7 +8,7 @@
  */
 return array(
     'alias' => 'fddel',
-    'description' => /* @text */'Delete one or several fields',
+    'description' => 'Delete one or several fields', // @text
     'usage' => array(
         'gplcart (field-delete | fddel) -h',
         'gplcart (field-delete | fddel) --all',
@@ -17,9 +17,9 @@ return array(
         'gplcart (field-delete | fddel) <widget> --widget',
     ),
     'options' => array(
-        '-h' => /* @text */'Show command help',
-        '--all' => /* @text */'Delete ALL fields if not ID argument specified',
-        '--type' => /* @text */'Delete ALL fields with the type argument',
-        '--widget' => /* @text */'Delete ALL fields with the widget argument'
+        '-h' => 'Show command help', // @text
+        '--all' => 'Delete ALL fields if not ID argument specified', // @text
+        '--type' => 'Delete ALL fields with the type argument', // @text
+        '--widget' => 'Delete ALL fields with the widget argument' // @text
     )
 );

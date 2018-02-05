@@ -8,7 +8,7 @@
  */
 return array(
     'alias' => 'cldel',
-    'description' => /* @text */'Delete one or several collections',
+    'description' => 'Delete one or several collections', // @text
     'usage' => array(
         'gplcart (collection-delete | cldel) -h',
         'gplcart (collection-delete | cldel) --all',
@@ -17,9 +17,9 @@ return array(
         'gplcart (collection-delete | cldel) <collection store id> --store',
     ),
     'options' => array(
-        '-h' => /* @text */'Show command help',
-        '--all' => /* @text */'Delete ALL collections if no ID specified',
-        '--type' => /* @text */'Delete ALL collections with the type argument',
-        '--store' => /* @text */'Delete ALL collections with the store ID argument',
+        '-h' => 'Show command help', // @text
+        '--all' => 'Delete ALL collections if no ID specified', // @text
+        '--type' => 'Delete ALL collections with the type argument', // @text
+        '--store' => 'Delete ALL collections with the store ID argument', // @text
     )
 );

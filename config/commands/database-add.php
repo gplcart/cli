@@ -8,12 +8,12 @@
  */
 return array(
     'alias' => 'dbadd',
-    'description' => /* @text */'Insert database record',
+    'description' => 'Insert database record', // @text
     'usage' => array(
         'gplcart (database-add | dbadd) -h',
         'gplcart (database-add | dbadd) <table name> (--key1=<value1> | --key2=<value2> ...)'
     ),
     'options' => array(
-        '-h' => /* @text */'Show command help'
+        '-h' => 'Show command help' // @text
     )
 );

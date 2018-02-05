@@ -8,7 +8,7 @@
  */
 return array(
     'alias' => 'alget',
-    'description' => /* @text */'Display one or several URL aliases',
+    'description' => 'Display one or several URL aliases', // @text
     'usage' => array(
         'gplcart (alias-get | alget) -h',
         'gplcart (alias-get | alget) <alias id> [-f=<format>]',
@@ -16,9 +16,9 @@ return array(
         'gplcart (alias-get | alget) <entity> [-f=<format> -l=<offset,limit>]'
     ),
     'options' => array(
-        '-h' => /* @text */'Show command help',
-        '-l' => /* @text */'Max number of displayed items [default: 100]',
-        '-f' => /* @text */'Format of displayed data: print-r, var-export, var-dump, json, table [default: table]',
-        '--entity' => /* @text */'Specifies that an entity name used instead of alias ID'
+        '-h' => 'Show command help', // @text
+        '-l' => 'Max number of displayed items [default: 100]', // @text
+        '-f' => 'Format of displayed data: print-r, var-export, var-dump, json, table [default: table]', // @text
+        '--entity' => 'Display all aliases with the entity name argument' // @text
     )
 );

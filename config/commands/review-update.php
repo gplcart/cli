@@ -8,16 +8,16 @@
  */
 return array(
     'alias' => 'reup',
-    'description' => /* @text */'Update review',
+    'description' => 'Update review', // @text
     'usage' => array(
         'gplcart (review-update | reup) -h',
         'gplcart (review-update | reup) <review id> (--user_id=<int> | --product_id=<int> | --text=<text> | --status=<bool>)',
     ),
     'options' => array(
-        '-h' => /* @text */'Show command help',
-        '--user_id' => /* @text */'User ID',
-        '--product_id' => /* @text */'Product ID',
-        '--text' => /* @text */'Text',
-        '--status' => /* @text */'Status',
+        '-h' => 'Show command help', // @text
+        '--user_id' => 'User ID', // @text
+        '--product_id' => 'Product ID', // @text
+        '--text' => 'Text', // @text
+        '--status' => 'Status', // @text
     )
 );

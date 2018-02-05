@@ -8,17 +8,17 @@
  */
 return array(
     'alias' => 'fdadd',
-    'description' => /* @text */'Add field',
+    'description' => 'Add field', // @text
     'usage' => array(
         'gplcart (field-add | fdadd) -h',
         'gplcart (field-add | fdadd)',
         'gplcart (field-add | fdadd) (--title=<varchar> --type=<varchar> --widget=<varchar>) [--status=<bool>]',
     ),
     'options' => array(
-        '-h' => /* @text */'Show command help',
-        '--title' => /* @text */'Title',
-        '--type' => /* @text */'Type',
-        '--widget' => /* @text */'Widget',
-        '--status' => /* @text */'Status' . ' [default: 0]'
+        '-h' => 'Show command help', // @text
+        '--title' => 'Title', // @text
+        '--type' => 'Type', // @text
+        '--widget' => 'Widget', // @text
+        '--status' => 'Status' // @text
     )
 );

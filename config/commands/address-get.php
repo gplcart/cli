@@ -8,7 +8,7 @@
  */
 return array(
     'alias' => 'aget',
-    'description' => /* @text */'Display one or several user addresses',
+    'description' => 'Display one or several user addresses', // @text
     'usage' => array(
         'gplcart (address-get | aget) -h',
         'gplcart (address-get | aget) [-f=<format> -l=<offset,limit>]',
@@ -16,9 +16,9 @@ return array(
         'gplcart (address-get | aget) <user id> --user [-f=<format> -l=<offset,limit>]'
     ),
     'options' => array(
-        '-h' => /* @text */'Show command help',
-        '-f' => /* @text */'Format of displayed data: print-r, var-export, var-dump, json, table [default: table]',
-        '-l' => /* @text */'Max number of displayed items [default: 100]',
-        '--user' => /* @text */'Specifies that a user ID used instead of address ID',
+        '-h' => 'Show command help', // @text
+        '-f' => 'Format of displayed data: print-r, var-export, var-dump, json, table [default: table]', // @text
+        '-l' => 'Max number of displayed items [default: 100]', // @text
+        '--user' => 'Display all addresses with the user ID argument', // @text
     )
 );

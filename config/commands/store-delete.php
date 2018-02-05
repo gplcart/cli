@@ -8,12 +8,12 @@
  */
 return array(
     'alias' => 'sdel',
-    'description' => /* @text */'Delete store',
+    'description' => 'Delete store', // @text
     'usage' => array(
         'gplcart (store-delete | sdel) -h',
         'gplcart (store-delete | sdel) <store id>'
     ),
     'options' => array(
-        '-h' => /* @text */'Show command help'
+        '-h' => 'Show command help' // @text
     )
 );

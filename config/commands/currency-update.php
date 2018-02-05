@@ -8,7 +8,7 @@
  */
 return array(
     'alias' => 'cuup',
-    'description' => /* @text */'Update currency',
+    'description' => 'Update currency', // @text
     'usage' => array(
         'gplcart (currency-update | cuup) -h',
         'gplcart (currency-update | cuup) <currency code> (--name=<varchar> | --symbol=<varchar>'
@@ -18,20 +18,20 @@ return array(
         . ' | --decimal_separator=<varchar> | --thousands_separator=<varchar> | --template=<varchar>)'
     ),
     'options' => array(
-        '-h' => /* @text */'Show command help',
-        '--code' => /* @text */'Code',
-        '--name' => /* @text */'Name',
-        '--symbol' => /* @text */'Symbol',
-        '--major_unit' => /* @text */'Major unit',
-        '--minor_unit' => /* @text */'Minor unit',
-        '--numeric_code' => /* @text */'Numeric code',
-        '--status' => /* @text */'Status',
-        '--default' => /* @text */'Default',
-        '--decimals' => /* @text */'Decimals',
-        '--rounding_step' => /* @text */'Rounding step',
-        '--conversion_rate' => /* @text */'Conversion rate',
-        '--decimal_separator' => /* @text */'Decimal separator',
-        '--thousands_separator' => /* @text */'Thousands separator',
-        '--template' => /* @text */'Template'
+        '-h' => 'Show command help', // @text
+        '--code' => 'Code', // @text
+        '--name' => 'Name', // @text
+        '--symbol' => 'Symbol', // @text
+        '--major_unit' => 'Major unit', // @text
+        '--minor_unit' => 'Minor unit', // @text
+        '--numeric_code' => 'Numeric code', // @text
+        '--status' => 'Status', // @text
+        '--default' => 'Default', // @text
+        '--decimals' => 'Decimals', // @text
+        '--rounding_step' => 'Rounding step', // @text
+        '--conversion_rate' => 'Conversion rate', // @text
+        '--decimal_separator' => 'Decimal separator', // @text
+        '--thousands_separator' => 'Thousands separator', // @text
+        '--template' => 'Template' // @text
     )
 );

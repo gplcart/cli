@@ -8,7 +8,7 @@
  */
 return array(
     'alias' => 'fget',
-    'description' => /* @text */'Display one or several files',
+    'description' => 'Display one or several files', // @text
     'usage' => array(
         'gplcart (file-get | fget) -h',
         'gplcart (file-get | fget) [-f=<format> -l=<offset,limit>]',
@@ -18,11 +18,11 @@ return array(
         'gplcart (file-get | fget) <entity name> --entity [-f=<format> -l=<offset,limit>]',
     ),
     'options' => array(
-        '-h' => /* @text */'Show command help',
-        '-l' => /* @text */'Max number of displayed items [default: 100]',
-        '-f' => /* @text */'Format of displayed data: print-r, var-export, var-dump, json, table [default: table]',
-        '--type' => /* @text */'Display all files with the type argument',
-        '--mime' => /* @text */'Display all files with the MIME type argument',
-        '--entity' => /* @text */'Display all files with the entity name argument'
+        '-h' => 'Show command help', // @text
+        '-l' => 'Max number of displayed items [default: 100]', // @text
+        '-f' => 'Format of displayed data: print-r, var-export, var-dump, json, table [default: table]', // @text
+        '--type' => 'Display all files with the type argument', // @text
+        '--mime' => 'Display all files with the MIME type argument', // @text
+        '--entity' => 'Display all files with the entity name argument' // @text
     )
 );

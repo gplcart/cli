@@ -8,18 +8,18 @@
  */
 return array(
     'alias' => 'sup',
-    'description' => /* @text */'Update store',
+    'description' => 'Update store', // @text
     'usage' => array(
         'gplcart (store-update | sup) -h',
         'gplcart (store-update | sup) (--name=<varchar> | --domain=<varchar> | --data=<varchar>
         | --basepath=<varchar> | --status=<bool>)',
     ),
     'options' => array(
-        '-h' => /* @text */'Show command help',
-        '--name' => /* @text */'Name',
-        '--domain' => /* @text */'Domain or IP address without scheme',
-        '--data' => /* @text */'JSON or base64 encoded JSON string',
-        '--basepath' => /* @text */'Path',
-        '--status' => /* @text */'Status'
+        '-h' => 'Show command help', // @text
+        '--name' => 'Name', // @text
+        '--domain' => 'Domain or IP address without scheme', // @text
+        '--data' => 'JSON or base64 encoded JSON string', // @text
+        '--basepath' => 'Path', // @text
+        '--status' => 'Status' // @text
     )
 );

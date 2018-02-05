@@ -8,7 +8,7 @@
  */
 return array(
     'alias' => 'csget',
-    'description' => /* @text */'Display one or several country states',
+    'description' => 'Display one or several country states', // @text
     'usage' => array(
         'gplcart (state-get | csget) -h',
         'gplcart (state-get | csget) [-f=<format> -l=<offset,limit>]',
@@ -16,9 +16,9 @@ return array(
         'gplcart (state-get | csget) <country code> --country [-f=<format> -l=<offset,limit>]'
     ),
     'options' => array(
-        '-h' => /* @text */'Show command help',
-        '-l' => /* @text */'Max number of displayed items [default: 100]',
-        '-f' => /* @text */'Format of displayed data: print-r, var-export, var-dump, json, table [default: table]',
-        '--country' => /* @text */'Display all country states with the country code argument'
+        '-h' => 'Show command help', // @text
+        '-l' => 'Max number of displayed items [default: 100]', // @text
+        '-f' => 'Format of displayed data: print-r, var-export, var-dump, json, table [default: table]', // @text
+        '--country' => 'Display all country states with the country code argument' // @text
     )
 );

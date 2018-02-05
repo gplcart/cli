@@ -8,14 +8,14 @@
  */
 return array(
     'alias' => 'zdel',
-    'description' => /* @text */'Delete one or all zones',
+    'description' => 'Delete one or all zones', // @text
     'usage' => array(
         'gplcart (zone-delete | zdel) -h',
         'gplcart (zone-delete | zdel) --all',
         'gplcart (zone-delete | zdel) <zone id>'
     ),
     'options' => array(
-        '-h' => /* @text */'Show command help',
-        '--all' => /* @text */'Delete ALL zones if no ID specified',
+        '-h' => 'Show command help', // @text
+        '--all' => 'Delete ALL zones if no ID specified', // @text
     )
 );

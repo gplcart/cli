@@ -229,7 +229,7 @@ class Address extends Command
 
         $this->validatePrompt('user_id', $this->text('User ID'), 'address');
         $this->validatePrompt('country', $this->text('Country code'), 'address');
-        $this->validatePrompt('state_id', $this->text('State ID'), 'address');
+        $this->validatePrompt('state_id', $this->text('Country state ID'), 'address');
         $this->validatePrompt('city_id', $this->text('City ID'), 'address');
         $this->validatePrompt('address_1', $this->text('Address'), 'address');
         $this->validatePrompt('address_2', $this->text('Additional address'), 'address');

@@ -8,7 +8,7 @@
  */
 return array(
     'alias' => 'pgup',
-    'description' => /* @text */'Update page',
+    'description' => 'Update page', // @text
     'usage' => array(
         'gplcart (page-update | pgup) -h',
         'gplcart (page-update | pgup) <page id> (--title=<varchar> | --description=<text> | --user_id=<int>
@@ -16,15 +16,15 @@ return array(
         | --meta_title=<varchar> | --meta_description=<varchar> | --status=<bool>)',
     ),
     'options' => array(
-        '-h' => /* @text */'Show command help',
-        '--title' => /* @text */'Title',
-        '--description' => /* @text */'Description',
-        '--store_id' => /* @text */'Store ID',
-        '--user_id' => /* @text */'User ID',
-        '--category_id' => /* @text */'Category ID',
-        '--blog_post' => /* @text */'Blog post',
-        '--meta_title' => /* @text */'Meta title',
-        '--meta_description' => /* @text */'Meta description',
-        '--status' => /* @text */'Status'
+        '-h' => 'Show command help', // @text
+        '--title' => 'Title', // @text
+        '--description' => 'Description', // @text
+        '--store_id' => 'Store ID', // @text
+        '--user_id' => 'User ID', // @text
+        '--category_id' => 'Category ID', // @text
+        '--blog_post' => 'Blog post', // @text
+        '--meta_title' => 'Meta title', // @text
+        '--meta_description' => 'Meta description', // @text
+        '--status' => 'Status' // @text
     )
 );

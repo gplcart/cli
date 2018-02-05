@@ -8,7 +8,7 @@
  */
 return array(
     'alias' => 'cradd',
-    'description' => /* @text */'Add cart item',
+    'description' => 'Add cart item', // @text
     'usage' => array(
         'gplcart (cart-add | cradd) -h',
         'gplcart (cart-add | cradd)',
@@ -16,13 +16,13 @@ return array(
         [--order_id=<int> --quantity=<int> --data=<varchar>]',
     ),
     'options' => array(
-        '-h' => /* @text */'Show command help',
-        '--user_id' => /* @text */'User ID',
-        '--sku' => /* @text */'SKU',
-        '--product_id' => /* @text */'Product ID',
-        '--store_id' => /* @text */'Store ID',
-        '--order_id' => /* @text */'Order ID' . ' [default: 0]',
-        '--quantity' => /* @text */'Quantity' . ' [default: 1]',
-        '--data' => /* @text */'JSON or base64 encoded JSON string'
+        '-h' => 'Show command help', // @text
+        '--user_id' => 'User ID', // @text
+        '--sku' => 'SKU', // @text
+        '--product_id' => 'Product ID', // @text
+        '--store_id' => 'Store ID', // @text
+        '--order_id' => 'Order ID', // @text
+        '--quantity' => 'Quantity', // @text
+        '--data' => 'JSON or base64 encoded JSON string' // @text
     )
 );

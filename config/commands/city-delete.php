@@ -8,7 +8,7 @@
  */
 return array(
     'alias' => 'cidel',
-    'description' => /* @text */'Delete one or several cities',
+    'description' => 'Delete one or several cities', // @text
     'usage' => array(
         'gplcart (city-delete | cidel) -h',
         'gplcart (city-delete | cidel) <city id>',
@@ -16,8 +16,8 @@ return array(
         'gplcart (city-delete | cidel) <country state id> --state'
     ),
     'options' => array(
-        '-h' => /* @text */'Show command help',
-        '--country' => /* @text */'Delete ALL cities with the country code argument',
-        '--state' => /* @text */'Delete ALL cities with the country state ID argument'
+        '-h' => 'Show command help', // @text
+        '--country' => 'Delete ALL cities with the country code argument', // @text
+        '--state' => 'Delete ALL cities with the country state ID argument' // @text
     )
 );

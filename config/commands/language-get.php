@@ -8,15 +8,15 @@
  */
 return array(
     'alias' => 'lget',
-    'description' => /* @text */'Display one or several languages',
+    'description' => 'Display one or several languages', // @text
     'usage' => array(
         'gplcart (language-get | lget) -h',
         'gplcart (language-get | lget) [-f=<format> -l=<offset,limit>]',
         'gplcart (language-get | lget) <language code> [-f=<format>]'
     ),
     'options' => array(
-        '-h' => /* @text */'Show command help',
-        '-l' => /* @text */'Max number of displayed items [default: 100]',
-        '-f' => /* @text */'Format of displayed data: print-r, var-export, var-dump, json, table [default: table]'
+        '-h' => 'Show command help', // @text
+        '-l' => 'Max number of displayed items [default: 100]', // @text
+        '-f' => 'Format of displayed data: print-r, var-export, var-dump, json, table [default: table]' // @text
     )
 );

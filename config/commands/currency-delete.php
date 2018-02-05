@@ -8,14 +8,14 @@
  */
 return array(
     'alias' => 'cudel',
-    'description' => /* @text */'Delete one or all currencies',
+    'description' => 'Delete one or all currencies', // @text
     'usage' => array(
         'gplcart (currency-delete | cudel) -h',
         'gplcart (currency-delete | cudel) --all',
         'gplcart (currency-delete | cudel) <currency code>'
     ),
     'options' => array(
-        '-h' => /* @text */'Show command help',
-        '--all' => /* @text */'Delete ALL currencies if no currency code argument specified',
+        '-h' => 'Show command help', // @text
+        '--all' => 'Delete ALL currencies if no currency code argument specified', // @text
     )
 );

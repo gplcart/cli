@@ -8,14 +8,14 @@
  */
 return array(
     'alias' => 'zup',
-    'description' => /* @text */'Update zone',
+    'description' => 'Update zone', // @text
     'usage' => array(
         'gplcart (zone-update | zup) -h',
         'gplcart (zone-update | zup) <zone id> (--status=<bool> | --title=<varchar>)'
     ),
     'options' => array(
-        '--title' => /* @text */'Title',
-        '--status' => /* @text */'Status',
-        '-h' => /* @text */'Show command help'
+        '--title' => 'Title', // @text
+        '--status' => 'Status', // @text
+        '-h' => 'Show command help' // @text
     )
 );

@@ -8,16 +8,16 @@
  */
 return array(
     'alias' => 'eget',
-    'description' => /* @text */'Display logged system events',
+    'description' => 'Display logged system events', // @text
     'usage' => array(
         'php gplcart (event-get | eget) -h',
         'php gplcart (event-get | eget) [-l=<offset,limit> -f=<format>]',
         'php gplcart (event-get | eget) --severity=<severity> [-l=<offset,limit> -f=<format>]'
     ),
     'options' => array(
-        '-h' => /* @text */'Show command help',
-        '-l' => /* @text */'Max number of displayed items [default: 100]',
-        '-f' => /* @text */'Format of displayed data: print-r, var-export, var-dump, json, table [default: table]',
-        '--severity' => /* @text */'Severity of displayed events: info, danger, warning'
+        '-h' => 'Show command help', // @text
+        '-l' => 'Max number of displayed items [default: 100]', // @text
+        '-f' => 'Format of displayed data: print-r, var-export, var-dump, json, table [default: table]', // @text
+        '--severity' => 'Severity of displayed events: info, danger, warning' // @text
     )
 );

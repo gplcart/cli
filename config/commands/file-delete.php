@@ -8,7 +8,7 @@
  */
 return array(
     'alias' => 'fdel',
-    'description' => /* @text */'Delete one or several files',
+    'description' => 'Delete one or several files', // @text
     'usage' => array(
         'gplcart (file-delete | fdel) -h',
         'gplcart (file-delete | fdel) --all [--disk]',
@@ -18,11 +18,11 @@ return array(
         'gplcart (file-delete | fdel) <entity name> --entity [--disk]',
     ),
     'options' => array(
-        '-h' => /* @text */'Show command help',
-        '--all' => /* @text */'Delete ALL files if no ID argument specified',
-        '--type' => /* @text */'Delete ALL files with the type argument',
-        '--mime' => /* @text */'Delete ALL files with the MIME type argument',
-        '--entity' => /* @text */'Delete ALL files with the entity name argument',
-        '--disk' => /* @text */'Delete also the corresponding file from disk'
+        '-h' => 'Show command help', // @text
+        '--all' => 'Delete ALL files if no ID argument specified', // @text
+        '--type' => 'Delete ALL files with the type argument', // @text
+        '--mime' => 'Delete ALL files with the MIME type argument', // @text
+        '--entity' => 'Delete ALL files with the entity name argument', // @text
+        '--disk' => 'Delete also the corresponding file from disk' // @text
     )
 );

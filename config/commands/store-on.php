@@ -8,14 +8,14 @@
  */
 return array(
     'alias' => 'son',
-    'description' => /* @text */'Enable one or several stores',
+    'description' => 'Enable one or several stores', // @text
     'usage' => array(
         'gplcart (store-on | son) -h',
         'gplcart (store-on | son) --all',
         'gplcart (store-on | son) <store id>'
     ),
     'options' => array(
-        '-h' => /* @text */'Show command help',
-        '--all' => /* @text */'Enable ALL stores if no store ID specified'
+        '-h' => 'Show command help', // @text
+        '--all' => 'Enable ALL stores if no store ID specified' // @text
     )
 );

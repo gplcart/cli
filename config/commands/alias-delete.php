@@ -8,7 +8,7 @@
  */
 return array(
     'alias' => 'aldel',
-    'description' => /* @text */'Delete one or several URL aliases',
+    'description' => 'Delete one or several URL aliases', // @text
     'usage' => array(
         'gplcart (alias-delete | aldel) -h',
         'gplcart (alias-delete | aldel) --all',
@@ -16,8 +16,8 @@ return array(
         'gplcart (alias-delete | aldel) <entity name> --entity'
     ),
     'options' => array(
-        '-h' => /* @text */'Show command help',
-        '--all' => /* @text */'Delete ALL URL aliases',
-        '--entity' => /* @text */'Delete ALL URL aliases with the entity name'
+        '-h' => 'Show command help', // @text
+        '--all' => 'Delete ALL URL aliases', // @text
+        '--entity' => 'Delete ALL URL aliases with the entity name argument' // @text
     )
 );

@@ -8,7 +8,7 @@
  */
 return array(
     'alias' => 'redel',
-    'description' => /* @text */'Delete one or several reviews',
+    'description' => 'Delete one or several reviews', // @text
     'usage' => array(
         'gplcart (review-delete | redel) -h',
         'gplcart (review-delete | redel) --all',
@@ -17,9 +17,9 @@ return array(
         'gplcart (review-delete | redel) <product id> --product'
     ),
     'options' => array(
-        '-h' => /* @text */'Show command help',
-        '--all' => /* @text */'Delete ALL reviews if no ID argument specified',
-        '--user' => /* @text */'Delete ALL reviews with the user ID argument',
-        '--product' => /* @text */'Delete ALL reviews with the product ID argument'
+        '-h' => 'Show command help', // @text
+        '--all' => 'Delete ALL reviews if no ID argument specified', // @text
+        '--user' => 'Delete ALL reviews with the user ID argument', // @text
+        '--product' => 'Delete ALL reviews with the product ID argument' // @text
     )
 );

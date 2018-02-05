@@ -8,16 +8,16 @@
  */
 return array(
     'alias' => 'imadd',
-    'description' => /* @text */'Add image style',
+    'description' => 'Add image style', // @text
     'usage' => array(
         'gplcart (imagestyle-add | imadd) -h',
         'gplcart (imagestyle-add | imadd)',
         'gplcart (imagestyle-add | imadd) (--name=<varchar> --status=<bool> --actions=<action1|action2>)'
     ),
     'options' => array(
-        '-h' => /* @text */'Show command help',
-        '--name' => /* @text */'Name',
-        '--status' => /* @text */'Status' . ' [default: 0]',
-        '--actions' => /* @text */'Image style actions, separated by pipe. Action format: [action ID][whitespace][comma separated params]'
+        '-h' => 'Show command help', // @text
+        '--name' => 'Name', // @text
+        '--status' => 'Status', // @text
+        '--actions' => 'Image style actions, separated by pipe. Action format: [action ID][whitespace][comma separated params]' // @text
     )
 );
