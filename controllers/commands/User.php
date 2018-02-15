@@ -9,7 +9,6 @@
 
 namespace gplcart\modules\cli\controllers\commands;
 
-use gplcart\core\models\User as UserModel;
 use gplcart\modules\cli\controllers\Command;
 
 /**
@@ -19,19 +18,11 @@ class User extends Command
 {
 
     /**
-     * User model instance
-     * @var \gplcart\core\models\User $user
+     * Constructor
      */
-    protected $user;
-
-    /**
-     * @param UserModel $user
-     */
-    public function __construct(UserModel $user)
+    public function __construct()
     {
         parent::__construct();
-
-        $this->user = $user;
     }
 
     /**
