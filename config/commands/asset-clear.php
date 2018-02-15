@@ -8,15 +8,17 @@
  */
 return array(
     'alias' => 'asc',
+    'access' => 'admin',
     'description' => 'Delete cached JS and CSS files', // @text
     'usage' => array(
         'gplcart (asset-clear | asc) -h',
-        'gplcart (asset-clear | asc)',
-        'gplcart (asset-clear | asc) --js',
-        'gplcart (asset-clear | asc) --css'
+        'gplcart (asset-clear | asc) [-u=<integer>]',
+        'gplcart (asset-clear | asc) --js [-u=<integer>]',
+        'gplcart (asset-clear | asc) --css [-u=<integer>]'
     ),
     'options' => array(
         '-h' => 'Show command help', // @text
+        '-u' => 'Current user ID for access control', // @text
         '--js' => 'Delete only cached JS files', // @text
         '--css' => 'Delete only cached CSS files' // @text
     )

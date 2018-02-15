@@ -8,14 +8,17 @@
  */
 return array(
     'alias' => 'ciadd',
+    'access' => 'city_add',
     'description' => 'Add city', // @text
     'usage' => array(
         'gplcart (city-add | ciadd) -h',
         'gplcart (city-add | ciadd)',
-        'gplcart (city-add | ciadd) (--name=<varchar> --state_id=<int> --country=<varchar>) [--status=<bool> --zone_id=<int>]',
+        'gplcart (city-add | ciadd)
+        (--name=<varchar> --state_id=<int> --country=<varchar>) [--status=<bool> --zone_id=<int> -u=<int>]',
     ),
     'options' => array(
         '-h' => 'Show command help', // @text
+        '-u' => 'Current user ID for access control', // @text
         '--name' => 'Name', // @text
         '--state_id' => 'State', // @text
         '--country' => 'County code', // @text

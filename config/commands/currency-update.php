@@ -8,6 +8,7 @@
  */
 return array(
     'alias' => 'cuup',
+    'access' => 'currency_edit',
     'description' => 'Update currency', // @text
     'usage' => array(
         'gplcart (currency-update | cuup) -h',
@@ -15,10 +16,11 @@ return array(
         . ' | --status=<bool> | --default=<bool> | --decimals=<int>'
         . ' | --major_unit=<varchar> | --minor_unit=<varchar> | --numeric_code=<int>'
         . ' | --rounding_step=<decimal> | --conversion_rate=<decimal>'
-        . ' | --decimal_separator=<varchar> | --thousands_separator=<varchar> | --template=<varchar>)'
+        . ' | --decimal_separator=<varchar> | --thousands_separator=<varchar> | --template=<varchar>) [-u=<int>]'
     ),
     'options' => array(
         '-h' => 'Show command help', // @text
+        '-u' => 'Current user ID for access control', // @text
         '--code' => 'Code', // @text
         '--name' => 'Name', // @text
         '--symbol' => 'Symbol', // @text

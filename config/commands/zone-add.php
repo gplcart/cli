@@ -8,14 +8,16 @@
  */
 return array(
     'alias' => 'zadd',
+    'access' => 'zone_add',
     'description' => 'Add zone', // @text
     'usage' => array(
         'gplcart (zone-add | zadd) -h',
-        'gplcart (zone-add | zadd)',
-        'gplcart (zone-add | zadd) --title=<varchar> [--status=<bool>]',
+        'gplcart (zone-add | zadd) [-u=<int>]',
+        'gplcart (zone-add | zadd) --title=<varchar> [--status=<bool>] [-u=<int>]',
     ),
     'options' => array(
         '-h' => 'Show command help', // @text
+        '-u' => 'Current user ID for access control', // @text
         '--title' => 'Name', // @text
         '--status' => 'Status' // @text
     )

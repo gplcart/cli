@@ -8,12 +8,14 @@
  */
 return array(
     'alias' => 'aladd',
+    'access' => 'admin',
     'description' => 'Add URL alias', // @text
     'usage' => array(
         'gplcart (alias-add | aladd) -h',
-        'gplcart (alias-add | aladd) <entity name> <entity id> <alias>'
+        'gplcart (alias-add | aladd) <entity name> <entity id> <alias> [-u=<integer>]'
     ),
     'options' => array(
-        '-h' => 'Show command help' // @text
+        '-h' => 'Show command help', // @text
+        '-u' => 'Current user ID for access control', // @text
     )
 );

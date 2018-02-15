@@ -8,14 +8,16 @@
  */
 return array(
     'alias' => 'dbd',
+    'access' => GC_PERM_SUPERADMIN,
     'description' => 'Drop (delete) one or several database tables', // @text
     'usage' => array(
         'gplcart (database-drop | dbd) -h',
-        'gplcart (database-drop | dbd) --all',
-        'gplcart (database-drop | dbd) <table name> <table name> ...'
+        'gplcart (database-drop | dbd) --all [-u=<int>]',
+        'gplcart (database-drop | dbd) <table name> <table name> ... [-u=<int>]'
     ),
     'options' => array(
         '-h' => 'Show command help', // @text
-        '--all' => 'Drop ALL tables in the database' // @text
+        '-u' => 'Current user ID for access control', // @text
+        '--all' => 'Drop ALL tables in the database', // @text
     )
 );

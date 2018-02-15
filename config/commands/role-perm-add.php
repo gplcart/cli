@@ -8,12 +8,14 @@
  */
 return array(
     'alias' => 'rpa',
+    'access' => 'user_role_edit',
     'description' => 'Add one or several permissions to a user role', // @text
     'usage' => array(
         'gplcart (role-perm-add | rpa) -h',
-        'gplcart (role-perm-add | rpa) <role id> <permission1> <permission2> ...'
+        'gplcart (role-perm-add | rpa) <role id> <permission1> <permission2> ... [-u=<int>]'
     ),
     'options' => array(
-        '-h' => 'Show command help' // @text
+        '-h' => 'Show command help', // @text
+        '-u' => 'Current user ID for access control', // @text
     )
 );

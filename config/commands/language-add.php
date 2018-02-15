@@ -8,6 +8,7 @@
  */
 return array(
     'alias' => 'ladd',
+    'access' => 'language_add',
     'description' => 'Add language', // @text
     'usage' => array(
         'gplcart (language-add | ladd) -h',
@@ -16,6 +17,7 @@ return array(
     ),
     'options' => array(
         '-h' => 'Show command help', // @text
+        '-u' => 'Current user ID for access control', // @text
         '--code' => 'Code', // @text
         '--name' => 'Name', // @text
         '--native_name' => 'Native name', // @text

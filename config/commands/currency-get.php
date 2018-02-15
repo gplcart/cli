@@ -8,15 +8,17 @@
  */
 return array(
     'alias' => 'cuget',
+    'access' => 'currency',
     'description' => 'Display one or several currencies', // @text
     'usage' => array(
         'gplcart (currency-get | cuget) -h',
-        'gplcart (currency-get | cuget) <currency code> [-f=<format>]',
-        'gplcart (currency-get | cuget) [-f=<format> -l=<offset,limit>]'
+        'gplcart (currency-get | cuget) <currency code> [-f=<format> -u=<int>]',
+        'gplcart (currency-get | cuget) [-f=<format> -l=<offset,limit> -u=<int>]'
     ),
     'options' => array(
         '-h' => 'Show command help', // @text
         '-l' => 'Max number of displayed items [default: 100]', // @text
-        '-f' => 'Format of displayed data: print-r, var-export, var-dump, json, table [default: table]' // @text
+        '-f' => 'Format of displayed data: print-r, var-export, var-dump, json, table [default: table]', // @text
+        '-u' => 'Current user ID for access control', // @text
     )
 );

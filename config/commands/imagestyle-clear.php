@@ -8,14 +8,16 @@
  */
 return array(
     'alias' => 'imc',
+    'access' => 'admin',
     'description' => 'Delete cached images for one or all image styles', // @text
     'usage' => array(
         'gplcart (imagestyle-clear | imc) -h',
-        'gplcart (imagestyle-clear | imc) --all',
-        'gplcart (imagestyle-clear | imc) <image style id>'
+        'gplcart (imagestyle-clear | imc) --all [-u=<int>]',
+        'gplcart (imagestyle-clear | imc) <image style id> [-u=<int>]'
     ),
     'options' => array(
         '-h' => 'Show command help', // @text
+        '-u' => 'Current user ID for access control', // @text
         '--all' => 'Delete ALL cached images for all image styles if ID argument specified' // @text
     )
 );

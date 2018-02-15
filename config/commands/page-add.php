@@ -8,16 +8,16 @@
  */
 return array(
     'alias' => 'pgadd',
+    'access' => 'page_add',
     'description' => 'Add page', // @text
     'usage' => array(
         'gplcart (page-add | pgadd) -h',
-        'gplcart (page-add | pgadd)',
-        'gplcart (page-add | pgadd) (--title=<varchar> --description=<text> --store_id=<int>)
-        [--user_id=<int> --category_id=<int> --blog_post=<bool>
-         --meta_title=<varchar> --meta_description=<varchar> --status=<bool>]',
+        'gplcart (page-add | pgadd) [-u=<int>]',
+        'gplcart (page-add | pgadd) (--title=<varchar> --description=<text> --store_id=<int>) [options]',
     ),
     'options' => array(
         '-h' => 'Show command help', // @text
+        '-u' => 'Current user ID for access control', // @text
         '--title' => 'Title', // @text
         '--description' => 'Description', // @text
         '--store_id' => 'Store ID', // @text

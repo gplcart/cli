@@ -8,12 +8,14 @@
  */
 return array(
     'alias' => 'mc',
+    'access' => 'module',
     'description' => 'Clear module cache', // @text
     'usage' => array(
         'gplcart (module-clear | mc) -h',
-        'gplcart (module-clear | mc)'
+        'gplcart (module-clear | mc) [-u=<int>]'
     ),
     'options' => array(
-        '-h' => 'Show command help' // @text
+        '-h' => 'Show command help', // @text
+        '-u' => 'Current user ID for access control', // @text
     )
 );

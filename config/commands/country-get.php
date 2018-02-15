@@ -8,15 +8,17 @@
  */
 return array(
     'alias' => 'coget',
+    'access' => 'country',
     'description' => 'Display one or several countries', // @text
     'usage' => array(
         'gplcart (country-get | coget) -h',
-        'gplcart (country-get | coget) [-f=<format> -l=<offset,limit>]',
-        'gplcart (country-get | coget) <country code> [-f=<format>]'
+        'gplcart (country-get | coget) [-f=<format> -l=<offset,limit> -u=<int>]',
+        'gplcart (country-get | coget) <country code> [-f=<format> -u=<int>]'
     ),
     'options' => array(
         '-h' => 'Show command help', // @text
         '-l' => 'Max number of displayed items [default: 100]', // @text
-        '-f' => 'Format of displayed data: print-r, var-export, var-dump, json, table [default: table]' // @text
+        '-f' => 'Format of displayed data: print-r, var-export, var-dump, json, table [default: table]', // @text
+        '-u' => 'Current user ID for access control', // @text
     )
 );

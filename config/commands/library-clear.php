@@ -8,12 +8,14 @@
  */
 return array(
     'alias' => 'lic',
+    'access' => 'report_library',
     'description' => 'Clear library cache', // @text
     'usage' => array(
         'gplcart (library-clear | lic) -h',
-        'gplcart (library-clear | lic)'
+        'gplcart (library-clear | lic) [-u=<int>]'
     ),
     'options' => array(
-        '-h' => 'Show command help' // @text
+        '-h' => 'Show command help', // @text
+        '-u' => 'Current user ID for access control', // @text
     )
 );

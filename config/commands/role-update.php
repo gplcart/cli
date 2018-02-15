@@ -8,13 +8,16 @@
  */
 return array(
     'alias' => 'rup',
+    'access' => 'user_role_edit',
     'description' => 'Update user role', // @text
     'usage' => array(
         'gplcart (role-update | rup) -h',
-        'gplcart (role-update | rup) <role id> (--name=<varchar> | --permissions=<varchar> | --status=<bool> | --redirect=<varchar>)'
+        'gplcart (role-update | rup) <role id> (--name=<varchar>
+        | --permissions=<varchar> | --status=<bool> | --redirect=<varchar>) [-u=<int>]'
     ),
     'options' => array(
         '-h' => 'Show command help', // @text
+        '-u' => 'Current user ID for access control', // @text
         '--name' => 'Name', // @text
         '--permissions' => 'One or several permissions separated by pipe', // @text
         '--status' => 'Status', // @text

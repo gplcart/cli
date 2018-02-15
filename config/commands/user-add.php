@@ -8,14 +8,16 @@
  */
 return array(
     'alias' => 'uadd',
+    'access' => 'user_add',
     'description' => 'Add user', // @text
     'usage' => array(
         'gplcart (user-add | uadd) -h',
-        'gplcart (user-add | uadd)',
+        'gplcart (user-add | uadd) [-u=<int>]',
         'gplcart (user-add | uadd) (--email=<varchar> --password=<varchar> --name=<varchar>) [options]',
     ),
     'options' => array(
         '-h' => 'Show command help', // @text
+        '-u' => 'Current user ID for access control', // @text
         '--name' => 'Name', // @text
         '--password' => 'Password', // @text
         '--email' => 'E-mail', // @text

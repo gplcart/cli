@@ -8,6 +8,7 @@
  */
 return array(
     'alias' => 'pup',
+    'access' => 'product_edit',
     'description' => 'Update product', // @text
     'usage' => array(
         'gplcart (product-update | pup) -h',
@@ -15,10 +16,11 @@ return array(
         | --sku=<varchar> | --user_id=<int> | --category_id=<int> | --brand_category_id=<int> | --product_class_id=<int>
         | --meta_title=<varchar> | --meta_description=<varchar> | --status=<bool> | --subtract=<bool> | --price=<int>
         | --currency=<varchar> | --length=<int> | --width=<int> | --height=<int> | --weight=<int>
-        | --size_unit=<varchar> | --weight_unit=<varchar> | --stock=<varchar>)',
+        | --size_unit=<varchar> | --weight_unit=<varchar> | --stock=<varchar>) [-u=<int>]',
     ),
     'options' => array(
         '-h' => 'Show command help', // @text
+        '-u' => 'Current user ID for access control', // @text
         '--title' => 'Title', // @text
         '--description' => 'Description', // @text
         '--store_id' => 'Store ID', // @text

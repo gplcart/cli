@@ -8,12 +8,14 @@
  */
 return array(
     'alias' => 'dbdel',
+    'access' => GC_PERM_SUPERADMIN,
     'description' => 'Delete database record', // @text
     'usage' => array(
         'gplcart (database-delete | dbdel) -h',
-        'gplcart (database-delete | dbdel) <table name> (--column=<condition value> ...)'
+        'gplcart (database-delete | dbdel) <table name> (--column=<condition value> ...) [-u=<int>]'
     ),
     'options' => array(
-        '-h' => 'Show command help' // @text
+        '-h' => 'Show command help', // @text
+        '-u' => 'Current user ID for access control', // @text
     )
 );

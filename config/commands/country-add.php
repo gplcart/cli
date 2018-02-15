@@ -8,14 +8,16 @@
  */
 return array(
     'alias' => 'coadd',
+    'access' => 'country_add',
     'description' => 'Add country', // @text
     'usage' => array(
         'gplcart (country-add | coadd) -h',
-        'gplcart (country-add | coadd)',
+        'gplcart (country-add | coadd) [-u=<int>]',
         'gplcart (country-add | coadd) (--code=<varchar> --name=<varchar> --native_name=<varchar>) [options]',
     ),
     'options' => array(
         '-h' => 'Show command help', // @text
+        '-u' => 'Current user ID for access control', // @text
         '--code' => 'Code', // @text
         '--name' => 'Name', // @text
         '--native_name' => 'Native name', // @text

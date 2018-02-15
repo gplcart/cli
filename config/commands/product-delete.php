@@ -8,19 +8,21 @@
  */
 return array(
     'alias' => 'pdel',
+    'access' => 'product_delete',
     'description' => 'Delete one or several products', // @text
     'usage' => array(
         'gplcart (product-delete | pdel) -h',
-        'gplcart (product-delete | pdel) --all',
-        'gplcart (product-delete | pdel) <product id>',
-        'gplcart (product-delete | pdel) <user id> --user [-f=<format> -l=<offset,limit>]',
-        'gplcart (product-delete | pdel) <store id> --store [-f=<format> -l=<offset,limit>]',
-        'gplcart (product-delete | pdel) <category id> --category [-f=<format> -l=<offset,limit>]',
-        'gplcart (product-delete | pdel) <product class id> --class [-f=<format> -l=<offset,limit>]',
-        'gplcart (product-delete | pdel) <brand category id> --brand [-f=<format> -l=<offset,limit>]'
+        'gplcart (product-delete | pdel) --all [-u=<int>]',
+        'gplcart (product-delete | pdel) <product id> [-u=<int>]',
+        'gplcart (product-delete | pdel) <user id> --user [-f=<format> -l=<offset,limit> -u=<int>]',
+        'gplcart (product-delete | pdel) <store id> --store [-f=<format> -l=<offset,limit> -u=<int>]',
+        'gplcart (product-delete | pdel) <category id> --category [-f=<format> -l=<offset,limit> -u=<int>]',
+        'gplcart (product-delete | pdel) <product class id> --class [-f=<format> -l=<offset,limit> -u=<int>]',
+        'gplcart (product-delete | pdel) <brand category id> --brand [-f=<format> -l=<offset,limit> -u=<int>]'
     ),
     'options' => array(
         '-h' => 'Show command help', // @text
+        '-u' => 'Current user ID for access control', // @text
         '--all' => 'Delete ALL products if no ID specified', // @text
         '--user' => 'Delete ALL products with the user ID argument', // @text
         '--store' => 'Delete ALL products with the store ID argument', // @text

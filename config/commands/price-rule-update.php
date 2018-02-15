@@ -8,13 +8,16 @@
  */
 return array(
     'alias' => 'prup',
+    'access' => 'price_rule_edit',
     'description' => 'Update price rule', // @text
     'usage' => array(
         'gplcart (pricerule-update | prup) -h',
         'gplcart (pricerule-update | prup) <price rule id> (--name=<varchar> | --trigger_id=<int> | --value=<int>
-        | --value_type=<varchar> | --currency=<varchar> | --code=<varchar> | --status=<bool> | --weight=<int>)',
+        | --value_type=<varchar> | --currency=<varchar> | --code=<varchar> | --status=<bool> | --weight=<int>) [-u=<int>]',
     ),
     'options' => array(
+        '-h' => 'Show command help', // @text
+        '-u' => 'Current user ID for access control', // @text
         '--name' => 'Name', // @text
         '--trigger_id' => 'Trigger ID', // @text
         '--value' => 'Value', // @text
@@ -23,6 +26,5 @@ return array(
         '--code' => 'Code', // @text
         '--status' => 'Status', // @text
         '--weight' => 'Weight', // @text
-        '-h' => 'Show command help' // @text
     )
 );

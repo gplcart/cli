@@ -8,15 +8,17 @@
  */
 return array(
     'alias' => 'ctup',
+    'access' => 'category_edit',
     'description' => 'Update category', // @text
     'usage' => array(
         'gplcart (category-update | ctup) -h',
         'gplcart (category-update | ctup) <category id> (--title=<varchar> | --category_group_id=<int>
          | --parent_id=<int> | --description_1=<text> | --description_2=<text> | --meta_title=<varchar>
-         | --meta_description=<text> | --status=<int> | --weight=<int>)',
+         | --meta_description=<text> | --status=<int> | --weight=<int>) [-u=<int>]',
     ),
     'options' => array(
         '-h' => 'Show command help', // @text
+        '-u' => 'Current user ID for access control', // @text
         '--title' => 'Title', // @text
         '--category_group_id' => 'Category group ID', // @text
         '--parent_id' => 'Parent category', // @text

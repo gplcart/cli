@@ -8,14 +8,16 @@
  */
 return array(
     'alias' => 'trup',
+    'access' => 'trigger_edit',
     'description' => 'Update trigger', // @text
     'usage' => array(
         'gplcart (trigger-update | trup) -h',
         'gplcart (trigger-update | trup) <trigger id> (--name=<varchar> | --conditions=<varchar> | --store_id=<int>
-        | --status=<bool> | --weight=<int>)',
+        | --status=<bool> | --weight=<int>) [-u=<int>]',
     ),
     'options' => array(
         '-h' => 'Show command help', // @text
+        '-u' => 'Current user ID for access control', // @text
         '--name' => 'Name', // @text
         '--status' => 'Status', // @text
         '--weight' => 'Weight', // @text

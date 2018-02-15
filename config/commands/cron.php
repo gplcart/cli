@@ -7,12 +7,14 @@
  * @license https://www.gnu.org/licenses/gpl.html GNU/GPLv3
  */
 return array(
+    'access' => 'admin',
     'description' => 'Run CRON', // @text
     'usage' => array(
         'gplcart cron -h',
-        'gplcart cron'
+        'gplcart cron [-u=<int>]'
     ),
     'options' => array(
-        '-h' => 'Show command help' // @text
+        '-h' => 'Show command help', // @text
+        '-u' => 'Current user ID for access control', // @text
     )
 );

@@ -8,15 +8,17 @@
  */
 return array(
     'alias' => 'pcfadd',
+    'access' => 'product_class_edit',
     'description' => 'Add product class field', // @text
     'usage' => array(
         'gplcart (product-class-field-add | pcfadd) -h',
-        'gplcart (product-class-field-add | pcfadd)',
+        'gplcart (product-class-field-add | pcfadd) [-u=<int>]',
         'gplcart (product-class-field-add | pcfadd) --product_class_id=<int> --field_id=<int>
-        [--required=<bool> --multiple=<bool> --weight=<int>]',
+        [--required=<bool> --multiple=<bool> --weight=<int>] [-u=<int>]',
     ),
     'options' => array(
         '-h' => 'Show command help', // @text
+        '-u' => 'Current user ID for access control', // @text
         '--product_class_id' => 'Product class ID', // @text
         '--field_id' => 'Field ID', // @text
         '--required' => 'Required', // @text

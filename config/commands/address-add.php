@@ -9,16 +9,18 @@
 return array(
     'alias' => 'aadd',
     'description' => 'Add address', // @text
+    'access' => 'admin',
     'usage' => array(
         'gplcart (address-add | aadd) -h',
-        'gplcart (address-add | aadd)',
+        'gplcart (address-add | aadd) [-u=<integer>]',
         'gplcart (address-add | aadd) (--user_id=<varchar> --state_id=<int> --country=<varchar>
          --city_id=<varchar> --address_1=<varchar> --address_2=<varchar> --phone=<varchar> --fax=<varchar>
          --type=<varchar> --first_name=<varchar> --middle_name=<varchar> --last_name=<varchar>
-         --postcode=<varchar> --company=<varchar>) [--data=<varchar>]',
+         --postcode=<varchar> --company=<varchar>) [--data=<varchar>] [-u=<integer>]',
     ),
     'options' => array(
         '-h' => 'Show command help', // @text
+        '-u' => 'Current user ID for access control', // @text
         '--user_id' => 'User ID', // @text
         '--state_id' => 'Country state ID', // @text
         '--country' => 'County code', // @text

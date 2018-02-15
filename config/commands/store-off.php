@@ -8,14 +8,16 @@
  */
 return array(
     'alias' => 'soff',
+    'access' => 'store_edit',
     'description' => 'Disable one or several stores', // @text
     'usage' => array(
         'gplcart (store-off | soff) -h',
-        'gplcart (store-off | soff) --all',
-        'gplcart (store-off | soff) <store id>'
+        'gplcart (store-off | soff) --all [-u=<int>]',
+        'gplcart (store-off | soff) <store id> [-u=<int>]'
     ),
     'options' => array(
         '-h' => 'Show command help', // @text
+        '-u' => 'Current user ID for access control', // @text
         '--all' => 'Disable ALL stores if no ID specified' // @text
     )
 );

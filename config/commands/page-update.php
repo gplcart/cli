@@ -8,15 +8,17 @@
  */
 return array(
     'alias' => 'pgup',
+    'access' => 'page_edit',
     'description' => 'Update page', // @text
     'usage' => array(
         'gplcart (page-update | pgup) -h',
         'gplcart (page-update | pgup) <page id> (--title=<varchar> | --description=<text> | --user_id=<int>
         | --category_id=<int> | --store_id=<int> | --blog_post=<bool>
-        | --meta_title=<varchar> | --meta_description=<varchar> | --status=<bool>)',
+        | --meta_title=<varchar> | --meta_description=<varchar> | --status=<bool>) [-u=<int>]',
     ),
     'options' => array(
         '-h' => 'Show command help', // @text
+        '-u' => 'Current user ID for access control', // @text
         '--title' => 'Title', // @text
         '--description' => 'Description', // @text
         '--store_id' => 'Store ID', // @text

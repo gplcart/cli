@@ -8,15 +8,17 @@
  */
 return array(
     'alias' => 'pradd',
+    'access' => 'price_rule_add',
     'description' => 'Add price rule', // @text
     'usage' => array(
-        'gplcart (pricerule-add | pradd) -h',
-        'gplcart (pricerule-add | pradd)',
-        'gplcart (pricerule-add | pradd) (--name=<varchar> --trigger_id=<int> --value=<int>
-         --value_type=<varchar> --currency=<varchar>) [--code=<varchar> --status=<bool> --weight=<int>]',
+        'gplcart (price-rule-add | pradd) -h',
+        'gplcart (price-rule-add | pradd) [-u=<int>]',
+        'gplcart (price-rule-add | pradd) (--name=<varchar> --trigger_id=<int> --value=<int>
+         --value_type=<varchar> --currency=<varchar>) [--code=<varchar> --status=<bool> --weight=<int> -u=<int>]',
     ),
     'options' => array(
         '-h' => 'Show command help', // @text
+        '-u' => 'Current user ID for access control', // @text
         '--name' => 'Name', // @text
         '--trigger_id' => 'Trigger ID', // @text
         '--value' => 'Value', // @text

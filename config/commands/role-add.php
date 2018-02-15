@@ -8,6 +8,7 @@
  */
 return array(
     'alias' => 'radd',
+    'access' => 'user_role_add',
     'description' => 'Add user role', // @text
     'usage' => array(
         'gplcart (role-add | radd) -h',
@@ -16,6 +17,7 @@ return array(
     ),
     'options' => array(
         '-h' => 'Show command help', // @text
+        '-u' => 'Current user ID for access control', // @text
         '--name' => 'Name', // @text
         '--permissions' => 'One or several permissions separated by pipe', // @text
         '--status' => 'Status', // @text

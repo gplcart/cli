@@ -8,6 +8,7 @@
  */
 return array(
     'alias' => 'oup',
+    'access' => 'order_edit',
     'description' => 'Update order', // @text
     'usage' => array(
         'gplcart (order-update | oup) -h',
@@ -15,10 +16,11 @@ return array(
         | --status=<varchar> |--store_id=<int> | --shipping_address=<int> | --payment_address=<int>
         | --total=<int> | --currency=<varchar> | --creator=<int> | --tracking_number=<varchar>
         | --transaction_id=<int> | --comment=<text> | --volume=<int> | --weight=<int> | --size_unit=<varchar>
-        | --weight_unit=<varchar> | --data=<json>)',
+        | --weight_unit=<varchar> | --data=<json>) [-u=<int>]',
     ),
     'options' => array(
         '-h' => 'Show command help', // @text
+        '-u' => 'Current user ID for access control', // @text
         '--user_id' => 'User ID', // @text
         '--payment' => 'Payment method', // @text
         '--shipping' => 'Shipping method', // @text

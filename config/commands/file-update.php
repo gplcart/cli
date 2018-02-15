@@ -8,14 +8,17 @@
  */
 return array(
     'alias' => 'fup',
+    'access' => 'file_edit',
     'description' => 'Update file', // @text
     'usage' => array(
         'gplcart (file-update | fup) -h',
         'gplcart (file-update | fup) <file id> (--path=<varchar> | --title=<varchar> | --description=<text>
-        | --entity=<varchar> | --entity_id=<int> | --mime_type=<varchar> | --file_type=<varchar> | --weight=<int>)',
+        | --entity=<varchar> | --entity_id=<int> | --mime_type=<varchar>
+        | --file_type=<varchar> | --weight=<int>) [-u=<int>]',
     ),
     'options' => array(
         '-h' => 'Show command help', // @text
+        '-u' => 'Current user ID for access control', // @text
         '--path' => 'Path', // @text
         '--title' => 'Title', // @text
         '--description' => 'Description', // @text

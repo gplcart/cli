@@ -8,15 +8,17 @@
  */
 return array(
     'alias' => 'aldel',
+    'access' => 'alias_delete',
     'description' => 'Delete one or several URL aliases', // @text
     'usage' => array(
         'gplcart (alias-delete | aldel) -h',
-        'gplcart (alias-delete | aldel) --all',
-        'gplcart (alias-delete | aldel) <alias id>',
-        'gplcart (alias-delete | aldel) <entity name> --entity'
+        'gplcart (alias-delete | aldel) --all [-u=<integer>]',
+        'gplcart (alias-delete | aldel) <alias id> [-u=<integer>]',
+        'gplcart (alias-delete | aldel) <entity name> --entity [-u=<integer>]'
     ),
     'options' => array(
         '-h' => 'Show command help', // @text
+        '-u' => 'Current user ID for access control', // @text
         '--all' => 'Delete ALL URL aliases', // @text
         '--entity' => 'Delete ALL URL aliases with the entity name argument' // @text
     )

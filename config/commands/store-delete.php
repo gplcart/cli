@@ -8,12 +8,14 @@
  */
 return array(
     'alias' => 'sdel',
+    'access' => 'store_delete',
     'description' => 'Delete store', // @text
     'usage' => array(
         'gplcart (store-delete | sdel) -h',
-        'gplcart (store-delete | sdel) <store id>'
+        'gplcart (store-delete | sdel) <store id> [-u=<int>]'
     ),
     'options' => array(
-        '-h' => 'Show command help' // @text
+        '-h' => 'Show command help', // @text
+        '-u' => 'Current user ID for access control', // @text
     )
 );

@@ -8,14 +8,16 @@
  */
 return array(
     'alias' => 'codel',
+    'access' => 'country_delete',
     'description' => 'Delete country', // @text
     'usage' => array(
         'gplcart (country-delete | codel) -h',
-        'gplcart (country-delete | codel) --all',
-        'gplcart (country-delete | codel) <country code>'
+        'gplcart (country-delete | codel) --all [-u=<int>]',
+        'gplcart (country-delete | codel) <country code> [-u=<int>]'
     ),
     'options' => array(
         '-h' => 'Show command help', // @text
+        '-u' => 'Current user ID for access control', // @text
         '--all' => 'Delete ALL countries if no ID argument specified' // @text
     )
 );

@@ -8,12 +8,14 @@
  */
 return array(
     'alias' => 'mi',
+    'access' => 'module_install',
     'description' => 'Install module', // @text
     'usage' => array(
         'gplcart (module-install | mi) -h',
-        'gplcart (module-install | mi) <module id>'
+        'gplcart (module-install | mi) <module id> [-u=<int>]'
     ),
     'options' => array(
-        '-h' => 'Show command help' // @text
+        '-h' => 'Show command help', // @text
+        '-u' => 'Current user ID for access control', // @text
     )
 );

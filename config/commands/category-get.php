@@ -8,18 +8,20 @@
  */
 return array(
     'alias' => 'ctget',
+    'access' => 'category',
     'description' => 'Display one or several categories', // @text
     'usage' => array(
         'gplcart (category-get | ctget) -h',
-        'gplcart (category-get | ctget) [-f=<format> -l=<offset,limit>]',
-        'gplcart (category-get | ctget) <category id> [-f=<format>]',
-        'gplcart (category-get | ctget) <category group id> --group [-f=<format> -l=<offset,limit>]',
-        'gplcart (category-get | ctget) <parent category id> --parent [-f=<format> -l=<offset,limit>]'
+        'gplcart (category-get | ctget) [-f=<format> -l=<offset,limit> -u=<integer>]',
+        'gplcart (category-get | ctget) <category id> [-f=<format> -u=<integer>]',
+        'gplcart (category-get | ctget) <category group id> --group [-f=<format> -l=<offset,limit> -u=<integer>]',
+        'gplcart (category-get | ctget) <parent category id> --parent [-f=<format> -l=<offset,limit> -u=<integer>]'
     ),
     'options' => array(
         '-h' => 'Show command help', // @text
         '-f' => 'Format of displayed data: print-r, var-export, var-dump, json, table [default: table]', // @text
         '-l' => 'Max number of displayed items [default: 100]', // @text
+        '-u' => 'Current user ID for access control', // @text
         '--group' => 'Display all categories with the category group ID argument', // @text
         '--parent' => 'Display all categories with the parent category ID argument' // @text
     )

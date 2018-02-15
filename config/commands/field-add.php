@@ -8,14 +8,16 @@
  */
 return array(
     'alias' => 'fdadd',
+    'access' => 'field_add',
     'description' => 'Add field', // @text
     'usage' => array(
         'gplcart (field-add | fdadd) -h',
-        'gplcart (field-add | fdadd)',
-        'gplcart (field-add | fdadd) (--title=<varchar> --type=<varchar> --widget=<varchar>) [--status=<bool>]',
+        'gplcart (field-add | fdadd) [-u=<int>]',
+        'gplcart (field-add | fdadd) (--title=<varchar> --type=<varchar> --widget=<varchar>) [--status=<bool> -u=<int>]',
     ),
     'options' => array(
         '-h' => 'Show command help', // @text
+        '-u' => 'Current user ID for access control', // @text
         '--title' => 'Title', // @text
         '--type' => 'Type', // @text
         '--widget' => 'Widget', // @text

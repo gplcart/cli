@@ -8,17 +8,16 @@
  */
 return array(
     'alias' => 'oadd',
+    'access' => 'order_add',
     'description' => 'Add order', // @text
     'usage' => array(
         'gplcart (order-add | oadd) -h',
-        'gplcart (order-add | oadd)',
-        'gplcart (order-add | oadd) (--user_id=<int> --payment=<varchar> --shipping=<varchar> --status=<varchar>)
-        [--store_id=<int> --shipping_address=<int> --payment_address=<int> --total=<int> --currency=<varchar> --creator=<int>
-        --tracking_number=<varchar> --transaction_id=<int> --comment=<text> --volume=<int> --weight=<int> --size_unit=<varchar>
-        --weight_unit=<varchar> --data=<json>]',
+        'gplcart (order-add | oadd) [-u=<int>]',
+        'gplcart (order-add | oadd) (--user_id=<int> --payment=<varchar> --shipping=<varchar> --status=<varchar>) [options]',
     ),
     'options' => array(
         '-h' => 'Show command help', // @text
+        '-u' => 'Current user ID for access control', // @text
         '--user_id' => 'User ID', // @text
         '--payment' => 'Payment method', // @text
         '--shipping' => 'Shipping method', // @text

@@ -8,15 +8,17 @@
  */
 return array(
     'alias' => 'dbs',
+    'access' => GC_PERM_SUPERADMIN,
     'description' => 'Perform SQL query', // @text
     'usage' => array(
         'gplcart (database-sql | dbs) -h',
-        'gplcart (database-sql | dbs) <sql> [--fetch]'
+        'gplcart (database-sql | dbs) <sql> [--fetch] [-u=<int>]'
     ),
     'options' => array(
         '-h' => 'Show command help', // @text
         '-l' => 'Max number of displayed items [default: 100]', // @text
         '-f' => 'Format of displayed data: print-r, var-export, var-dump, json, table [default: table]', // @text
+        '-u' => 'Current user ID for access control', // @text
         '--fetch' => 'Fetch results' // @text
     )
 );

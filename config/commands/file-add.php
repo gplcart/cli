@@ -8,15 +8,17 @@
  */
 return array(
     'alias' => 'fadd',
+    'access' => 'file_add',
     'description' => 'Add file', // @text
     'usage' => array(
         'gplcart (file-add | fadd) -h',
-        'gplcart (file-add | fadd)',
+        'gplcart (file-add | fadd) [-u=<int>]',
         'gplcart (file-add | fadd) --path=<varchar> [--title=<varchar> --description=<text>
-        --entity=<varchar> --entity_id=<int> --mime_type=<varchar> --file_type=<varchar> --weight=<int>]',
+        --entity=<varchar> --entity_id=<int> --mime_type=<varchar> --file_type=<varchar> --weight=<int> -u=<int>]',
     ),
     'options' => array(
         '-h' => 'Show command help', // @text
+        '-u' => 'Current user ID for access control', // @text
         '--path' => 'Path', // @text
         '--title' => 'Title', // @text
         '--entity' => 'Entity', // @text

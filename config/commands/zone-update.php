@@ -8,14 +8,16 @@
  */
 return array(
     'alias' => 'zup',
+    'access' => 'zone_edit',
     'description' => 'Update zone', // @text
     'usage' => array(
         'gplcart (zone-update | zup) -h',
-        'gplcart (zone-update | zup) <zone id> (--status=<bool> | --title=<varchar>)'
+        'gplcart (zone-update | zup) <zone id> (--status=<bool> | --title=<varchar>) [-u=<int>]'
     ),
     'options' => array(
+        '-h' => 'Show command help', // @text
+        '-u' => 'Current user ID for access control', // @text
         '--title' => 'Title', // @text
         '--status' => 'Status', // @text
-        '-h' => 'Show command help' // @text
     )
 );

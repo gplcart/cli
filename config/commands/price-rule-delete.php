@@ -8,16 +8,18 @@
  */
 return array(
     'alias' => 'prdel',
+    'access' => 'price_rule_delete',
     'description' => 'Delete one or several price rules', // @text
     'usage' => array(
-        'gplcart (pricerule-delete | prdel) -h',
-        'gplcart (pricerule-delete | prdel) --all',
-        'gplcart (pricerule-delete | prdel) <price rule id>',
-        'gplcart (pricerule-delete | prdel) <trigger id> --trigger'
+        'gplcart (price-rule-delete | prdel) -h',
+        'gplcart (price-rule-delete | prdel) --all [-u=<int>]',
+        'gplcart (price-rule-delete | prdel) <price rule id> [-u=<int>]',
+        'gplcart (price-rule-delete | prdel) <trigger id> --trigger [-u=<int>]'
 
     ),
     'options' => array(
         '-h' => 'Show command help', // @text
+        '-u' => 'Current user ID for access control', // @text
         '--all' => 'Delete ALL price rules if no ID argument specified', // @text
         '--trigger' => 'Delete ALL price rules with the trigger ID argument' // @text
     )

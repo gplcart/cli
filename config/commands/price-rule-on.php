@@ -8,15 +8,17 @@
  */
 return array(
     'alias' => 'pron',
+    'access' => 'price_rule_edit',
     'description' => 'Enable one or several price rules', // @text
     'usage' => array(
         'gplcart (pricerule-on | pron) -h',
-        'gplcart (pricerule-on | pron) --all',
-        'gplcart (pricerule-on | pron) <price rule id>',
-        'gplcart (pricerule-on | pron) <trigger id> --trigger',
+        'gplcart (pricerule-on | pron) --all [-u=<int>]',
+        'gplcart (pricerule-on | pron) <price rule id> [-u=<int>]',
+        'gplcart (pricerule-on | pron) <trigger id> --trigger [-u=<int>]',
     ),
     'options' => array(
         '-h' => 'Show command help', // @text
+        '-u' => 'Current user ID for access control', // @text
         '--all' => 'Enable ALL price rules i no ID argument specified', // @text
         '--trigger' => 'Enable ALL price rules with the trigger ID argument' // @text
     )

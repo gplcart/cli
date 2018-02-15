@@ -8,13 +8,15 @@
  */
 return array(
     'alias' => 'chget',
+    'access' => 'admin',
     'description' => 'Display cached data', // @text
     'usage' => array(
         'gplcart (cache-get | chget) -h',
-        'gplcart (cache-get | chget) <cache id> [-f=<format>]'
+        'gplcart (cache-get | chget) <cache id> [-f=<format>] [-u=<integer>]'
     ),
     'options' => array(
         '-h' => 'Show command help', // @text
+        '-u' => 'Current user ID for access control', // @text
         '-f' => 'Format of displayed data: print-r, var-export, var-dump, json, table [default: table]' // @text
     )
 );

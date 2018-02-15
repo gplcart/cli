@@ -8,15 +8,17 @@
  */
 return array(
     'alias' => 'cliadd',
+    'access' => 'collection_item_add',
     'description' => 'Add collection item',
     'usage' => array(
         'gplcart (collection-item-add | cliadd) -h',
-        'gplcart (collection-item-add | cliadd)',
+        'gplcart (collection-item-add | cliadd) [-u=<int>]',
         'gplcart (collection-item-add | cliadd) (--collection_id=<int> --entity_id=<int>)
-         [--weight=<int> --status=<bool> --data=<varchar>]',
+         [--weight=<int> --status=<bool> --data=<varchar> -u=<int>]',
     ),
     'options' => array(
         '-h' => 'Show command help', // @text
+        '-u' => 'Current user ID for access control', // @text
         '--entity_id' => 'Entity ID', // @text
         '--collection_id' => 'Collection ID', // @text
         '--weight' => 'Weight', // @text

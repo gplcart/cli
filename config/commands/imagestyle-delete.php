@@ -8,12 +8,14 @@
  */
 return array(
     'alias' => 'imdel',
+    'access' => 'image_style_delete',
     'description' => 'Delete image style', // @text
     'usage' => array(
         'gplcart (imagestyle-delete | imdel) -h',
-        'gplcart (imagestyle-delete | imdel) <image style id>'
+        'gplcart (imagestyle-delete | imdel) <image style id> [-u=<int>]'
     ),
     'options' => array(
-        '-h' => 'Show command help' // @text
+        '-h' => 'Show command help', // @text
+        '-u' => 'Current user ID for access control', // @text
     )
 );

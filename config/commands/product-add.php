@@ -8,18 +8,16 @@
  */
 return array(
     'alias' => 'padd',
+    'access' => 'product_add',
     'description' => 'Add product', // @text
     'usage' => array(
         'gplcart (product-add | padd) -h',
-        'gplcart (product-add | padd)',
-        'gplcart (product-add | padd) (--title=<varchar> --description=<text> --store_id=<int> --sku=<varchar>)
-        [--user_id=<int> --category_id=<int> --brand_category_id=<int> --product_class_id=<int>
-         --meta_title=<varchar> --meta_description=<varchar> --status=<bool> --subtract=<bool>
-         --price=<int> --currency=<varchar> --length=<int> --width=<int> --height=<int>
-         --weight=<int> --size_unit=<varchar> --weight_unit=<varchar> --stock=<varchar>]',
+        'gplcart (product-add | padd) [-u=<int>]',
+        'gplcart (product-add | padd) (--title=<varchar> --description=<text> --store_id=<int> --sku=<varchar>) [options]',
     ),
     'options' => array(
         '-h' => 'Show command help', // @text
+        '-u' => 'Current user ID for access control', // @text
         '--title' => 'Title', // @text
         '--description' => 'Description', // @text
         '--store_id' => 'Store ID', // @text

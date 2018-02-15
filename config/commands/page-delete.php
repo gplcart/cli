@@ -8,18 +8,20 @@
  */
 return array(
     'alias' => 'pgdel',
+    'access' => 'page_delete',
     'description' => 'Delete one or several pages', // @text
     'usage' => array(
         'gplcart (page-delete | pgdel) -h',
-        'gplcart (page-delete | pgdel) --all',
-        'gplcart (page-delete | pgdel) --blog',
-        'gplcart (page-delete | pgdel) <page id>',
-        'gplcart (page-delete | pgdel) <store id> --store',
-        'gplcart (page-delete | pgdel) <category id> --category',
-        'gplcart (page-delete | pgdel) <user id> --user'
+        'gplcart (page-delete | pgdel) --all [-u=<int>]',
+        'gplcart (page-delete | pgdel) --blog [-u=<int>]',
+        'gplcart (page-delete | pgdel) <page id> [-u=<int>]',
+        'gplcart (page-delete | pgdel) <store id> --store [-u=<int>]',
+        'gplcart (page-delete | pgdel) <category id> --category [-u=<int>]',
+        'gplcart (page-delete | pgdel) <user id> --user [-u=<int>]'
     ),
     'options' => array(
         '-h' => 'Show command help', // @text
+        '-u' => 'Current user ID for access control', // @text
         '--all' => 'Delete ALL pages if no ID argument specified', // @text
         '--blog' => 'Delete ALL pages which are blog posts', // @text
         '--user' => 'Delete ALL pages with the user ID argument', // @text
