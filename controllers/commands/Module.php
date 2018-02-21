@@ -112,15 +112,6 @@ class Module extends Command
     }
 
     /**
-     * Callback for "module-clear" command
-     */
-    public function cmdClearModule()
-    {
-        $this->module->clearCache();
-        $this->output();
-    }
-
-    /**
      * Callback for "module-get" command
      */
     public function cmdGetModule()
