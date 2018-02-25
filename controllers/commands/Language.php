@@ -88,6 +88,7 @@ class Language extends Command
         } else if (!empty($all)) {
 
             $deleted = $count = 0;
+
             foreach ($this->language->getList(array('in_database' => true)) as $language) {
                 $count++;
                 $deleted += (int) $this->language->delete($language['code']);
