@@ -20,7 +20,7 @@ return array(
         '-h' => 'Show command help', // @text
         '-u' => 'Current user ID for access control', // @text
         '--name' => 'Name', // @text
-        '--state_id' => 'State', // @text
+        '--state_id' => 'Country state', // @text
         '--country' => 'County code', // @text
         '--status' => 'Status', // @text
         '--zone_id' => 'Zone' // @text

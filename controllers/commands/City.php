@@ -163,7 +163,7 @@ class City extends Command
         $header = array(
             $this->text('ID'),
             $this->text('Name'),
-            $this->text('State'),
+            $this->text('Country state'),
             $this->text('Country'),
             $this->text('Zone'),
             $this->text('Enabled')
@@ -226,7 +226,7 @@ class City extends Command
     protected function wizardAddCity()
     {
         $this->validatePrompt('name', $this->text('Name'), 'city');
-        $this->validatePrompt('state_id', $this->text('State'), 'city');
+        $this->validatePrompt('state_id', $this->text('Country state'), 'city');
         $this->validatePrompt('country', $this->text('Country'), 'city');
         $this->validatePrompt('zone_id', $this->text('Zone'), 'city', 0);
         $this->validatePrompt('status', $this->text('Status'), 'city', 0);
