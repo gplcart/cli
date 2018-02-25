@@ -18,14 +18,6 @@ class User extends Command
 {
 
     /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        parent::__construct();
-    }
-
-    /**
      * Callback for "user-on" command
      */
     public function cmdOnUser()

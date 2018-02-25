@@ -16,15 +16,6 @@ use gplcart\modules\cli\controllers\Command;
  */
 class Config extends Command
 {
-
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        parent::__construct();
-    }
-
     /**
      * Callback for "config-get" command
      */

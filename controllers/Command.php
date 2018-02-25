@@ -22,14 +22,6 @@ class Command extends CliController
     use ListingTrait;
 
     /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        parent::__construct();
-    }
-
-    /**
      * Output formatted data
      * @param mixed $data
      * @param null|string $default

@@ -19,14 +19,6 @@ class Asset extends Command
 {
 
     /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        parent::__construct();
-    }
-
-    /**
      * Callback for "asset-clear" command
      */
     public function cmdClearAsset()
