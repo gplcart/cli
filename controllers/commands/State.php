@@ -9,7 +9,7 @@
 
 namespace gplcart\modules\cli\controllers\commands;
 
-use gplcart\core\models\State as StateModel;
+use gplcart\core\models\CountryState as CountryStateModel;
 use gplcart\modules\cli\controllers\Command;
 
 /**
@@ -20,14 +20,14 @@ class State extends Command
 
     /**
      * Country state model instance
-     * @var \gplcart\core\models\State $state
+     * @var \gplcart\core\models\CountryState $state
      */
     protected $state;
 
     /**
-     * @param StateModel $state
+     * @param CountryStateModel $state
      */
-    public function __construct(StateModel $state)
+    public function __construct(CountryStateModel $state)
     {
         parent::__construct();
 
