@@ -107,7 +107,7 @@ class File extends Command
     protected function deleteFile($file)
     {
         if ($this->getParam('disk')) {
-            return array_sum($this->file->deleteAll($file)) == 2;
+            return $this->file->deleteAll($file);
         }
 
         if (isset($file['file_id'])) {
