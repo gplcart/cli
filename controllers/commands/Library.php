@@ -35,15 +35,6 @@ class Library extends Command
     }
 
     /**
-     * Callback for "library-clear" command
-     */
-    public function cmdClearLibrary()
-    {
-        $this->library->clearCache();
-        $this->output();
-    }
-
-    /**
      * Callback for "library-get" command
      */
     public function cmdGetLibrary()
